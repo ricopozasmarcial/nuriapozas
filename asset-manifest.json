@@ -1,23 +1,13 @@
 {
-  "files": {
-    "main.css": "/nuriapozas/static/css/main.523f09c5.chunk.css",
-    "main.js": "/nuriapozas/static/js/main.e238566c.chunk.js",
-    "main.js.map": "/nuriapozas/static/js/main.e238566c.chunk.js.map",
-    "runtime-main.js": "/nuriapozas/static/js/runtime-main.9598e900.js",
-    "runtime-main.js.map": "/nuriapozas/static/js/runtime-main.9598e900.js.map",
-    "static/js/2.b8bb5f47.chunk.js": "/nuriapozas/static/js/2.b8bb5f47.chunk.js",
-    "static/js/2.b8bb5f47.chunk.js.map": "/nuriapozas/static/js/2.b8bb5f47.chunk.js.map",
-    "index.html": "/nuriapozas/index.html",
-    "precache-manifest.bda14f30f6221aee37a3ac3a5bc56b0f.js": "/nuriapozas/precache-manifest.bda14f30f6221aee37a3ac3a5bc56b0f.js",
-    "service-worker.js": "/nuriapozas/service-worker.js",
-    "static/css/main.523f09c5.chunk.css.map": "/nuriapozas/static/css/main.523f09c5.chunk.css.map",
-    "static/js/2.b8bb5f47.chunk.js.LICENSE.txt": "/nuriapozas/static/js/2.b8bb5f47.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/nuriapozas/static/media/logo.ee7cd8ed.svg"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.9598e900.js",
-    "static/js/2.b8bb5f47.chunk.js",
-    "static/css/main.523f09c5.chunk.css",
-    "static/js/main.e238566c.chunk.js"
-  ]
+  "main.css": "/nuriapozas/static/css/main.3263dab7.chunk.css",
+  "main.js": "/nuriapozas/static/js/main.cd2c3259.chunk.js",
+  "main.js.map": "/nuriapozas/static/js/main.cd2c3259.chunk.js.map",
+  "static/js/1.36858a0e.chunk.js": "/nuriapozas/static/js/1.36858a0e.chunk.js",
+  "static/js/1.36858a0e.chunk.js.map": "/nuriapozas/static/js/1.36858a0e.chunk.js.map",
+  "runtime~main.js": "/nuriapozas/static/js/runtime~main.0585fe4a.js",
+  "runtime~main.js.map": "/nuriapozas/static/js/runtime~main.0585fe4a.js.map",
+  "static/css/main.3263dab7.chunk.css.map": "/nuriapozas/static/css/main.3263dab7.chunk.css.map",
+  "index.html": "/nuriapozas/index.html",
+  "precache-manifest.ae70b86e3ed161b507d70144aa570a11.js": "/nuriapozas/precache-manifest.ae70b86e3ed161b507d70144aa570a11.js",
+  "service-worker.js": "/nuriapozas/service-worker.js"
 }
