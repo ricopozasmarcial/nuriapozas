@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const OptionsDiv = styled.div`
-    float: right;
-    width: 50%;
+    width: 100%;
     height: 100%;
+    border: 1px solid grey; 
 `;
