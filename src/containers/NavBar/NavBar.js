@@ -40,16 +40,16 @@ class NavBar extends React.Component {
 							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={elementos}>
 								HOME
 							</Nav.Link>
-							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={elementos}>
+							<Nav.Link href="https://nuria-pozas.myshopify.com/collections/all" style={elementos}>
 								TIENDA
 							</Nav.Link>
-							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={elementos}>
+							<Nav.Link href="https://nuria-pozas.myshopify.com/pages/creatuvajilla" style={elementos}>
 								VAJILLA A MEDIDA
 							</Nav.Link>
 							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={elementos}>
 								CURSOS
 							</Nav.Link>
-							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={elementos}>
+							<Nav.Link href="https://nuria-pozas.myshopify.com/cart" style={elementos}>
 								<div>
 									<i className="fa fa-shopping-cart" />
 								</div>
