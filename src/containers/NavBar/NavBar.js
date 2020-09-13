@@ -4,10 +4,10 @@ import { NavDiv } from "./NavBar.style";
 
 const logo = {
 	color: "black",
-	fontSize: "25px",
+	fontSize: "23px",
 	letterSpacing: "3px",
 	fontFamily: "Montserrat Light",
-	fontWeight: 600,
+	fontWeight: 650,
 	marginTop: "5px",
 	marginRight: "220px"
 };
@@ -19,11 +19,12 @@ const barra = {
 
 const elementos = {
 	color: "black",
-	fontSize: "15px",
+	fontSize: "13px",
 	fontFamily: "Montserrat Light",
 	letterSpacing: "3px",
-	fontWeight: 600,
-	marginTop: "13px"
+	fontWeight: 650,
+	marginTop: "13px",
+	marginRight: "10px"
 };
 
 class NavBar extends React.Component {
