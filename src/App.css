@@ -1,8 +1,9 @@
 .App {
   text-align: center;  
   background-color:white;
+  overflow-x: hidden;
+  
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -23,3 +24,4 @@
   color: #61dafb;
 }
 
+img.menu_links { cursor: pointer; }
