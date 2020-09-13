@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useRef } from "react";
+import Platos from '../Platos/Platos';
 import { OptionsDiv } from './Options.style';
-class Options extends React.Component {
-    render() {
-        return (
-            <OptionsDiv>
-                <ul>
-                    <li><button>opcion 1</button></li>
-                    <li><button>opcion 2</button></li>
-                    <li><button>opcion 3</button></li>
-                    <li><button>opcion 4</button></li>
-                </ul>
-            </OptionsDiv>
-        );
-    }
+
+
+function App() {
+    const ref = useRef(null);
+    var id = "";
+    document.addEventListener('click', function (e) {
+        id = e.target.id;
+    }, false);
+
+    const handleClick = () => {
+        ref.current.showToast(id);
+    };
+
+    return (
+        <OptionsDiv className="App">
+            <h1 className="title">Opciones</h1>
+            <button className="bigBtn" id="prueba" onClick={handleClick}>
+                Cambiar Imagen
+        </button>
+            <button className="bigBtn" id="prueba2" onClick={handleClick}>
+                Cambiar Imagen 2
+        </button>
+            <button className="bigBtn" id="prueba3" onClick={handleClick}>
+                Cambiar Imagen 3
+        </button>
+            <Platos ref={ref} />
+        </OptionsDiv>
+    );
 }
 
-export default Options;
+export default App;

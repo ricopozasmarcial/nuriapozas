@@ -6,11 +6,8 @@ class Frame extends React.Component {
     render() {
         return (
             <FrameDiv>
-                <div id="plato">
+                <div>
                     <Options></Options>
-                </div>
-                <div id="opciones">
-                    <Platos></Platos>
                 </div>
             </FrameDiv>
         );
