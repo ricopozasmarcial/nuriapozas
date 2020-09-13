@@ -14,7 +14,7 @@ const logo = {
 
 const barra = {
 	background: "transparent",
-	margin: "10px"
+	marginTop: "10px"
 };
 
 const elementos = {
