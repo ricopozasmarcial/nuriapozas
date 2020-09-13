@@ -79,7 +79,7 @@ function App() {
 			<div className="context">
 				<Platos ref={ref} />
 			</div>
-			<div className="context" style={{ height: "1000px" }}>
+			<div className="context">
 				<OptionsDiv>
 					<div style={{ marginLeft: "300px", overflow: "auto", height: "100vh" }}>
 						<GridList cellHeight={"auto"} className={classes.gridList}>
