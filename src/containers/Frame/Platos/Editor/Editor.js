@@ -15,10 +15,10 @@ export const Ball = () => {
 
 		var div = document.getElementById("move");
 		console.log(div.style.width);
-		var medidaw = parseInt(div.style.width) / 2 + 350;
+		var medidaw = parseInt(div.style.width) / 2;
 		var medidah = parseInt(div.style.height) / 2;
-		div.style.left = e.clientX - medidaw + "px";
-		div.style.top = e.clientY - medidah + "px";
+		div.style.left = e.clientX - medidaw - parseInt(div.style.width) / 2 + "px";
+		div.style.top = e.clientY - medidah - parseInt(div.style.height) / 2 + "px";
 	}
 
 	function dragFinito(e) {
@@ -36,7 +36,6 @@ export const Ball = () => {
 			style={{
 				position: "absolute",
 				display: "block",
-				maxWidth: "auto",
 				maxHeight: "auto",
 				cursor: "grab"
 			}}
