@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 export const Ball = () => {
 	let offsetX, offsetY;
@@ -18,15 +17,23 @@ export const Ball = () => {
 		const el = e.target;
 		el.removeEventListener("mousemove", move);
 	};
-	const Wrapper = styled.div`
-		width: 200px;
-		height: 200px;
-		background-image: url("img/prueba.png");
-		background-repeat: no-repeat;
-		position: absolute;
-		cursor: pointer;
-	`;
-	return <Wrapper onMouseDown={add} onMouseUp={remove} />;
-};
 
+	const divStyle = {
+		backgroundSize: "contain",
+		backgroundRepeat: "no-repeat",
+		position: "fixed",
+		cursor: "pointer"
+	};
+
+	const imgStyle = {
+		position: "absolute",
+		width: "500px",
+		height: "500px"
+	};
+	return (
+		<div style={divStyle} onMouseDown={add} onMouseUp={remove}>
+			<img style={imgStyle} id="img" draggable="false" src="" alt="" />
+		</div>
+	);
+};
 export default Ball;
