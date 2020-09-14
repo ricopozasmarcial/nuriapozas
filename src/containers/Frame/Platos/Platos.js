@@ -51,8 +51,8 @@ const Platos = forwardRef((props, ref) => {
 				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 			</Button>
 			<div id="move">
-				<img id="img" src="" />
-				<Ball />
+				<img id="img" src="" style={{ marginLeft: "125%", marginTop: "90%" }} />
+				<Ball style={{ marginLeft: "200px" }} />
 			</div>
 			<div id="fondo">
 				<img id="img" src="img/fondoPlato.png" />
