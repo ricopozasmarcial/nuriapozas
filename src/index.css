@@ -20,6 +20,10 @@ html::-webkit-scrollbar {
 	margin-left: 10px;
 }
 
+.context2::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
 #img {
 	display: block;
 	margin-top: 10%;

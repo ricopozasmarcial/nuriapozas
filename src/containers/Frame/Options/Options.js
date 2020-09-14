@@ -10,7 +10,8 @@ function App() {
 			backgroundColor: theme.palette.background.paper
 		},
 		gridList: {
-			width: 500
+			width: 500,
+			paddingBottom: "500px"
 		},
 
 		icon: {
