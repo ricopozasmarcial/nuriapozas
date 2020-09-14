@@ -28,8 +28,8 @@ function App() {
 		false
 	);
 
-	const handleClick = () => {
-		ref.current.showToast(id);
+	const handleClick = (e) => {
+		ref.current.showToast(e.target.id);
 	};
 
 	const classes = useStyles();

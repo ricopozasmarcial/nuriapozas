@@ -6,13 +6,8 @@ const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 
 	const showToast = (name) => {
-		if (!value) {
-			setValue(true);
-			document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		} else {
-			setValue(false);
-			document.getElementById("img").setAttribute("src", "");
-		}
+		setValue(true);
+		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
 	};
 
 	const zoomOut = () => {
