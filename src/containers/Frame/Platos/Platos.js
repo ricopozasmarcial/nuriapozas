@@ -3,7 +3,7 @@ import { PlatosDiv } from "./Platos.style";
 import { Button } from "react-bootstrap";
 import Ball from "./Editor/Editor";
 const Platos = forwardRef((props, ref) => {
-	const [ value, setValue ] = useState(false);
+	const [value, setValue] = useState(false);
 
 	const showToast = (name) => {
 		setValue(true);
@@ -19,7 +19,6 @@ const Platos = forwardRef((props, ref) => {
 		var anchoAux = str2.replace("px", "");
 		var anchoNew = parseInt(anchoAux) - 20;
 		document.getElementById("move").style.width = anchoNew + "px";
-		console.log(anchoNew);
 	};
 
 	const zoomIn = () => {
@@ -31,7 +30,6 @@ const Platos = forwardRef((props, ref) => {
 		var anchoAux = str2.replace("px", "");
 		var anchoNew = parseInt(anchoAux) + 20;
 		document.getElementById("move").style.width = anchoNew + "px";
-		console.log(anchoNew);
 	};
 
 	useImperativeHandle(ref, () => {
@@ -42,7 +40,21 @@ const Platos = forwardRef((props, ref) => {
 
 	return (
 		<PlatosDiv>
-			<div id="fondo">
+			<div style={{
+				position: 'absolute',
+				backgroundColor: 'black',
+				backgroundImage: 'url("img/fondoPlato.png")',
+				backgroundPosition: '50% 50%',
+				borderRadius: '50%',
+				width: '600px',
+				height: '600px',
+				marginLeft: '10%',
+				marginTop: '10%',
+				justifyContent: 'center',
+				alignItems: 'center',
+				zIndex: '1',
+				overflow: 'hidden'
+			}} id="fondo">
 				<div
 					style={{
 						height: "500px",
