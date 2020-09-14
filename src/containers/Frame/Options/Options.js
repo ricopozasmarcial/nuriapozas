@@ -53,7 +53,7 @@ function App() {
 		{
 			img: "img/prueba4.png",
 			title: "Nube",
-			id: "prueba2"
+			id: "prueba4"
 		}
 	];
 

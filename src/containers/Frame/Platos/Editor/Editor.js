@@ -19,8 +19,8 @@ export const Ball = () => {
 		el.removeEventListener("mousemove", move);
 	};
 	const Wrapper = styled.div`
-		width: 150px;
-		height: 150px;
+		width: 200px;
+		height: 200px;
 		background-image: url("img/prueba.png");
 		background-repeat: no-repeat;
 		position: absolute;

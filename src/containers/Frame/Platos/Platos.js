@@ -8,8 +8,8 @@ const Platos = forwardRef((props, ref) => {
 		if (!value) {
 			setValue(true);
 			document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-			document.getElementById("img").setAttribute("height", "150");
-			document.getElementById("img").setAttribute("width", "150");
+			document.getElementById("img").setAttribute("height", "200");
+			document.getElementById("img").setAttribute("width", "200");
 		} else {
 			setValue(false);
 			document.getElementById("img").setAttribute("src", "");
@@ -24,7 +24,6 @@ const Platos = forwardRef((props, ref) => {
 
 	return (
 		<PlatosDiv>
-			<img id="img" src="" />
 			<Ball />
 		</PlatosDiv>
 	);
