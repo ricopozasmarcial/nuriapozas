@@ -10,7 +10,7 @@ function App() {
 			backgroundColor: "transparent"
 		},
 		gridList: {
-			width: 500,
+			width: 800,
 			paddingBottom: "500px",
 			paddingTop: "90px"
 		},
@@ -54,6 +54,96 @@ function App() {
 			img: "img/prueba4.png",
 			title: "Nube",
 			id: "prueba4"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Coral",
+			id: "prueba2"
+		},
+		{
+			img: "img/prueba3.png",
+			title: "Pájaros",
+			id: "prueba3"
 		}
 	];
 
@@ -64,32 +154,29 @@ function App() {
 			</div>
 			<div className="context">
 				<OptionsDiv>
-					<div className="context2" style={{ marginLeft: "300px", overflow: "auto", height: "100vh" }}>
-						<GridList cellHeight={"300"} className={classes.gridList}>
-							<GridListTile
-								key="Subheader"
-								cols={2}
-								style={{
-									height: "auto",
-									fontFamily: "Montserrat Light",
-									fontWeight: 650,
-									color: "black",
-									fontSize: "13px",
-									backgroundColor: "none"
-								}}
-							>
-								<ListSubheader
-									component="div"
-									style={{
-										height: "auto",
-										fontFamily: "Montserrat Light",
-										fontWeight: 650
-									}}
-								>
-									SELECCIONAR DIBUJO
-								</ListSubheader>
-							</GridListTile>
+					<div className="context2" style={{ overflow: "auto", height: "100vh" }}>
+						<h2
+							style={{
+								height: "auto",
+								fontFamily: "Montserrat Light",
+								fontWeight: 650,
+								color: "black",
+								marginTop: "40px",
+								fontSize: "15px",
+								backgroundColor: "none"
+							}}
+						>
+							{" "}
+							SELECCIONAR DIBUJO
+						</h2>
+						<hr />
 
+						<GridList
+							cellHeight={"300"}
+							cols={3}
+							className={classes.gridList}
+							style={{ marginLeft: "50px" }}
+						>
 							{tileData.map((tile) => (
 								<GridListTile key={tile.img}>
 									<img
