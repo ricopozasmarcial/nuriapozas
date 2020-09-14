@@ -1,39 +1,44 @@
 import React from "react";
 
-export const Ball =
-	() => {
-		let offsetX, offsetY
-		const move = e => {
-			const el = e.target
-			el.style.left = `${e.pageX - offsetX}px`
-			el.style.top = `${e.pageY - offsetY}px`
-		}
-		const add = e => {
-			const el = e.target
-			offsetX = e.clientX - (el.getBoundingClientRect().left)
-			offsetY = e.clientY - (el.getBoundingClientRect().top)
-			el.addEventListener('mousemove', move)
-		}
-		const remove = e => {
-			const el = e.target
-			el.removeEventListener('mousemove', move)
-		}
+export const Ball = () => {
+	function move(e) {
+		document.addEventListener('mousemove', movement(e));
+	};
 
-		const divStyle = {
-			backgroundSize: 'contain',
-			backgroundRepeat: 'no-repeat',
-			position: 'fixed',
-			cursor: 'pointer'
-		}
-
-		const imgStyle = {
-			position: 'absolute',
-			width: '500px',
-			height: '500px',
-
-		}
-		return (
-			<div style={divStyle} onMouseDown={add} onMouseUp={remove}><img style={imgStyle} id="img" draggable="false" src="" alt="" ></img></div>
-		)
+	function movement(e) {
+		var div = document.getElementById('move');
+		div.style.left = e.pageX / 2 + "px";
+		div.style.top = e.pageY / 2 + "px";
 	}
+
+	const divStyle = {
+		backgroundSize: "contain",
+		backgroundRepeat: "no-repeat",
+		position: "fixed",
+		cursor: "pointer",
+		width: "500px",
+		height: "500px"
+	};
+
+	const imgStyle = {
+		position: "relative",
+		display: "block",
+		maxWidth: "100%",
+		maxHeight: "100%"
+
+	};
+	return (
+		<div style={{
+			position: "relative",
+			display: "block",
+			maxWidth: "100%",
+			maxHeight: "100%",
+			height: "500px",
+			width: "500px"
+
+		}} onMouseDown={move} draggable="false">
+			<img style={imgStyle} id="img" draggable="false" src="" alt="" />
+		</div>
+	);
+};
 export default Ball;
