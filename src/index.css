@@ -6,19 +6,38 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-appearance: none;
 	overflow: hidden;
+	height: 100%;
 }
 
 html::-webkit-scrollbar {
 	-webkit-appearance: none;
-	overflow: hidden;
 }
 
 .context {
 	width: 49%;
 	display: inline-block;
-	overflow: hidden;
-	-webkit-appearance: none;
+	height: 90vh;
 	margin-left: 10px;
+}
+
+#img {
+	display: block;
+	margin-top: 10%;
+	margin-left: 25%;
+	padding: 0;
+}
+
+@media (max-width: 1500px) {
+	#img {
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+}
+
+@media (max-width: 600px) {
+	#img {
+		margin: auto;
+	}
 }
 
 code {

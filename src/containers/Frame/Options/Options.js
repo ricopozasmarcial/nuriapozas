@@ -71,17 +71,13 @@ function App() {
 	];
 
 	return (
-		<div
-			style={{
-				overflow: "hidden"
-			}}
-		>
+		<div>
 			<div className="context">
 				<Platos ref={ref} />
 			</div>
 			<div className="context">
 				<OptionsDiv>
-					<div style={{ marginLeft: "300px", overflow: "auto", height: "100vh" }}>
+					<div className="context2" style={{ marginLeft: "300px", overflow: "auto", height: "100vh" }}>
 						<GridList cellHeight={"auto"} className={classes.gridList}>
 							<GridListTile
 								key="Subheader"
