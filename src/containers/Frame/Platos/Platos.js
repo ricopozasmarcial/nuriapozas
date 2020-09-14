@@ -10,8 +10,8 @@ const Platos = forwardRef((props, ref) => {
 		if (!value) {
 			setValue(true);
 			document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-			document.getElementById("img").setAttribute("height", "300");
-			document.getElementById("img").setAttribute("width", "300");
+			document.getElementById("img").setAttribute("height", "500");
+			document.getElementById("img").setAttribute("width", "500");
 		} else {
 			setValue(false);
 			document.getElementById("img").setAttribute("src", "");
@@ -51,8 +51,8 @@ const Platos = forwardRef((props, ref) => {
 				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 			</Button>
 			<div id="move">
-				<img id="img" src="" style={{ marginLeft: "125%", marginTop: "90%" }} />
-				<Ball style={{ marginLeft: "200px" }} />
+				<img id="img" src="" />
+				<Ball />
 			</div>
 			<div id="fondo">
 				<img id="img" src="img/fondoPlato.png" />
