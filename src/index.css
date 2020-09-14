@@ -24,6 +24,38 @@ html::-webkit-scrollbar {
 	-webkit-appearance: none;
 }
 
+#zoom {
+	border: none;
+	border-radius: 50%;
+
+	padding: none;
+}
+
+#fondo {
+	position: absolute;
+	z-index: 1;
+}
+
+#move {
+	position: absolute;
+	z-index: 155555;
+}
+
+#zoomMinus {
+	border: none;
+	border-radius: 50%;
+
+	padding: none;
+}
+#zoom:hover {
+	border: none;
+	border-radius: 50%;
+
+	background-color: none;
+	padding: none;
+	color: none;
+}
+
 #img {
 	display: block;
 	margin-top: 10%;

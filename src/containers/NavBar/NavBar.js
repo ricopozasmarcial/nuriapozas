@@ -32,7 +32,7 @@ class NavBar extends React.Component {
 		return (
 			<NavDiv>
 				<Navbar>
-					<div class="mx-auto">
+					<div className="mx-auto">
 						<Nav style={barra}>
 							<Nav.Link href="https://nuria-pozas.myshopify.com/" style={logo}>
 								NURIA POZAS
