@@ -1,32 +1,39 @@
 import React from "react";
-import styled from "styled-components";
 
-export const Ball = () => {
-	let offsetX, offsetY;
-	const move = (e) => {
-		const el = e.target;
-		el.style.left = `${e.pageX - offsetX}px`;
-		el.style.top = `${e.pageY - offsetY}px`;
-	};
-	const add = (e) => {
-		const el = e.target;
-		offsetX = e.clientX - el.getBoundingClientRect().left;
-		offsetY = e.clientY - el.getBoundingClientRect().top;
-		el.addEventListener("mousemove", move);
-	};
-	const remove = (e) => {
-		const el = e.target;
-		el.removeEventListener("mousemove", move);
-	};
-	const Wrapper = styled.div`
-		width: 200px;
-		height: 200px;
-		background-image: url("img/prueba.png");
-		background-repeat: no-repeat;
-		position: absolute;
-		cursor: pointer;
-	`;
-	return <Wrapper onMouseDown={add} onMouseUp={remove} />;
-};
+export const Ball =
+	() => {
+		let offsetX, offsetY
+		const move = e => {
+			const el = e.target
+			el.style.left = `${e.pageX - offsetX}px`
+			el.style.top = `${e.pageY - offsetY}px`
+		}
+		const add = e => {
+			const el = e.target
+			offsetX = e.clientX - (el.getBoundingClientRect().left)
+			offsetY = e.clientY - (el.getBoundingClientRect().top)
+			el.addEventListener('mousemove', move)
+		}
+		const remove = e => {
+			const el = e.target
+			el.removeEventListener('mousemove', move)
+		}
 
+		const divStyle = {
+			backgroundSize: 'contain',
+			backgroundRepeat: 'no-repeat',
+			position: 'fixed',
+			cursor: 'pointer'
+		}
+
+		const imgStyle = {
+			position: 'absolute',
+			width: '500px',
+			height: '500px',
+
+		}
+		return (
+			<div style={divStyle} onMouseDown={add} onMouseUp={remove}><img style={imgStyle} id="img" draggable="false" src="" alt="" ></img></div>
+		)
+	}
 export default Ball;

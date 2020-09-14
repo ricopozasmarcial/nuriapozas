@@ -1,6 +1,5 @@
 import React from 'react';
 import Options from './Options/Options';
-import Platos from './Platos/Platos';
 import { FrameDiv } from './Frame.style';
 class Frame extends React.Component {
     render() {
