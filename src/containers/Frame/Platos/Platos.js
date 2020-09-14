@@ -70,7 +70,7 @@ const Platos = forwardRef((props, ref) => {
 			<hr />
 
 			<Button style={{ marginRight: "600px" }} variant="outline-dark">
-				<a id="aniadir" href="http://nuria-pozas.myshopify.com/cart/36127397609636:1">
+				<a target="_parent" id="aniadir" href="http://nuria-pozas.myshopify.com/cart/36127397609636:1">
 					AÑADIR AL CARRITO
 				</a>
 			</Button>
