@@ -50,22 +50,6 @@ hr {
 	line-height: 500%;
 }
 
-#fondo {
-	position: absolute;
-	background-color: black;
-	background-image: url("/img/fondoPlato.png");
-	background-position: 50% 50%;
-	border-radius: 50%;
-	width: 600px;
-	height: 600px;
-	margin-left: 10%;
-	margin-top: 10%;
-	justify-content: center;
-	align-items: center;
-	z-index: 1;
-	overflow: hidden;
-}
-
 #move {
 	position: absolute;
 	z-index: 155555;

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
 import { OptionsDiv } from "./Options.style";
-import { GridList, GridListTile, ListSubheader, GridListTileBar, makeStyles } from "@material-ui/core";
+import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 
 function App() {
 	const ref = useRef(null);
@@ -19,10 +19,10 @@ function App() {
 			color: "rgba(255, 255, 255, 0.54)"
 		}
 	}));
-	var id = "";
+	var id;
 	document.addEventListener(
 		"click",
-		function(e) {
+		function (e) {
 			id = e.target.id;
 		},
 		false

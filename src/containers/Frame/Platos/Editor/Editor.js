@@ -12,9 +12,7 @@ export const Ball = () => {
 
 	function movement(e) {
 		e.target.style.cursor = "grab";
-
 		var div = document.getElementById("move");
-		console.log(div.style.width);
 		var medidaw = parseInt(div.style.width) / 2;
 		var medidah = parseInt(div.style.height) / 2;
 		div.style.left = e.clientX - medidaw - parseInt(div.style.width) / 2 + "px";
