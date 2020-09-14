@@ -48,17 +48,17 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
 				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 			</Button>
-			<div
-				style={{
-					height: "500px",
-					width: "500px"
-				}}
-				id="move"
-			>
-				<Ball />
-			</div>
+
 			<div id="fondo">
-				<img id="img" draggable={false} src="img/fondoPlato.png" />
+				<div
+					style={{
+						height: "500px",
+						width: "500px"
+					}}
+					id="move"
+				>
+					<Ball />
+				</div>
 			</div>
 		</PlatosDiv>
 	);

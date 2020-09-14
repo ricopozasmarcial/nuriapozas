@@ -15,8 +15,8 @@ export const Ball = () => {
 
 		var div = document.getElementById("move");
 		console.log(div.style.width);
-		var medidaw = parseInt(div.style.width) / 2 + 100;
-		var medidah = parseInt(div.style.height) / 2 + 100;
+		var medidaw = parseInt(div.style.width) / 2 + 350;
+		var medidah = parseInt(div.style.height) / 2;
 		div.style.left = e.clientX - medidaw + "px";
 		div.style.top = e.clientY - medidah + "px";
 	}
