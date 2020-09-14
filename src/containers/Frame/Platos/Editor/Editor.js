@@ -24,14 +24,6 @@ export const Ball = () => {
 	function dragFinito(e) {
 		e.preventDefault();
 	}
-	const divStyle = {
-		backgroundSize: "contain",
-		backgroundRepeat: "no-repeat",
-		position: "absolute",
-		cursor: "grab",
-		width: "500px",
-		height: "500px"
-	};
 
 	const imgStyle = {
 		position: "relative",
