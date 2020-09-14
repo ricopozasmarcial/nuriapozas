@@ -8,6 +8,8 @@ const Platos = forwardRef((props, ref) => {
 		if (!value) {
 			setValue(true);
 			document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
+			document.getElementById("img").setAttribute("height", "150");
+			document.getElementById("img").setAttribute("width", "150");
 		} else {
 			setValue(false);
 			document.getElementById("img").setAttribute("src", "");
