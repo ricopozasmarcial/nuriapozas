@@ -2,14 +2,10 @@ import React from "react";
 
 export const Ball = () => {
 	function handleOnDragStart(event) {
-		console.log("JSDJSDJF");
 		event.dataTransfer.setDragImage(new Image(), 0, 0);
 		event.target.style.cursor = "grab";
 	}
 
-	function move(e) {
-		document.addEventListener("mousemove", movement(e));
-	}
 	function handleOnDragEnter(event) {
 		event.target.style.cursor = "grab";
 	}
@@ -17,9 +13,10 @@ export const Ball = () => {
 	function movement(e) {
 		e.target.style.cursor = "grab";
 		var div = document.getElementById("move");
-		var rect = e.target.getBoundingClientRect();
-		div.style.left = e.pageX / 2 + "px";
-		div.style.top = e.pageY / 2 + "px";
+		var medidaw = parseInt(div.style.width) / 2;
+		var medidah = parseInt(div.style.height) / 2;
+		div.style.left = e.clientX - medidaw + "px";
+		div.style.top = e.clientY - medidah + "px";
 	}
 
 	function dragFinito(e) {
