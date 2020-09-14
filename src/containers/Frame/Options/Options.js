@@ -7,11 +7,12 @@ function App() {
 	const ref = useRef(null);
 	const useStyles = makeStyles((theme) => ({
 		root: {
-			backgroundColor: theme.palette.background.paper
+			backgroundColor: "transparent"
 		},
 		gridList: {
 			width: 500,
-			paddingBottom: "500px"
+			paddingBottom: "500px",
+			paddingTop: "90px"
 		},
 
 		icon: {
@@ -36,37 +37,22 @@ function App() {
 	const tileData = [
 		{
 			img: "img/prueba.png",
-			title: "FLOR",
+			title: "Piña",
 			id: "prueba"
 		},
 		{
 			img: "img/prueba2.png",
-			title: "FLOR",
+			title: "Coral",
 			id: "prueba2"
 		},
 		{
 			img: "img/prueba3.png",
-			title: "FLOR",
+			title: "Pájaros",
 			id: "prueba3"
 		},
 		{
-			img: "img/prueba2.png",
-			title: "FLOR",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "FLOR",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "FLOR",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "FLOR",
+			img: "img/prueba4.png",
+			title: "Nube",
 			id: "prueba2"
 		}
 	];
@@ -79,7 +65,7 @@ function App() {
 			<div className="context">
 				<OptionsDiv>
 					<div className="context2" style={{ marginLeft: "300px", overflow: "auto", height: "100vh" }}>
-						<GridList cellHeight={"auto"} className={classes.gridList}>
+						<GridList cellHeight={"300"} className={classes.gridList}>
 							<GridListTile
 								key="Subheader"
 								cols={2}
@@ -88,7 +74,8 @@ function App() {
 									fontFamily: "Montserrat Light",
 									fontWeight: 650,
 									color: "black",
-									fontSize: "13px"
+									fontSize: "13px",
+									backgroundColor: "none"
 								}}
 							>
 								<ListSubheader
@@ -114,7 +101,12 @@ function App() {
 									/>
 									<GridListTileBar
 										title={tile.title}
-										style={{ height: "auto", fontFamily: "Montserrat Light" }}
+										style={{
+											height: "auto",
+											fontFamily: "Montserrat Light",
+											backgroundColor: "none",
+											color: "black"
+										}}
 									/>
 								</GridListTile>
 							))}

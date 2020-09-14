@@ -22,7 +22,8 @@ const Platos = forwardRef((props, ref) => {
 
 	return (
 		<PlatosDiv>
-			<img id="img" src="img/fondoPlato.png" />
+			<img id="img" src="" />
+			<Ball />
 		</PlatosDiv>
 	);
 });
