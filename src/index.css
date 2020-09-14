@@ -13,6 +13,18 @@ html::-webkit-scrollbar {
 	-webkit-appearance: none;
 }
 
+#aniadir {
+	font-family: "Montserrat Light";
+	font-weight: 650;
+	color: black;
+}
+
+#aniadir:hover {
+	font-family: "Montserrat Light";
+	font-weight: 650;
+	color: white;
+}
+
 .context {
 	width: 49%;
 	display: inline-block;
@@ -35,7 +47,7 @@ hr {
 	color: black;
 	display: block;
 	margin: 10px 0;
-	line-height: 150%;
+	line-height: 500%;
 }
 
 #fondo {
@@ -47,7 +59,7 @@ hr {
 	width: 600px;
 	height: 600px;
 	margin-left: 10%;
-	margin-top: 5%;
+	margin-top: 10%;
 	justify-content: center;
 	align-items: center;
 	z-index: 1;

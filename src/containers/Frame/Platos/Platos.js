@@ -42,13 +42,6 @@ const Platos = forwardRef((props, ref) => {
 
 	return (
 		<PlatosDiv>
-			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
-				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
-			</Button>
-			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
-				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
-			</Button>
-
 			<div id="fondo">
 				<div
 					style={{
@@ -60,6 +53,33 @@ const Platos = forwardRef((props, ref) => {
 					<Ball />
 				</div>
 			</div>
+			<h2
+				style={{
+					height: "auto",
+					fontFamily: "Montserrat Light",
+					fontWeight: 650,
+					color: "black",
+					marginTop: "40px",
+					fontSize: "15px",
+					backgroundColor: "none"
+				}}
+			>
+				{" "}
+				TU PLATO{" "}
+			</h2>
+			<hr />
+
+			<Button style={{ marginRight: "600px" }} variant="outline-dark">
+				<a id="aniadir" href="http://nuria-pozas.myshopify.com/cart/36127397609636:1">
+					AÑADIR AL CARRITO
+				</a>
+			</Button>
+			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
+				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
+			</Button>
+			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
+				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
+			</Button>
 		</PlatosDiv>
 	);
 });
