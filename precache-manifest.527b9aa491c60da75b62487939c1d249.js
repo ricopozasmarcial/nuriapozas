@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5cdf6b0261365b34035f",
+    "revision": "0ad7d625ab67b22b6ff8",
     "url": "/nuriapozas/static/css/main.392610bc.chunk.css"
   },
   {
-    "revision": "5cdf6b0261365b34035f",
-    "url": "/nuriapozas/static/js/main.5cdf6b02.chunk.js"
+    "revision": "0ad7d625ab67b22b6ff8",
+    "url": "/nuriapozas/static/js/main.0ad7d625.chunk.js"
   },
   {
     "revision": "6f09bd82d6f23d1d736e",
@@ -24,23 +24,23 @@ self.__precacheManifest = [
     "url": "/nuriapozas/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
-    "revision": "674f50d287a8c48dc19ba404d20fe713",
-    "url": "/nuriapozas/static/media/fontawesome-webfont.674f50d2.eot"
-  },
-  {
     "revision": "fee66e712a8a08eef5805a46892932ad",
     "url": "/nuriapozas/static/media/fontawesome-webfont.fee66e71.woff"
   },
   {
-    "revision": "912ec66d7572ff821749319396470bde",
-    "url": "/nuriapozas/static/media/fontawesome-webfont.912ec66d.svg"
+    "revision": "674f50d287a8c48dc19ba404d20fe713",
+    "url": "/nuriapozas/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
     "revision": "b06871f281fee6b241d60582ae9369b9",
     "url": "/nuriapozas/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
-    "revision": "531ec5bb0e2ca22ec3958a9921830d08",
+    "revision": "912ec66d7572ff821749319396470bde",
+    "url": "/nuriapozas/static/media/fontawesome-webfont.912ec66d.svg"
+  },
+  {
+    "revision": "a1ed3e297af2d400204d9e743882f646",
     "url": "/nuriapozas/index.html"
   }
 ];
