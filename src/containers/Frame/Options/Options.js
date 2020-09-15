@@ -185,6 +185,7 @@ function App() {
 										id={tile.id}
 										class="menu_links"
 										onClick={handleClick}
+										draggable="false"
 									/>
 									<GridListTileBar
 										title={tile.title}
