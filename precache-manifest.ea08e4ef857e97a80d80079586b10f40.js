@@ -1,27 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "2d708dff638ba1842aaf",
-    "url": "/nuriapozas/static/css/main.9a5bfb3f.chunk.css"
+    "revision": "9e9cc15efc990d9ecc85",
+    "url": "/nuriapozas/static/css/main.fbab127c.chunk.css"
   },
   {
-    "revision": "2d708dff638ba1842aaf",
-    "url": "/nuriapozas/static/js/main.2d708dff.chunk.js"
+    "revision": "9e9cc15efc990d9ecc85",
+    "url": "/nuriapozas/static/js/main.9e9cc15e.chunk.js"
   },
   {
-    "revision": "2777bdbbc18137e1b536",
-    "url": "/nuriapozas/static/css/1.a124d625.chunk.css"
+    "revision": "4d06c4e622bcca86f810",
+    "url": "/nuriapozas/static/css/1.f7aec0ec.chunk.css"
   },
   {
-    "revision": "2777bdbbc18137e1b536",
-    "url": "/nuriapozas/static/js/1.2777bdbb.chunk.js"
+    "revision": "4d06c4e622bcca86f810",
+    "url": "/nuriapozas/static/js/1.4d06c4e6.chunk.js"
   },
   {
     "revision": "0585fe4a06b4e7afec3f",
     "url": "/nuriapozas/static/js/runtime~main.0585fe4a.js"
-  },
-  {
-    "revision": "af7ae505a9eed503f8b8e6982036873e",
-    "url": "/nuriapozas/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
@@ -32,6 +28,10 @@ self.__precacheManifest = [
     "url": "/nuriapozas/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
+    "revision": "af7ae505a9eed503f8b8e6982036873e",
+    "url": "/nuriapozas/static/media/fontawesome-webfont.af7ae505.woff2"
+  },
+  {
     "revision": "fee66e712a8a08eef5805a46892932ad",
     "url": "/nuriapozas/static/media/fontawesome-webfont.fee66e71.woff"
   },
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/nuriapozas/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "5c2609331869dd858fea0939807eba6d",
+    "revision": "65e4ace0f2f093ccbce0d5231295d352",
     "url": "/nuriapozas/index.html"
   }
 ];
