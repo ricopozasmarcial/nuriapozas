@@ -52,6 +52,9 @@ const Platos = forwardRef((props, ref) => {
 
 	const deleteImage = () => {
 		document.getElementById("img").setAttribute("src", "");
+		document.getElementById("move").style.top = "0";
+		document.getElementById("move").style.left = "0";
+
 		imagen = "";
 	};
 
@@ -59,7 +62,7 @@ const Platos = forwardRef((props, ref) => {
 		if (document.getElementById("img").getAttribute("src") === "") {
 			setShow(true);
 		} else {
-			return (window.location = enlace);
+			return (window.parent.location.href = enlace);
 		}
 	};
 
@@ -99,10 +102,7 @@ const Platos = forwardRef((props, ref) => {
 					<Ball />
 				</div>
 			</div>
-			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
-				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
-				pequeño.
-			</Alert>
+
 			<h2
 				style={{
 					height: "auto",
@@ -118,33 +118,14 @@ const Platos = forwardRef((props, ref) => {
 				TU PLATO{" "}
 			</h2>
 			<hr />
-
-			<div class="dropdown">
-				<button
-					class="btn btn-secondary dropdown-toggle"
-					type="button"
-					id="dropdownMenuButton"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-				>
-					Dropdown button
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">
-						Action
-					</a>
-					<a class="dropdown-item" href="#">
-						Another action
-					</a>
-					<a class="dropdown-item" href="#">
-						Something else here
-					</a>
-				</div>
-			</div>
-
-			<Button style={{ marginRight: "600px" }} variant="outline-dark" onClick={redirect}>
-				AÑADIR AL CARRITO
+			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
+				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
+				pequeño.
+			</Alert>
+			<Button style={{ marginRight: "600px" }} variant="outline-dark">
+				<a target="_parent" href="http://nuria-pozas.myshopify.com/cart/5679025029284:1">
+					carrito
+				</a>
 			</Button>
 			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
 				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
