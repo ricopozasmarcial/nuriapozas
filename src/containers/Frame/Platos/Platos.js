@@ -13,11 +13,11 @@ const Platos = forwardRef((props, ref) => {
 	const links = [
 		{
 			id: "prueba",
-			link: "http://nuria-pozas.myshopify.com/cart/5660832039076:1"
+			link: "http://nuria-pozas.myshopify.com/cart/36127397609636:1"
 		},
 		{
 			id: "prueba2",
-			link: "http://nuria-pozas.myshopify.com/cart/5679025029284:1"
+			link: "http://nuria-pozas.myshopify.com/cart/36196470456484:1"
 		}
 	];
 	const showToast = (name) => {
