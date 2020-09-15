@@ -122,10 +122,8 @@ const Platos = forwardRef((props, ref) => {
 				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
 				pequeño.
 			</Alert>
-			<Button style={{ marginRight: "600px" }} variant="outline-dark">
-				<a target="_parent" href="http://nuria-pozas.myshopify.com/cart/5679025029284:1">
-					carrito
-				</a>
+			<Button style={{ marginRight: "600px" }} variant="outline-dark" onClick={redirect}>
+				AÑADIR AL CARRITO
 			</Button>
 			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
 				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
