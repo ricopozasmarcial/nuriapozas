@@ -47,6 +47,13 @@ class NavBar extends React.Component {
 							>
 								TIENDA
 							</Nav.Link>
+							<Nav.Link
+								target="_parent"
+								href="https://nuria-pozas.myshopify.com/pages/creatuvajilla"
+								style={elementos}
+							>
+								VAJILLA A MEDIDA
+							</Nav.Link>
 							<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={elementos}>
 								CURSOS
 							</Nav.Link>
