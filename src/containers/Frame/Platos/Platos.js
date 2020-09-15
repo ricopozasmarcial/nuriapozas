@@ -2,12 +2,30 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { PlatosDiv } from "./Platos.style";
 import { Button } from "react-bootstrap";
 import Ball from "./Editor/Editor";
+import Alert from "react-bootstrap/Alert";
+var enlace = "";
 const Platos = forwardRef((props, ref) => {
-	const [value, setValue] = useState(false);
+	const [ value, setValue ] = useState(false);
+	const [ show, setShow ] = useState(false);
 
+	var data = null;
+	var imagen = "";
+	const links = [
+		{
+			id: "prueba",
+			link: "http://nuria-pozas.myshopify.com/cart/5660832039076:1"
+		},
+		{
+			id: "prueba2",
+			link: "http://nuria-pozas.myshopify.com/cart/5679025029284:1"
+		}
+	];
 	const showToast = (name) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
+		imagen = document.getElementById("img").getAttribute("src");
+		data = links.filter((item) => item.id === name);
+		enlace = data[0].link;
 	};
 
 	const zoomOut = () => {
@@ -32,6 +50,19 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = anchoNew + "px";
 	};
 
+	const deleteImage = () => {
+		document.getElementById("img").setAttribute("src", "");
+		imagen = "";
+	};
+
+	const redirect = () => {
+		if (document.getElementById("img").getAttribute("src") === "") {
+			setShow(true);
+		} else {
+			return (window.location = enlace);
+		}
+	};
+
 	useImperativeHandle(ref, () => {
 		return {
 			showToast: showToast
@@ -40,21 +71,24 @@ const Platos = forwardRef((props, ref) => {
 
 	return (
 		<PlatosDiv>
-			<div style={{
-				position: 'absolute',
-				backgroundColor: 'black',
-				backgroundImage: 'url("img/fondoPlato.png")',
-				backgroundPosition: '50% 50%',
-				borderRadius: '50%',
-				width: '600px',
-				height: '600px',
-				marginLeft: '10%',
-				marginTop: '10%',
-				justifyContent: 'center',
-				alignItems: 'center',
-				zIndex: '1',
-				overflow: 'hidden'
-			}} id="fondo">
+			<div
+				style={{
+					position: "absolute",
+					backgroundColor: "black",
+					backgroundImage: 'url("img/fondoPlato.png")',
+					backgroundPosition: "50% 50%",
+					borderRadius: "50%",
+					width: "600px",
+					height: "600px",
+					marginLeft: "10%",
+					marginTop: "10%",
+					justifyContent: "center",
+					alignItems: "center",
+					zIndex: "1",
+					overflow: "hidden"
+				}}
+				id="fondo"
+			>
 				<div
 					style={{
 						height: "500px",
@@ -65,6 +99,10 @@ const Platos = forwardRef((props, ref) => {
 					<Ball />
 				</div>
 			</div>
+			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
+				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
+				pequeño.
+			</Alert>
 			<h2
 				style={{
 					height: "auto",
@@ -81,16 +119,41 @@ const Platos = forwardRef((props, ref) => {
 			</h2>
 			<hr />
 
-			<Button style={{ marginRight: "600px" }} variant="outline-dark">
-				<a target="_parent" id="aniadir" href="http://nuria-pozas.myshopify.com/cart/36127397609636:1">
-					AÑADIR AL CARRITO
-				</a>
+			<div class="dropdown">
+				<button
+					class="btn btn-secondary dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					Dropdown button
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">
+						Action
+					</a>
+					<a class="dropdown-item" href="#">
+						Another action
+					</a>
+					<a class="dropdown-item" href="#">
+						Something else here
+					</a>
+				</div>
+			</div>
+
+			<Button style={{ marginRight: "600px" }} variant="outline-dark" onClick={redirect}>
+				AÑADIR AL CARRITO
 			</Button>
 			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
 				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
 			</Button>
 			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
 				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
+			</Button>
+			<Button id="zoomMinus" variant="outline-dark" onClick={deleteImage}>
+				<i id="iconZoom" className="fa fa-trash fa-lg" />
 			</Button>
 		</PlatosDiv>
 	);
