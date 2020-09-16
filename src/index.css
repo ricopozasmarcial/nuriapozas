@@ -10,30 +10,30 @@ body {
 	height: 100%;
 }
 
+@media (max-width: 600px) {
+	body {
+		overflow: auto;
+	}
+	#tramitar, #trash{
+		font-size: 10px;
+		margin-right:auto;
+	}
+}
+
 html::-webkit-scrollbar {
 	-webkit-appearance: none;
 }
 
-#aniadir {
-	font-family: "Montserrat Light";
-	font-weight: 650;
-	color: black;
-}
-
-#aniadir:hover {
-	font-family: "Montserrat Light";
-	font-weight: 650;
-	color: white;
-}
 
 .context {
 	width: 49%;
 	display: inline-block;
 	height: 90vh;
 	margin-left: 10px;
+	-webkit-appearance: none;
 }
 
-.context2::-webkit-scrollbar {
+#context2::-webkit-scrollbar {
 	-webkit-appearance: none;
 }
 
@@ -54,6 +54,12 @@ hr {
 #move {
 	position: absolute;
 	z-index: 155555;
+}
+
+#tramitar {
+	margin-right:50%;
+
+	padding: none;
 }
 
 #zoomMinus {

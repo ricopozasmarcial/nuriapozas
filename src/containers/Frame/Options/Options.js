@@ -1,22 +1,20 @@
 import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
-import { Container, Row, Col } from 'react-bootstrap';
-import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from './Options.style';
+import { Container, Row, Col } from "react-bootstrap";
+import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./Options.style";
 function App() {
 	const ref = useRef(null);
 	const useStyles = makeStyles((theme) => ({
-
 		gridList: {
 			position: "relative",
-			justifyContent: 'space-around',
-			overflow: 'auto',
+			justifyContent: "space-around",
+			overflow: "auto",
 			backgroundColor: "transparent",
 			width: "auto",
 			height: "auto",
 			paddingBottom: "30%",
-			paddingTop: "5px",
-
+			paddingTop: "5px"
 		},
 		icon: {
 			color: "rgba(255, 255, 255, 0.54)"
@@ -25,7 +23,7 @@ function App() {
 	var id;
 	document.addEventListener(
 		"click",
-		function (e) {
+		function(e) {
 			id = e.target.id;
 		},
 		false
@@ -150,36 +148,26 @@ function App() {
 		}
 	];
 
-
-
 	return (
 		<DivFrame>
 			<Container fluid>
-				<Row >
-					<Col >
-						<Container fluid >
-							<H2Plato>
-								{" "}TU PLATO{" "}
-							</H2Plato>
+				<Row>
+					<Col>
+						<Container fluid>
+							<H2Plato> TU PLATO </H2Plato>
 							<hr />
 							<DivPlatos>
 								<Platos ref={ref} />
 							</DivPlatos>
 						</Container>
 					</Col>
-					<Col >
+					<Col>
 						<Container fluid>
-							<H2Select>
-								{" "}SELECCIONAR DIBUJO{" "}
-							</H2Select>
+							<H2Select> SELECCIONAR DIBUJO </H2Select>
 							<hr />
-							<DivOptions>
+							<DivOptions id="context2">
 								<GridRoot>
-									<GridList
-										cellHeight={"200"}
-										cols={3}
-										className={classes.gridList}
-									>
+									<GridList cellHeight={"200"} cols={3} className={classes.gridList}>
 										{tileData.map((tile) => (
 											<GridListTile key={tile.img}>
 												<img

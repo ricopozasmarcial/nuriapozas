@@ -105,7 +105,7 @@ const Platos = forwardRef((props, ref) => {
 				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
 				pequeño.
 			</Alert>
-			<Button style={{ marginRight: "50%" }} variant="outline-dark" onClick={redirect}>
+			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
 			<Button id="trash" variant="outline-dark" onClick={deleteImage}>
