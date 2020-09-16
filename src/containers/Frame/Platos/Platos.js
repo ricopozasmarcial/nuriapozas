@@ -26,6 +26,29 @@ const Platos = forwardRef((props, ref) => {
 		imagen = document.getElementById("img").getAttribute("src");
 		data = links.filter((item) => item.id === name);
 		enlace = data[0].link;
+		var myHeaders = new Headers();
+		myHeaders.append(
+			"Authorization",
+			"Basic NDk1NzBmNjhiZTQ5NGYwZTc0YjA2Mzc0ZTVmOGY2NmI6c2hwcGFfNzI1N2Q4NTVkMzhjNDc1MDQzODI1MmU1MmVhZGQ5MTg="
+		);
+		myHeaders.append("Access-Control-Allow-Origin", "*");
+
+		myHeaders.append(
+			"Cookie",
+			"_master_udr=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWVdOaVpUWXhNQzAwTXpjMUxUUmxOV010T1RGaVlpMDVORGczTVdWa09USTBNbVVHT2daRlJnPT0iLCJleHAiOiIyMDIyLTA5LTE2VDEyOjAwOjE3LjgxMFoiLCJwdXIiOiJjb29raWUuX21hc3Rlcl91ZHIifX0%3D--e49e17ebf957ef7368e14e3d4f00f84703a3c091; _secure_admin_session_id_csrf=494fce97b53e68747a6b580d9a406df7; _secure_admin_session_id=494fce97b53e68747a6b580d9a406df7; __cfduid=d68640ba127d1abb1aa542acf785c83f21600257617; _y=6519426c-553b-42db-9d33-ed4574119033; _orig_referrer=https%3A%2F%2Fnuria-pozas.myshopify.com%2Fadmin%2Fapi%2F2020-07%2Fdraft_orders.json%250A; _landing_page=%2Fadmin%2Fauth%2Flogin; identity-state=BAh7BkkiJWM4Y2FhZDBhNGI5NzFjYzg4NmIwYTAwYjFhNGEwMTVjBjoGRUZ7C0kiDnJldHVybi10bwY7AFRJIjdodHRwczovL251cmlhLXBvemFzLm15c2hvcGlmeS5jb20vYWRtaW4vYXV0aC9sb2dpbgY7AFRJIhFyZWRpcmVjdC11cmkGOwBUSSJDaHR0cHM6Ly9udXJpYS1wb3phcy5teXNob3BpZnkuY29tL2FkbWluL2F1dGgvaWRlbnRpdHkvY2FsbGJhY2sGOwBUSSIQc2Vzc2lvbi1rZXkGOwBUOgxhY2NvdW50SSIPY3JlYXRlZC1hdAY7AFRmFzE2MDAyNTc2MTcuODI4ODY5M0kiCm5vbmNlBjsAVEkiJTI2NDI1NzJkZDRmOWQzYjdmN2VjZTE1NzRhNDVkNmM3BjsARkkiCnNjb3BlBjsAVFsLSSIKZW1haWwGOwBUSSI3aHR0cHM6Ly9hcGkuc2hvcGlmeS5jb20vYXV0aC9kZXN0aW5hdGlvbnMucmVhZG9ubHkGOwBUSSILb3BlbmlkBjsAVEkiDHByb2ZpbGUGOwBUSSJOaHR0cHM6Ly9hcGkuc2hvcGlmeS5jb20vYXV0aC9wYXJ0bmVycy5jb2xsYWJvcmF0b3ItcmVsYXRpb25zaGlwcy5yZWFkb25seQY7AFRJIjBodHRwczovL2FwaS5zaG9waWZ5LmNvbS9hdXRoL2JhbmtpbmcubWFuYWdlBjsAVA%3D%3D--a34550892d459a8d49e15eae3d1380480b816b37; _shopify_y=6519426c-553b-42db-9d33-ed4574119033"
+		);
+
+		var requestOptions = {
+			method: "GET",
+			headers: myHeaders,
+
+			redirect: "follow"
+		};
+
+		fetch("https://nuria-pozas.myshopify.com/admin/api/2020-07/checkouts.json", requestOptions)
+			.then((response) => response.text())
+			.then((result) => console.log(result))
+			.catch((error) => console.log("error", error));
 	};
 
 	const zoomOut = () => {
