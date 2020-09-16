@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ImgStyle = styled.img`
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	cursor: move;
 `;
 
 export const DivFrame = styled.div`
-    position: absolute;
-    top: 0px;
-    left: 0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
 `;

@@ -7,8 +7,8 @@ import { DivStyle } from "./Platos.style";
 
 var enlace = "";
 const Platos = forwardRef((props, ref) => {
-	const [value, setValue] = useState(false);
-	const [show, setShow] = useState(false);
+	const [ value, setValue ] = useState(false);
+	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
 		storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
@@ -63,9 +63,10 @@ const Platos = forwardRef((props, ref) => {
 
 	const deleteImage = () => {
 		document.getElementById("img").setAttribute("src", "");
-		document.getElementById("move").style.top = "0";
-		document.getElementById("move").style.left = "0";
+		document.getElementById("move").style.top = "100px";
+		document.getElementById("move").style.left = "100px";
 	};
+
 	const redirect = () => {
 		if (document.getElementById("img").getAttribute("src") === "") {
 			setShow(true);
@@ -110,6 +111,7 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="trash" variant="outline-dark" onClick={deleteImage}>
 				<i id="iconZoom" className="fa fa-trash fa-lg" />
 			</Button>
+
 			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
 				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
 			</Button>
@@ -118,13 +120,12 @@ const Platos = forwardRef((props, ref) => {
 			</Button>
 			<DivStyle
 				style={{
-					backgroundImage: 'url("img/fondoPlato.png")',
+					backgroundImage: 'url("img/fondoPlato.png")'
 				}}
 				id="fondo"
 			>
 				<Ball />
 			</DivStyle>
-
 		</div>
 	);
 });
