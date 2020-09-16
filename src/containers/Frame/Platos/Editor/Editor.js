@@ -24,19 +24,19 @@ export const Ball = () => {
 	}
 
 	const imgStyle = {
-		position: "relative",
-		display: "block",
 		maxWidth: "100%",
-		maxHeight: "100%"
+		maxHeight: "100%",
 	};
 	return (
 		<div
 			style={{
 				position: "absolute",
-				display: "block",
-				maxHeight: "auto",
-				cursor: "grab"
+				height: "500px",
+				width: "500px",
+				top: "0px",
+				left: "0px",
 			}}
+			id="move"
 			onDragStart={handleOnDragStart}
 			onDrag={movement}
 			onDragOver={dragFinito}

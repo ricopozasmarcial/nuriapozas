@@ -8,22 +8,18 @@ function App() {
 		root: {
 			position: "relative",
 			width: "100%",
-			display: 'flex',
-			flexWrap: 'wrap',
 			justifyContent: 'space-around',
 			overflow: 'hidden',
 			backgroundColor: "transparent"
 		},
 		gridList: {
 			position: "relative",
-			display: 'flex',
-			flexWrap: 'wrap',
 			justifyContent: 'space-around',
 			overflow: 'hidden',
 			backgroundColor: "transparent",
 			width: "auto",
 			height: "auto",
-			paddingBottom: "500px",
+			paddingBottom: "13%",
 			paddingTop: "5px",
 
 		},
@@ -162,32 +158,19 @@ function App() {
 
 
 	return (
-		<div style={{ position: "relative", overflow: "auto", height: "100vh" }}>
+		<div style={{ position: "static", overflow: "auto", height: "100%", width: "100%" }}>
 			<Container fluid>
 				<Row >
-					<Col md="70%">
-						<h2
-							style={{
-								position: "relative",
-								fontFamily: "Montserrat Light",
-								fontWeight: 650,
-								color: "black",
-								marginTop: "40px",
-								fontSize: "15px",
-								backgroundColor: "none"
-							}}
-						>
-							{" "}
-				TU PLATO{" "}
-						</h2>
-						<hr />
-						<Container fluid>
-							<Platos ref={ref} />
+					<Col >
+						<Container fluid >
+							<div class="context2" style={{ position: "relative", display: "block", overflow: "hidden", height: "auto", display: 'block', width: "100%" }}>
+								<Platos ref={ref} />
+							</div>
 						</Container>
 					</Col>
-					<Col md="50%">
+					<Col >
 						<Container fluid>
-							<div class="context2" style={{ position: "absolute", overflow: "auto", height: "100vh" }}>
+							<div class="context2" style={{ position: "relative", overflow: "auto", height: "100vh", display: 'block', width: "100%" }}>
 								<h2
 									style={{
 										position: "relative",
