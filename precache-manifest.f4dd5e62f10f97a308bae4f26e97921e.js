@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "744f4962eead0e50ae33",
+    "revision": "8999fd8bbf12dc626abe",
     "url": "/nuriapozas/static/css/main.f0562fd7.chunk.css"
   },
   {
-    "revision": "744f4962eead0e50ae33",
-    "url": "/nuriapozas/static/js/main.744f4962.chunk.js"
+    "revision": "8999fd8bbf12dc626abe",
+    "url": "/nuriapozas/static/js/main.8999fd8b.chunk.js"
   },
   {
     "revision": "9d99c80ed89489da9a68",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/nuriapozas/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "265e95e3d47cbc9f448a658dc1029040",
+    "revision": "6ad84b941a84c923043d7a0967b736a5",
     "url": "/nuriapozas/index.html"
   }
 ];

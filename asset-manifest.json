@@ -1,7 +1,7 @@
 {
   "main.css": "/nuriapozas/static/css/main.f0562fd7.chunk.css",
-  "main.js": "/nuriapozas/static/js/main.744f4962.chunk.js",
-  "main.js.map": "/nuriapozas/static/js/main.744f4962.chunk.js.map",
+  "main.js": "/nuriapozas/static/js/main.8999fd8b.chunk.js",
+  "main.js.map": "/nuriapozas/static/js/main.8999fd8b.chunk.js.map",
   "static/css/1.500c9370.chunk.css": "/nuriapozas/static/css/1.500c9370.chunk.css",
   "static/js/1.9d99c80e.chunk.js": "/nuriapozas/static/js/1.9d99c80e.chunk.js",
   "static/js/1.9d99c80e.chunk.js.map": "/nuriapozas/static/js/1.9d99c80e.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.f0562fd7.chunk.css.map": "/nuriapozas/static/css/main.f0562fd7.chunk.css.map",
   "static/css/1.500c9370.chunk.css.map": "/nuriapozas/static/css/1.500c9370.chunk.css.map",
   "index.html": "/nuriapozas/index.html",
-  "precache-manifest.6a925de4e4807642b2702a00cc24b6e4.js": "/nuriapozas/precache-manifest.6a925de4e4807642b2702a00cc24b6e4.js",
+  "precache-manifest.f4dd5e62f10f97a308bae4f26e97921e.js": "/nuriapozas/precache-manifest.f4dd5e62f10f97a308bae4f26e97921e.js",
   "service-worker.js": "/nuriapozas/service-worker.js"
 }
