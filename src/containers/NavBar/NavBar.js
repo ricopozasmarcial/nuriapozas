@@ -1,31 +1,31 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import styled from 'styled-components';
-import Burger from './Burger/Burger';
+import styled from "styled-components";
+import Burger from "./Burger/Burger";
 
 const logo = {
 	color: "black",
-	fontSize: "23px",
+	fontSize: "25px",
 	letterSpacing: "3px",
 	fontFamily: "Montserrat Light",
-	fontWeight: 650,
+	fontWeight: 600,
 	marginTop: "5px",
 	marginRight: "220px"
 };
 
 const NavB = styled.nav`
-  background: transparent;
-  margin: 10px;
-  width: 100%;
-  height: 55px;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  .logo {
-    padding: 15px 0;
-  }
-  z-index: 1;
-`
+	background: transparent;
+	margin: 10px;
+	width: 100%;
+	height: 55px;
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	.logo {
+		padding: 15px 0;
+	}
+	z-index: 1;
+`;
 class NavBar extends React.Component {
 	render() {
 		return (

@@ -26,21 +26,22 @@ export const DivFrame = styled.div`
 
 export const H2Plato = styled.h2`
 	position: relative;
-	font-family: Montserrat Light;
-	font-weight: 650;
+	font-weight: 600;
 	color: black;
 	margin-top: 40px;
 	font-size: 15px;
+	letter-spacing: 2px;
 	background-color: none;
 `;
 
 export const H2Select = styled.h2`
 	º: relative;
-	font-family: Montserrat Light;
-	font-weight: 650;
+	font-weight: 600;
 	color: black;
 	margin-top: 40px;
 	font-size: 15px;
+	letter-spacing: 2px;
+
 	background-color: none;
 `;
 
