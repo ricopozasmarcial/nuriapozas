@@ -18,11 +18,11 @@ const Platos = forwardRef((props, ref) => {
 	const links = [
 		{
 			id: "prueba",
-			link: "http://nuria-pozas.myshopify.com/cart/add?id=36127397609636&quantity=1"
+			link: "36127397609636"
 		},
 		{
 			id: "prueba2",
-			link: "http://nuria-pozas.myshopify.com/cart/add?id=36196470456484&quantity=1"
+			link: "36196470456484"
 		}
 	];
 	const showToast = (name) => {
@@ -70,8 +70,15 @@ const Platos = forwardRef((props, ref) => {
 			const input = {
 				lineItems: [
 					{
-						variantId: Buffer.from("gid://shopify/ProductVariant/36127397609636").toString("base64"),
-						quantity: 5
+						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
+						quantity: 1,
+						customAttributes: [
+							{
+								key: "Visualiza aquí: ",
+								value:
+									"https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
+							}
+						]
 					}
 				],
 				note: "https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
@@ -91,8 +98,9 @@ const Platos = forwardRef((props, ref) => {
 	return (
 		<div>
 			<Button style={{ marginRight: "600px" }} variant="outline-dark" onClick={redirect}>
-				AÑADIR AL CARRITO
+				TRAMITAR VAJILLA
 			</Button>
+
 			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
 				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
 			</Button>
