@@ -1,12 +1,30 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Button } from "react-bootstrap";
 import Ball from "./Editor/Editor";
+import Alert from "react-bootstrap/Alert";
+var enlace = "";
 const Platos = forwardRef((props, ref) => {
-	const [value, setValue] = useState(false);
+	const [ value, setValue ] = useState(false);
+	const [ show, setShow ] = useState(false);
 
+	var data = null;
+	var imagen = "";
+	const links = [
+		{
+			id: "prueba",
+			link: "http://nuria-pozas.myshopify.com/cart/add?id=36127397609636&quantity=1"
+		},
+		{
+			id: "prueba2",
+			link: "http://nuria-pozas.myshopify.com/cart/add?id=36196470456484&quantity=1"
+		}
+	];
 	const showToast = (name) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
+		imagen = document.getElementById("img").getAttribute("src");
+		data = links.filter((item) => item.id === name);
+		enlace = data[0].link;
 	};
 
 	const zoomOut = () => {
@@ -29,6 +47,22 @@ const Platos = forwardRef((props, ref) => {
 		var anchoAux = str2.replace("px", "");
 		var anchoNew = parseInt(anchoAux) + 20;
 		document.getElementById("move").style.width = anchoNew + "px";
+	};
+
+	const deleteImage = () => {
+		document.getElementById("img").setAttribute("src", "");
+		document.getElementById("move").style.top = "0";
+		document.getElementById("move").style.left = "0";
+
+		imagen = "";
+	};
+
+	const redirect = () => {
+		if (document.getElementById("img").getAttribute("src") === "") {
+			setShow(true);
+		} else {
+			return (window.parent.location.href = enlace);
+		}
 	};
 
 	useImperativeHandle(ref, () => {
@@ -79,8 +113,6 @@ const Platos = forwardRef((props, ref) => {
 					<Ball />
 				</div>
 			</div>
-
-
 		</div>
 	);
 });
