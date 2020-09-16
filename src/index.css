@@ -10,13 +10,39 @@ body {
 	height: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 	body {
 		overflow: auto;
 	}
-	#tramitar, #trash{
+	#tramitar{
+		font-size: 12px;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	#trash{
+		font-size: 12px;
+		display: inline;
+		margin-right: 30%;
+		
+		
+	}
+}
+
+@media (max-width: 300px) {
+	body {
+		overflow: auto;
+	}
+	#tramitar{
 		font-size: 10px;
-		margin-right:auto;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	#trash{
+		font-size: 10px;
+		display: inline;
+		margin-right: 30%;
+		
+		
 	}
 }
 
