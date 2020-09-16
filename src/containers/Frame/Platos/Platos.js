@@ -1,5 +1,4 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { PlatosDiv } from "./Platos.style";
 import { Button } from "react-bootstrap";
 import Ball from "./Editor/Editor";
 const Platos = forwardRef((props, ref) => {
@@ -39,48 +38,7 @@ const Platos = forwardRef((props, ref) => {
 	});
 
 	return (
-		<PlatosDiv>
-			<div style={{
-				position: 'absolute',
-				backgroundColor: 'black',
-				backgroundImage: 'url("img/fondoPlato.png")',
-				backgroundPosition: '50% 50%',
-				borderRadius: '50%',
-				width: '600px',
-				height: '600px',
-				marginLeft: '10%',
-				marginTop: '10%',
-				justifyContent: 'center',
-				alignItems: 'center',
-				zIndex: '1',
-				overflow: 'hidden'
-			}} id="fondo">
-				<div
-					style={{
-						height: "500px",
-						width: "500px"
-					}}
-					id="move"
-				>
-					<Ball />
-				</div>
-			</div>
-			<h2
-				style={{
-					height: "auto",
-					fontFamily: "Montserrat Light",
-					fontWeight: 650,
-					color: "black",
-					marginTop: "40px",
-					fontSize: "15px",
-					backgroundColor: "none"
-				}}
-			>
-				{" "}
-				TU PLATO{" "}
-			</h2>
-			<hr />
-
+		<div>
 			<Button style={{ marginRight: "600px" }} variant="outline-dark">
 				<a target="_parent" id="aniadir" href="http://nuria-pozas.myshopify.com/cart/36127397609636:1">
 					AÑADIR AL CARRITO
@@ -92,7 +50,38 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
 				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 			</Button>
-		</PlatosDiv>
+			<div style={{
+				position: 'relative',
+				display: 'block',
+				backgroundColor: 'black',
+				backgroundImage: 'url("img/fondoPlato.png")',
+				backgroundPosition: '50% 50%',
+				borderRadius: '50%',
+				width: '60vw',
+				height: '60vw',
+				maxWidth: '600px',
+				maxHeight: '600px',
+				margin: "auto",
+				marginBottom: "40px",
+				justifyContent: 'center',
+				alignItems: 'center',
+				zIndex: '1',
+				overflow: 'hidden'
+			}} id="fondo">
+				<div
+					style={{
+						height: "500px",
+						width: "500px",
+						margin: "auto"
+					}}
+					id="move"
+				>
+					<Ball />
+				</div>
+			</div>
+
+
+		</div>
 	);
 });
 

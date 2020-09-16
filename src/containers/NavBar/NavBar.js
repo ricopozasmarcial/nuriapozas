@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { NavDiv } from "./NavBar.style";
+import styled from 'styled-components';
+import Burger from './Burger/Burger';
 
 const logo = {
 	color: "black",
@@ -12,53 +13,34 @@ const logo = {
 	marginRight: "220px"
 };
 
-const barra = {
-	background: "transparent",
-	marginTop: "10px"
-};
-
-const elementos = {
-	color: "black",
-	fontSize: "13px",
-	fontFamily: "Montserrat Light",
-	letterSpacing: "3px",
-	fontWeight: 650,
-	marginTop: "13px",
-	marginRight: "10px"
-};
-
+const NavB = styled.nav`
+  background: transparent;
+  margin: 10px;
+  width: 100%;
+  height: 55px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  .logo {
+    padding: 15px 0;
+  }
+  z-index: 1;
+`
 class NavBar extends React.Component {
 	render() {
 		return (
-			<NavDiv>
+			<div style={{ position: "relative" }}>
 				<Navbar>
 					<div className="mx-auto">
-						<Nav style={barra}>
+						<NavB>
 							<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={logo}>
 								NURIA POZAS
 							</Nav.Link>
-							<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={elementos}>
-								HOME
-							</Nav.Link>
-							<Nav.Link
-								target="_parent"
-								href="https://nuria-pozas.myshopify.com/collections/all"
-								style={elementos}
-							>
-								TIENDA
-							</Nav.Link>
-							<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={elementos}>
-								CURSOS
-							</Nav.Link>
-							<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/cart" style={elementos}>
-								<div>
-									<i className="fa fa-shopping-cart" />
-								</div>
-							</Nav.Link>
-						</Nav>
+							<Burger />
+						</NavB>
 					</div>
 				</Navbar>
-			</NavDiv>
+			</div>
 		);
 	}
 }
