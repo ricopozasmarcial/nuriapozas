@@ -10,3 +10,7 @@ export const FooterDiv = styled.footer`
     text-align: center;
     z-index: 1;
 `;
+
+export const Astyle = styled.a`
+    color: black
+`;

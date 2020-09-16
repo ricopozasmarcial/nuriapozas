@@ -1,10 +1,10 @@
 import React from 'react';
-import { FooterDiv } from './Footer.style';
+import { FooterDiv, Astyle } from './Footer.style';
 class Footer extends React.Component {
     render() {
         return (
             <FooterDiv>
-                <a>Nuria Pozas Ceramic & Design 2020</a>
+                <Astyle href="https://nuriapozasceramic.com/password">Nuria Pozas Ceramic & Design 2020</Astyle>
             </FooterDiv>
         );
     }

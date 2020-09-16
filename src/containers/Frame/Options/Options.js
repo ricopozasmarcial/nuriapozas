@@ -2,24 +2,19 @@ import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from 'react-bootstrap';
+import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from './Options.style';
 function App() {
 	const ref = useRef(null);
 	const useStyles = makeStyles((theme) => ({
-		root: {
-			position: "relative",
-			width: "100%",
-			justifyContent: 'space-around',
-			overflow: 'hidden',
-			backgroundColor: "transparent"
-		},
+
 		gridList: {
 			position: "relative",
 			justifyContent: 'space-around',
-			overflow: 'hidden',
+			overflow: 'auto',
 			backgroundColor: "transparent",
 			width: "auto",
 			height: "auto",
-			paddingBottom: "13%",
+			paddingBottom: "30%",
 			paddingTop: "5px",
 
 		},
@@ -158,42 +153,32 @@ function App() {
 
 
 	return (
-		<div style={{ position: "static", overflow: "auto", height: "100%", width: "100%" }}>
+		<DivFrame>
 			<Container fluid>
 				<Row >
 					<Col >
 						<Container fluid >
-							<div class="context2" style={{ position: "relative", display: "block", overflow: "hidden", height: "auto", display: 'block', width: "100%" }}>
+							<H2Plato>
+								{" "}TU PLATO{" "}
+							</H2Plato>
+							<hr />
+							<DivPlatos>
 								<Platos ref={ref} />
-							</div>
+							</DivPlatos>
 						</Container>
 					</Col>
 					<Col >
 						<Container fluid>
-							<div class="context2" style={{ position: "relative", overflow: "auto", height: "100vh", display: 'block', width: "100%" }}>
-								<h2
-									style={{
-										position: "relative",
-										textAlign: "center",
-										height: "auto",
-										fontFamily: "Montserrat Light",
-										fontWeight: 650,
-										color: "black",
-										marginTop: "40px",
-										fontSize: "15px",
-										backgroundColor: "white",
-									}}
-								>
-									{" "}
-							SELECCIONAR DIBUJO{" "}
-								</h2>
-								<hr />
-								<div className={classes.root}>
+							<H2Select>
+								{" "}SELECCIONAR DIBUJO{" "}
+							</H2Select>
+							<hr />
+							<DivOptions>
+								<GridRoot>
 									<GridList
 										cellHeight={"200"}
 										cols={3}
 										className={classes.gridList}
-
 									>
 										{tileData.map((tile) => (
 											<GridListTile key={tile.img}>
@@ -217,13 +202,13 @@ function App() {
 											</GridListTile>
 										))}
 									</GridList>
-								</div>
-							</div>
+								</GridRoot>
+							</DivOptions>
 						</Container>
 					</Col>
 				</Row>
 			</Container>
-		</div>
+		</DivFrame>
 	);
 }
 

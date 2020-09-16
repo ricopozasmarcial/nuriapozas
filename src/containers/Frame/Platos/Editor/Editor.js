@@ -1,12 +1,10 @@
 import React from "react";
+import { DivFrame, ImgStyle } from './Editor.style';
 
 export const Ball = () => {
+
 	function handleOnDragStart(event) {
 		event.dataTransfer.setDragImage(new Image(), 0, 0);
-		event.target.style.cursor = "grab";
-	}
-
-	function handleOnDragEnter(event) {
 		event.target.style.cursor = "grab";
 	}
 
@@ -22,19 +20,11 @@ export const Ball = () => {
 	function dragFinito(e) {
 		e.preventDefault();
 	}
-
-	const imgStyle = {
-		maxWidth: "100%",
-		maxHeight: "100%",
-	};
 	return (
-		<div
+		<DivFrame
 			style={{
-				position: "absolute",
 				height: "500px",
 				width: "500px",
-				top: "0px",
-				left: "0px",
 			}}
 			id="move"
 			onDragStart={handleOnDragStart}
@@ -42,8 +32,8 @@ export const Ball = () => {
 			onDragOver={dragFinito}
 			draggable={true}
 		>
-			<img style={imgStyle} id="img" draggable={false} src="" alt="" />
-		</div>
+			<ImgStyle id="img" draggable={false} src="" alt="" />
+		</DivFrame>
 	);
 };
 export default Ball;
