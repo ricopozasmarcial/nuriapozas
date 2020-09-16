@@ -7,7 +7,6 @@ const logo = {
 	color: "black",
 	fontSize: "25px",
 	letterSpacing: "3px",
-	fontFamily: "Montserrat Light",
 	fontWeight: 600,
 	marginTop: "5px",
 	marginRight: "220px"

@@ -182,7 +182,6 @@ function App() {
 													title={tile.title}
 													style={{
 														height: "auto",
-														fontFamily: "Montserrat Light",
 														backgroundColor: "none",
 														color: "black"
 													}}
