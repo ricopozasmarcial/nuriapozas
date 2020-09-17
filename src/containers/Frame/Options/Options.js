@@ -167,7 +167,7 @@ function App() {
 							<hr />
 							<DivOptions id="context2">
 								<GridRoot>
-									<GridList cellHeight={"200"} cols={3} className={classes.gridList}>
+									<GridList cellHeight={"300"} cols={3} className={classes.gridList}>
 										{tileData.map((tile) => (
 											<GridListTile key={tile.img}>
 												<img
