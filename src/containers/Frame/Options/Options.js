@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
-import { Button, Form, Jumbotron, Accordion, Card, Tabs, Tab } from "react-bootstrap";
+import { Button, Form, Jumbotron, Accordion, Card, Badge, Tabs, Tab } from "react-bootstrap";
 
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
@@ -177,7 +177,10 @@ function App() {
 								<Tab eventKey="1" title="Elige">
 									<Jumbotron fluid style={{ marginTop: "10px" }}>
 										<Container>
-											<h2>Crea tu propia vajilla personalizada</h2>
+											<h2>
+												Crea tu propia vajilla personalizada{" "}
+												<Badge variant="secondary">New</Badge>
+											</h2>
 											<p>
 												Todos los diseños están pintados a mano por lo que el dibujo
 												seleccionado será una aproximación.

@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Button, Form, Col, Tabs, Tab } from "react-bootstrap";
+import { Button, Form, Col, Tabs, Tab, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Ball from "./Editor/Editor";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
@@ -118,17 +118,23 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
+			<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
+				<Button id="trash" variant="outline-dark" onClick={deleteImage}>
+					<i id="iconZoom" className="fa fa-trash fa-lg" />
+				</Button>
+			</OverlayTrigger>
 
-			<Button id="trash" variant="outline-dark" onClick={deleteImage}>
-				<i id="iconZoom" className="fa fa-trash fa-lg" />
-			</Button>
+			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
+				<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
+					<i id="iconZoom" className="fa fa-search-plus fa-lg" />
+				</Button>
+			</OverlayTrigger>
+			<OverlayTrigger placement="top" overlay={<Tooltip>Disminuye el tamaño</Tooltip>}>
+				<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
+					<i id="iconZoom" className="fa fa-search-minus fa-lg" />
+				</Button>
+			</OverlayTrigger>
 
-			<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
-				<i id="iconZoom" className="fa fa-search-plus fa-lg" />
-			</Button>
-			<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
-				<i id="iconZoom" className="fa fa-search-minus fa-lg" />
-			</Button>
 			<DivStyle
 				style={{
 					backgroundImage: 'url("img/fondoPlato.png")'
