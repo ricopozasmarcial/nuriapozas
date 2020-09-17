@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
+import { Button, Form, Tabs, Tab } from "react-bootstrap";
+
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
 import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./Options.style";
@@ -29,11 +31,22 @@ function App() {
 		},
 		false
 	);
-
 	const handleClick = (e) => {
 		ref.current.showToast(e.target.id);
 	};
-
+	var elementos = {
+		pointerEvents: "none",
+		opacity: "0.4"
+	};
+	const handleSelect = (eventKey) => {
+		if (eventKey === "2") {
+			document.getElementById("context2").style = null;
+		}
+		if (eventKey === "1") {
+			document.getElementById("context2").style.opacity = "0.4";
+			document.getElementById("context2").style.pointerEvents = "none";
+		}
+	};
 	const classes = useStyles();
 
 	const tileData = [
@@ -155,18 +168,47 @@ function App() {
 				<Row>
 					<Col>
 						<Container fluid>
-							<H2Plato> TU PLATO </H2Plato>
-							<hr />
-							<DivPlatos>
-								<Platos ref={ref} />
-							</DivPlatos>
+							<Tabs
+								defaultActiveKey="1"
+								onSelect={handleSelect}
+								id="uncontrolled-tab-example"
+								style={{ marginTop: "35px" }}
+							>
+								<Tab eventKey="1" title="Elige">
+									<Form>
+										<Form.Row className="align-items-center">
+											<Col xs="auto" className="my-1">
+												<Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
+													Preference
+												</Form.Label>
+												<Form.Control
+													as="select"
+													className="mr-sm-2"
+													id="inlineFormCustomSelect"
+													custom
+												>
+													<option value="0">Choose...</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option>
+												</Form.Control>
+											</Col>
+										</Form.Row>
+									</Form>
+								</Tab>
+								<Tab eventKey="2" title="Diseña">
+									<DivPlatos>
+										<Platos ref={ref} />
+									</DivPlatos>
+								</Tab>
+							</Tabs>
 						</Container>
 					</Col>
 					<Col>
-						<Container fluid>
+						<Container fluid id="cara">
 							<H2Select> SELECCIONAR DIBUJO </H2Select>
 							<hr />
-							<DivOptions id="context2">
+							<DivOptions id="context2" style={elementos}>
 								<GridRoot>
 									<GridList cellHeight={"300"} cols={3} className={classes.gridList}>
 										{tileData.map((tile) => (

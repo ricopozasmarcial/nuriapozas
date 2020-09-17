@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form, Col, Tabs, Tab } from "react-bootstrap";
 import Ball from "./Editor/Editor";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
@@ -74,17 +74,11 @@ const Platos = forwardRef((props, ref) => {
 				lineItems: [
 					{
 						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
-						quantity: 1,
-						customAttributes: [
-							{
-								key: "Visualiza aquí: ",
-								value:
-									"https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
-							}
-						]
+						quantity: 1
 					}
 				],
-				note: "https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
+				note:
+					"https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg,https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
 			};
 			client.checkout.create(input).then((checkout) => {
 				const page = document.getElementById("fondo");
@@ -100,11 +94,9 @@ const Platos = forwardRef((props, ref) => {
 						var imgData = canvas.toDataURL("image/png", 1.0);
 						pdf = new jsPDF();
 						pdf.addImage(imgData, "PNG", 20, 20);
-						var base = pdf.output("datauri"); // directly to base664
-						//pdf.save(`${checkout.note}.pdf`);
 					})
 					.then((e) => {
-						//window.parent.location.href = checkout.webUrl;
+						window.parent.location.href = checkout.webUrl;
 					});
 			});
 		}
@@ -112,7 +104,8 @@ const Platos = forwardRef((props, ref) => {
 
 	useImperativeHandle(ref, () => {
 		return {
-			showToast: showToast
+			showToast: showToast,
+			america: true
 		};
 	});
 
@@ -125,6 +118,7 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
+
 			<Button id="trash" variant="outline-dark" onClick={deleteImage}>
 				<i id="iconZoom" className="fa fa-trash fa-lg" />
 			</Button>

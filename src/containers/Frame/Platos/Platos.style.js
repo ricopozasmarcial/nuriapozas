@@ -11,8 +11,6 @@ export const DivStyle = styled.div`
 	height: 60%;
 	padding-top: 60%;
 	margin: auto;
-	margin-bottom: 5%;
-	margin-top: 5%;
 	object-fit: cover;
 	z-index: 1;
 	overflow: hidden;
