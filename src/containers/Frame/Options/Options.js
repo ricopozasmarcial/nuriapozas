@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Platos from "../Platos/Platos";
-import { Button, Form, Tabs, Tab } from "react-bootstrap";
+import { Button, Form, Jumbotron, Accordion, Card, Tabs, Tab } from "react-bootstrap";
 
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
@@ -175,6 +175,37 @@ function App() {
 								style={{ marginTop: "35px" }}
 							>
 								<Tab eventKey="1" title="Elige">
+									<Jumbotron fluid style={{ marginTop: "10px" }}>
+										<Container>
+											<h2>Crea tu propia vajilla personalizada</h2>
+											<p>
+												Todos los diseños están pintados a mano por lo que el dibujo
+												seleccionado será una aproximación.
+											</p>
+											<Accordion defaultActiveKey="1" style={{ backgroundColor: "transparent" }}>
+												<Card style={{ backgroundColor: "transparent", border: "none" }}>
+													<Card.Header
+														style={{ backgroundColor: "transparent", border: "none" }}
+													>
+														<Accordion.Toggle
+															as={Button}
+															variant="outline-dark"
+															eventKey="0"
+														>
+															¿Cómo funciona?
+														</Accordion.Toggle>
+													</Card.Header>
+													<Accordion.Collapse eventKey="0">
+														<Card.Body style={{ whiteSpace: "pre-wrap" }}>
+															{"1.Primero selecciona el tipo y la cantidad de platos que compondrán tu vajilla.\n2.Elige un dibujo de la" +
+																"parte derecha. Puedes moverlo por el plato, hacerlo más grande o más pequeño" +
+																"\n3. alsdhasdñikajsdñaskdjasñdklajsdaksdhadñiasdaskd"}
+														</Card.Body>
+													</Accordion.Collapse>
+												</Card>
+											</Accordion>
+										</Container>
+									</Jumbotron>
 									<Form>
 										<Form.Row className="align-items-center">
 											<Col xs="auto" className="my-1">

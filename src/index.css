@@ -67,6 +67,7 @@ html::-webkit-scrollbar {
 #zoom {
 	border: none;
 	border-radius: 50%;
+	margin-top: 20px;
 
 	padding: none;
 }
@@ -85,13 +86,21 @@ hr {
 
 #tramitar {
 	margin-right:50%;
+	margin-top: 20px;
 
 	padding: none;
+}
+
+#trash {
+
+	margin-top: 20px;
+
 }
 
 #zoomMinus {
 	border: none;
 	border-radius: 50%;
+	margin-top: 20px;
 
 	padding: none;
 }
