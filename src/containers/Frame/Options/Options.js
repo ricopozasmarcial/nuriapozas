@@ -3,6 +3,7 @@ import Platos from "../Platos/Platos";
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
 import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./Options.style";
+
 function App() {
 	const ref = useRef(null);
 	const useStyles = makeStyles((theme) => ({

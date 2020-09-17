@@ -4,7 +4,8 @@ import Ball from "./Editor/Editor";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
 import { DivStyle } from "./Platos.style";
-
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 var enlace = "";
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
@@ -86,7 +87,25 @@ const Platos = forwardRef((props, ref) => {
 				note: "https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
 			};
 			client.checkout.create(input).then((checkout) => {
-				window.parent.location.href = checkout.webUrl;
+				const page = document.getElementById("fondo");
+				var pdf = null;
+
+				html2canvas(page, {
+					backgroundColor: null,
+					useCORS: true,
+					allowTaint: false,
+					scrollY: -window.scrollY
+				})
+					.then((canvas) => {
+						var imgData = canvas.toDataURL("image/png", 1.0);
+						pdf = new jsPDF();
+						pdf.addImage(imgData, "PNG", 20, 20);
+						var base = pdf.output("datauri"); // directly to base664
+						//pdf.save(`${checkout.note}.pdf`);
+					})
+					.then((e) => {
+						//window.parent.location.href = checkout.webUrl;
+					});
 			});
 		}
 	};
