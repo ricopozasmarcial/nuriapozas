@@ -7,8 +7,10 @@ import { DivStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 var enlace = "";
+var pru = 'url("img/fondoPlato.png")';
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
+	const [ fondo, setFondo ] = useState("");
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
@@ -43,6 +45,10 @@ const Platos = forwardRef((props, ref) => {
 		if (name === "") {
 			enlace = null;
 		}
+	};
+
+	const setFondoA = (fondo) => {
+		document.getElementById("fondo").style.backgroundImage = fondo;
 	};
 
 	const zoomOut = () => {
@@ -111,7 +117,7 @@ const Platos = forwardRef((props, ref) => {
 	useImperativeHandle(ref, () => {
 		return {
 			showToast: showToast,
-			america: true
+			setFondoA: setFondoA
 		};
 	});
 
@@ -143,7 +149,7 @@ const Platos = forwardRef((props, ref) => {
 			</OverlayTrigger>
 			<DivStyle
 				style={{
-					backgroundImage: 'url("img/fondoPlato.png")'
+					backgroundImage: { pru }
 				}}
 				id="fondo"
 			>

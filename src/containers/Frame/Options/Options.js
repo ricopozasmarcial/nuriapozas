@@ -72,6 +72,7 @@ function App() {
 		setDibujos(elementos);
 		document.getElementById("anterior").disabled = true;
 		document.getElementById("tramitar").disabled = true;
+		ref.current.setFondoA(e.target.id);
 	};
 
 	const showImagenes = (e) => {
@@ -389,6 +390,7 @@ function App() {
 													<Image
 														src="img/fondoPlatoPeq.png"
 														onClick={showTab}
+														id="url('img/fondoPlato.png')"
 														style={{ cursor: "pointer" }}
 													/>
 												</OverlayTrigger>
@@ -409,6 +411,7 @@ function App() {
 													<Image
 														src="img/fondoPlatoHondoPeq.png"
 														onClick={showTab}
+														id="url('img/fondoPlatoHondo.png')"
 														style={{ cursor: "pointer" }}
 													/>
 												</OverlayTrigger>

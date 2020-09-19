@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const DivStyle = styled.div`
 	position: relative;
 	display: block;
-	background-image: url("img/fondoPlato.png");
 	background-position: 50% 50%;
 	background-size: 120%;
 	border-radius: 50%;
