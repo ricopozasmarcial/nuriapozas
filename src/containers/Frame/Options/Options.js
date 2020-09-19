@@ -189,7 +189,7 @@ function App() {
 								activeKey={key}
 								onSelect={handleSelect}
 								id="uncontrolled-tab-example"
-								style={{ marginTop: "35px" }}
+								style={{ marginTop: "75px" }}
 							>
 								<Tab eventKey="1" tabClassName="d-none" title="Elige">
 									<Jumbotron fluid style={{ marginTop: "10px" }}>
@@ -258,10 +258,12 @@ function App() {
 										</Row>
 									</Container>
 								</Tab>
+
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
 									<i
-										className="fa fa-chevron-left fa-3x"
-										style={{ cursor: "pointer", marginRight: "90%" }}
+										className="fa fa-chevron-left fa-lg"
+										hidden={show}
+										style={{ cursor: "pointer", marginRight: "90%", marginTop: "10px" }}
 										onClick={() => {
 											setKey(1);
 										}}
