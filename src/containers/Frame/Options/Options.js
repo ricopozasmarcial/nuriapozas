@@ -84,7 +84,6 @@ function App() {
 	};
 
 	const handleJoyrideCallback = (event) => {
-		console.log(event);
 		if (event.lifecycle === "tooltip" && event.index === 0) {
 			setMostrarImagenes(false);
 		}
@@ -136,19 +135,22 @@ function App() {
 		{
 			target: ".my-1",
 			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
-			disableBeacon: true
+			disableBeacon: true,
+			placement: "auto"
 		},
 
 		{
 			target: ".second",
 			disableBeacon: true,
 			content:
-				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s."
+				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s.",
+			placement: "auto"
 		},
 		{
 			target: ".second2",
 			disableBeacon: true,
-			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla."
+			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla.",
+			placement: "auto"
 		},
 		{
 			target: "body",
@@ -163,13 +165,15 @@ function App() {
 		{
 			target: ".four",
 			disableBeacon: true,
-			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto."
+			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto.",
+			placement: "auto"
 		},
 		{
 			target: "#zoom",
 			disableBeacon: true,
 			content:
-				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
+				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño",
+			placement: "auto"
 		}
 	];
 

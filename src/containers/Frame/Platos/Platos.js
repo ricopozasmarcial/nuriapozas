@@ -40,6 +40,9 @@ const Platos = forwardRef((props, ref) => {
 		if (name !== "") {
 			enlace = data[0].link;
 		}
+		if (name === "") {
+			enlace = null;
+		}
 	};
 
 	const zoomOut = () => {
@@ -70,7 +73,7 @@ const Platos = forwardRef((props, ref) => {
 	};
 
 	const redirect = () => {
-		if (document.getElementById("img").getAttribute("src") === "") {
+		if (document.getElementById("img").getAttribute("src") === "" || enlace === null) {
 			setShow(true);
 		} else {
 			const input = {
