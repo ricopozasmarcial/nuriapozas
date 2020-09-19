@@ -37,7 +37,9 @@ const Platos = forwardRef((props, ref) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
 		data = links.filter((item) => item.id === name);
-		enlace = data[0].link;
+		if (name !== "") {
+			enlace = data[0].link;
+		}
 	};
 
 	const zoomOut = () => {
@@ -119,23 +121,23 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
+
 			<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
-				<Button id="trash" variant="outline-dark" onClick={deleteImage}>
+				<Button id="trash" className="pepe" variant="outline-dark" onClick={deleteImage}>
 					<i id="iconZoom" className="fa fa-trash fa-lg" />
 				</Button>
 			</OverlayTrigger>
 
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
-				<Button id="zoom" variant="outline-dark" onClick={zoomIn}>
+				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>
 					<i id="iconZoom" className="fa fa-search-plus fa-lg" />
 				</Button>
 			</OverlayTrigger>
 			<OverlayTrigger placement="top" overlay={<Tooltip>Disminuye el tamaño</Tooltip>}>
-				<Button id="zoomMinus" variant="outline-dark" onClick={zoomOut}>
+				<Button id="zoomMinus" className="pepe" variant="outline-dark" onClick={zoomOut}>
 					<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 				</Button>
 			</OverlayTrigger>
-
 			<DivStyle
 				style={{
 					backgroundImage: 'url("img/fondoPlato.png")'

@@ -81,39 +81,76 @@ function App() {
 	};
 
 	const handleJoyrideCallback = (event) => {
+		console.log(event);
 		if (event.lifecycle === "tooltip" && event.index === 0) {
 			setMostrarImagenes(false);
 		}
-		if (event.type === "step:before" && event.index === 2) {
+		if (event.type === "step:after" && event.index === 4) {
+			ref.current.showToast("prueba2");
+		}
+		if (event.action === "next" && event.index === 3) {
 			setShow(false);
 			setKey(2);
 			elementos = null;
 			setDibujos(elementos);
+		}
+		if (event.status === "finished") {
+			setShow(true);
+			setMostrarImagenes(true);
+			setKey(1);
+			elementos = {
+				opacity: "0.4",
+				pointerEvents: "none"
+			};
+			setDibujos(elementos);
+			ref.current.showToast("");
 		}
 	};
 
 	const classes = useStyles();
 	const steps = [
 		{
-			target: ".mr-sm-2",
+			target: ".my-1",
 			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
-			disableBeacon: true
+			disableBeacon: true,
+			placement: "auto"
 		},
 
 		{
 			target: ".second",
 			disableBeacon: true,
-			content: "Selecciona el tipo de vajilla haciendo click en la imagen correspondiente."
+			content:
+				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s.",
+			placement: "auto"
+		},
+		{
+			target: ".second2",
+			disableBeacon: true,
+			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla.",
+			placement: "auto"
 		},
 		{
 			target: "body",
 			disableBeacon: true,
-			content: "sdfsdfsdfsdfsdfsdfsdfs"
+			content: "Aqui es donde podrás personalizar la pieza o piezas escogidas."
 		},
 		{
-			target: "body",
+			target: ".third",
 			disableBeacon: true,
-			content: "sdfsdfsdfsdfsdfsdfsdfs"
+			content: "Primero selecciona un dibujo haciendo click sobre su imagen."
+		},
+		{
+			target: ".four",
+			disableBeacon: true,
+			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto.",
+			placement: "auto"
+		},
+		{
+			target: "#zoom",
+			disableBeacon: true,
+			content:
+				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño",
+			placement: "auto"
 		}
 	];
 
@@ -237,16 +274,18 @@ function App() {
 				run={runJoy}
 				continuous
 				disableScrollParentFix={true}
+				showProgress
+				showSkipButton
 				key={key2}
 				callback={handleJoyrideCallback}
 				styles={{
 					options: {
 						arrowColor: "#e9ecef",
 						backgroundColor: "#e9ecef",
-						overlayColor: "transparent",
+						whiteSpace: "pre-line",
 						primaryColor: "#000",
 						textColor: "black",
-						width: "100%",
+						spotlightShadow: "0 0 15px rgba(0, 0, 0, 0.5)",
 						zIndex: 1000
 					}
 				}}
@@ -261,7 +300,7 @@ function App() {
 								id="uncontrolled-tab-example"
 								style={{ marginTop: "75px" }}
 							>
-								<Tab eventKey="1" tabClassName="d-none" title="Elige">
+								<Tab eventKey="1" tabClassName="d-none" title="Elige" className="second2">
 									<Jumbotron fluid style={{ marginTop: "10px" }}>
 										<Container>
 											<h2>
@@ -310,9 +349,9 @@ function App() {
 											</Col>
 										</Form.Row>
 									</Form>
-									<Container hidden={mostrarImagenes} className="second">
+									<Container hidden={mostrarImagenes}>
 										<Row>
-											<Col xs={6} md={4}>
+											<Col xs={6} md={4} className="second">
 												<OverlayTrigger
 													trigger="hover"
 													placement="bottom"
@@ -366,7 +405,7 @@ function App() {
 											setDibujos(elementos);
 										}}
 									/>{" "}
-									<DivPlatos className="third">
+									<DivPlatos className="four">
 										<Platos ref={ref} />
 									</DivPlatos>
 								</Tab>
@@ -379,7 +418,12 @@ function App() {
 							<hr />
 							<DivOptions id="context2" style={dibujos}>
 								<GridRoot>
-									<GridList cellHeight={"300"} cols={3} className={classes.gridList}>
+									<GridList
+										cellHeight={"300"}
+										cols={3}
+										className={classes.gridList}
+										className="third"
+									>
 										{tileData.map((tile) => (
 											<GridListTile key={tile.img}>
 												<img
