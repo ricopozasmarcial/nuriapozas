@@ -64,6 +64,8 @@ const Platos = forwardRef((props, ref) => {
 
 	const deleteImage = () => {
 		document.getElementById("img").setAttribute("src", "");
+		document.getElementById("img").style.transform = "initial";
+		document.getElementById("dragg").style.transform = "initial";
 	};
 
 	const redirect = () => {
