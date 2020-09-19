@@ -231,7 +231,7 @@ function App() {
 													custom
 												>
 													<option value="0">Choose...</option>
-													<option value="1">One</option>
+													<option value="1">x1 </option>
 													<option value="2">Two</option>
 													<option value="3">Three</option>
 												</Form.Control>
@@ -252,6 +252,15 @@ function App() {
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
 									<DivPlatos>
 										<Platos ref={ref} />
+										<Button
+											id="tramitar"
+											variant="outline-dark"
+											onClick={() => {
+												setKey(1);
+											}}
+										>
+											ATRAS{" "}
+										</Button>
 									</DivPlatos>
 								</Tab>
 							</Tabs>
