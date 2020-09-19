@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Platos from "../Platos/Platos";
-import { Button, Form, Jumbotron, Accordion, Card, Badge, Tabs, Tab } from "react-bootstrap";
+import { Button, Form, Jumbotron, Accordion, Image, Card, Badge, Tabs, Tab } from "react-bootstrap";
 
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
@@ -8,6 +8,9 @@ import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./
 
 function App() {
 	const ref = useRef(null);
+	const [ show, setShow ] = useState(true);
+	const [ key, setKey ] = useState(1);
+
 	const useStyles = makeStyles((theme) => ({
 		gridList: {
 			position: "relative",
@@ -33,6 +36,11 @@ function App() {
 	);
 	const handleClick = (e) => {
 		ref.current.showToast(e.target.id);
+	};
+
+	const showTab = (e) => {
+		setShow(false);
+		setKey(2);
 	};
 	var elementos = {
 		pointerEvents: "none",
@@ -170,11 +178,12 @@ function App() {
 						<Container fluid>
 							<Tabs
 								defaultActiveKey="1"
+								activeKey={key}
 								onSelect={handleSelect}
 								id="uncontrolled-tab-example"
 								style={{ marginTop: "35px" }}
 							>
-								<Tab eventKey="1" title="Elige">
+								<Tab eventKey="1" tabClassName="d-none" title="Elige">
 									<Jumbotron fluid style={{ marginTop: "10px" }}>
 										<Container>
 											<h2>
@@ -229,8 +238,18 @@ function App() {
 											</Col>
 										</Form.Row>
 									</Form>
+									<Container>
+										<Row>
+											<Col xs={6} md={4}>
+												<Image src="img/fondoPlatoPeq.png" onClick={showTab} />
+											</Col>
+											<Col xs={6} md={4}>
+												<Image src="img/fondoPlatoHondoPeq.png" onClick={showTab} />
+											</Col>
+										</Row>
+									</Container>
 								</Tab>
-								<Tab eventKey="2" title="Diseña">
+								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
 									<DivPlatos>
 										<Platos ref={ref} />
 									</DivPlatos>
