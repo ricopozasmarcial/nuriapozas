@@ -37,6 +37,7 @@ function App() {
 	const [ noption, setNoption ] = useState(0);
 	const [ key2, setKey2 ] = useState(1);
 
+	const [ coption, setCoption ] = useState(1);
 	const useStyles = makeStyles((theme) => ({
 		gridList: {
 			position: "relative",
@@ -69,6 +70,8 @@ function App() {
 		setKey(2);
 		elementos = null;
 		setDibujos(elementos);
+		document.getElementById("anterior").disabled = true;
+		document.getElementById("tramitar").disabled = true;
 	};
 
 	const showImagenes = (e) => {
@@ -104,6 +107,27 @@ function App() {
 			};
 			setDibujos(elementos);
 			ref.current.showToast("");
+		}
+	};
+
+	const previousImage = () => {
+		if (coption == 1) {
+			document.getElementById("anterior").disabled = true;
+		} else {
+			setCoption(coption - 1);
+			document.getElementById("siguiente").disabled = false;
+			document.getElementById("tramitar").disabled = true;
+		}
+	};
+
+	const nextImage = () => {
+		if (coption < noption) {
+			document.getElementById("anterior").disabled = false;
+			setCoption(coption + 1);
+			if (noption == coption + 1) {
+				document.getElementById("siguiente").disabled = true;
+				document.getElementById("tramitar").disabled = false;
+			}
 		}
 	};
 
@@ -401,6 +425,15 @@ function App() {
 									/>{" "}
 									<DivPlatos className="four">
 										<Platos ref={ref} />
+										<div>
+											{coption}/{noption}
+										</div>
+										<Button id="anterior" variant="outline-dark" onClick={previousImage}>
+											Anterior plato
+										</Button>
+										<Button id="siguiente" variant="outline-dark" onClick={nextImage}>
+											Siguiente plato
+										</Button>
 									</DivPlatos>
 								</Tab>
 							</Tabs>
