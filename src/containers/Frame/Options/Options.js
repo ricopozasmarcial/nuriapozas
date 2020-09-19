@@ -259,17 +259,15 @@ function App() {
 									</Container>
 								</Tab>
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
+									<i
+										className="fa fa-chevron-left fa-3x"
+										style={{ cursor: "pointer", marginRight: "90%" }}
+										onClick={() => {
+											setKey(1);
+										}}
+									/>{" "}
 									<DivPlatos>
 										<Platos ref={ref} />
-										<Button
-											id="tramitar"
-											variant="outline-dark"
-											onClick={() => {
-												setKey(1);
-											}}
-										>
-											ATRAS{" "}
-										</Button>
 									</DivPlatos>
 								</Tab>
 							</Tabs>
