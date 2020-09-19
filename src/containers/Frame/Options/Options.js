@@ -81,24 +81,15 @@ function App() {
 	};
 
 	const handleJoyrideCallback = (event) => {
-		if (event.type === "step:before" && event.index === 0) {
-			setRunJoy(false);
+		if (event.lifecycle === "tooltip" && event.index === 0) {
 			setMostrarImagenes(false);
 		}
-
-		if (event.type === "step:after" && event.index === 1) {
-			setRunJoy(false);
+		if (event.type === "step:before" && event.index === 2) {
 			setShow(false);
 			setKey(2);
 			elementos = null;
 			setDibujos(elementos);
 		}
-
-		if (event.type === "step:before" && event.index === 2) {
-			console.log("JAJSJAD");
-		}
-		setJoyrideStepIndex(joyrideStepIndex + 1);
-		setRunJoy(true);
 	};
 
 	const classes = useStyles();
@@ -115,14 +106,14 @@ function App() {
 			content: "Selecciona el tipo de vajilla haciendo click en la imagen correspondiente."
 		},
 		{
-			target: ".body",
+			target: "body",
 			disableBeacon: true,
-			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla."
+			content: "sdfsdfsdfsdfsdfsdfsdfs"
 		},
 		{
-			target: ".four",
+			target: "body",
 			disableBeacon: true,
-			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla."
+			content: "sdfsdfsdfsdfsdfsdfsdfs"
 		}
 	];
 
@@ -244,8 +235,8 @@ function App() {
 			<Joyride
 				steps={steps}
 				run={runJoy}
+				continuous
 				disableScrollParentFix={true}
-				continuous={true}
 				key={key2}
 				callback={handleJoyrideCallback}
 				styles={{
