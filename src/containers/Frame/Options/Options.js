@@ -1,6 +1,21 @@
 import React, { useRef, useState } from "react";
+import Joyride from "react-joyride";
+
 import Platos from "../Platos/Platos";
-import { Button, Form, Jumbotron, Accordion, Image, Card, Badge, Tabs, Tab } from "react-bootstrap";
+import {
+	Button,
+	Form,
+	Jumbotron,
+	Accordion,
+	Image,
+	Card,
+	Tooltip,
+	Badge,
+	Tabs,
+	Popover,
+	OverlayTrigger,
+	Tab
+} from "react-bootstrap";
 
 import { GridList, GridListTile, GridListTileBar, makeStyles } from "@material-ui/core";
 import { Container, Row, Col } from "react-bootstrap";
@@ -14,10 +29,14 @@ function App() {
 
 	const ref = useRef(null);
 	const [ show, setShow ] = useState(true);
+	const [ runJoy, setRunJoy ] = useState(false);
+	const [ joyrideStepIndex, setJoyrideStepIndex ] = useState(0);
 	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
 	const [ dibujos, setDibujos ] = useState(elementos);
 	const [ key, setKey ] = useState(1);
-	const [noption, setNoption] = useState(0);
+	const [ noption, setNoption ] = useState(0);
+	const [ key2, setKey2 ] = useState(1);
+
 	const useStyles = makeStyles((theme) => ({
 		gridList: {
 			position: "relative",
@@ -56,13 +75,56 @@ function App() {
 		if (e.target.value !== "0") {
 			setNoption(e.target.value);
 			setMostrarImagenes(false);
-		}
-		else {
+		} else {
 			setMostrarImagenes(true);
 		}
 	};
 
+	const handleJoyrideCallback = (event) => {
+		if (event.type === "step:before" && event.index === 0) {
+			setRunJoy(false);
+			setMostrarImagenes(false);
+		}
+
+		if (event.type === "step:after" && event.index === 1) {
+			setRunJoy(false);
+			setShow(false);
+			setKey(2);
+			elementos = null;
+			setDibujos(elementos);
+		}
+
+		if (event.type === "step:before" && event.index === 2) {
+			console.log("JAJSJAD");
+		}
+		setJoyrideStepIndex(joyrideStepIndex + 1);
+		setRunJoy(true);
+	};
+
 	const classes = useStyles();
+	const steps = [
+		{
+			target: ".mr-sm-2",
+			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
+			disableBeacon: true
+		},
+
+		{
+			target: ".second",
+			disableBeacon: true,
+			content: "Selecciona el tipo de vajilla haciendo click en la imagen correspondiente."
+		},
+		{
+			target: ".body",
+			disableBeacon: true,
+			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla."
+		},
+		{
+			target: ".four",
+			disableBeacon: true,
+			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla."
+		}
+	];
 
 	const tileData = [
 		{
@@ -178,7 +240,26 @@ function App() {
 	];
 
 	return (
-		<DivFrame>
+		<DivFrame className="first">
+			<Joyride
+				steps={steps}
+				run={runJoy}
+				disableScrollParentFix={true}
+				continuous={true}
+				key={key2}
+				callback={handleJoyrideCallback}
+				styles={{
+					options: {
+						arrowColor: "#e9ecef",
+						backgroundColor: "#e9ecef",
+						overlayColor: "transparent",
+						primaryColor: "#000",
+						textColor: "black",
+						width: "100%",
+						zIndex: 1000
+					}
+				}}
+			/>
 			<Container fluid>
 				<Row>
 					<Col>
@@ -200,28 +281,21 @@ function App() {
 												Todos los diseños están pintados a mano por lo que el dibujo
 												seleccionado será una aproximación.
 											</p>
-											<Accordion defaultActiveKey="1" style={{ backgroundColor: "transparent" }}>
-												<Card style={{ backgroundColor: "transparent", border: "none" }}>
-													<Card.Header
-														style={{ backgroundColor: "transparent", border: "none" }}
-													>
-														<Accordion.Toggle
-															as={Button}
-															variant="outline-dark"
-															eventKey="0"
-														>
-															¿Cómo funciona?
-														</Accordion.Toggle>
-													</Card.Header>
-													<Accordion.Collapse eventKey="0">
-														<Card.Body style={{ whiteSpace: "pre-wrap" }}>
-															{"1.Primero selecciona el tipo y la cantidad de platos que compondrán tu vajilla.\n2.Elige un dibujo de la" +
-																"parte derecha. Puedes moverlo por el plato, hacerlo más grande o más pequeño" +
-																"\n3. Cuamndo hayas personalizado toda tu vajilla, podrás acceder a la pasarela de pago"}
-														</Card.Body>
-													</Accordion.Collapse>
-												</Card>
-											</Accordion>
+
+											<OverlayTrigger
+												placement="top"
+												overlay={<Tooltip>Empezar tutorial</Tooltip>}
+											>
+												<Button
+													variant="outline-dark"
+													onClick={() => {
+														setKey2(key2 + 1);
+														setRunJoy(true);
+													}}
+												>
+													¿Como funciona?
+												</Button>
+											</OverlayTrigger>
 										</Container>
 									</Jumbotron>
 									<Form>
@@ -245,21 +319,47 @@ function App() {
 											</Col>
 										</Form.Row>
 									</Form>
-									<Container hidden={mostrarImagenes}>
+									<Container hidden={mostrarImagenes} className="second">
 										<Row>
 											<Col xs={6} md={4}>
-												<Image
-													src="img/fondoPlatoPeq.png"
-													onClick={showTab}
-													style={{ cursor: "pointer" }}
-												/>
+												<OverlayTrigger
+													trigger="hover"
+													placement="bottom"
+													overlay={
+														<Popover>
+															<Popover.Title as="h3">Plato llano</Popover.Title>
+															<Popover.Content>
+																Medida aproximada de 27cm{" "}
+															</Popover.Content>
+														</Popover>
+													}
+												>
+													<Image
+														src="img/fondoPlatoPeq.png"
+														onClick={showTab}
+														style={{ cursor: "pointer" }}
+													/>
+												</OverlayTrigger>
 											</Col>
 											<Col xs={6} md={4}>
-												<Image
-													src="img/fondoPlatoHondoPeq.png"
-													onClick={showTab}
-													style={{ cursor: "pointer" }}
-												/>
+												<OverlayTrigger
+													trigger="hover"
+													placement="bottom"
+													overlay={
+														<Popover>
+															<Popover.Title as="h3">Plato hondo</Popover.Title>
+															<Popover.Content>
+																Medida aproximada de 24cm{" "}
+															</Popover.Content>
+														</Popover>
+													}
+												>
+													<Image
+														src="img/fondoPlatoHondoPeq.png"
+														onClick={showTab}
+														style={{ cursor: "pointer" }}
+													/>
+												</OverlayTrigger>
 											</Col>
 										</Row>
 									</Container>
@@ -275,7 +375,7 @@ function App() {
 											setDibujos(elementos);
 										}}
 									/>{" "}
-									<DivPlatos>
+									<DivPlatos className="third">
 										<Platos ref={ref} />
 									</DivPlatos>
 								</Tab>
