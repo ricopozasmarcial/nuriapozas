@@ -7,9 +7,15 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./Options.style";
 
 function App() {
+	var elementos = {
+		opacity: "0.4",
+		pointerEvents: "none"
+	};
+
 	const ref = useRef(null);
 	const [ show, setShow ] = useState(true);
 	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
+	const [ dibujos, setDibujos ] = useState(elementos);
 	const [ key, setKey ] = useState(1);
 
 	const useStyles = makeStyles((theme) => ({
@@ -42,10 +48,8 @@ function App() {
 	const showTab = (e) => {
 		setShow(false);
 		setKey(2);
-	};
-	var elementos = {
-		pointerEvents: "none",
-		opacity: "0.4"
+		elementos = null;
+		setDibujos(elementos);
 	};
 
 	const showImagenes = (e) => {
@@ -54,15 +58,7 @@ function App() {
 			setMostrarImagenes(true);
 		}
 	};
-	const handleSelect = (eventKey) => {
-		if (eventKey === "2") {
-			document.getElementById("context2").style = null;
-		}
-		if (eventKey === "1") {
-			document.getElementById("context2").style.opacity = "0.4";
-			document.getElementById("context2").style.pointerEvents = "none";
-		}
-	};
+
 	const classes = useStyles();
 
 	const tileData = [
@@ -187,7 +183,6 @@ function App() {
 							<Tabs
 								defaultActiveKey="1"
 								activeKey={key}
-								onSelect={handleSelect}
 								id="uncontrolled-tab-example"
 								style={{ marginTop: "75px" }}
 							>
@@ -250,10 +245,18 @@ function App() {
 									<Container hidden={mostrarImagenes}>
 										<Row>
 											<Col xs={6} md={4}>
-												<Image src="img/fondoPlatoPeq.png" onClick={showTab} />
+												<Image
+													src="img/fondoPlatoPeq.png"
+													onClick={showTab}
+													style={{ cursor: "pointer" }}
+												/>
 											</Col>
 											<Col xs={6} md={4}>
-												<Image src="img/fondoPlatoHondoPeq.png" onClick={showTab} />
+												<Image
+													src="img/fondoPlatoHondoPeq.png"
+													onClick={showTab}
+													style={{ cursor: "pointer" }}
+												/>
 											</Col>
 										</Row>
 									</Container>
@@ -266,6 +269,7 @@ function App() {
 										style={{ cursor: "pointer", marginRight: "90%", marginTop: "10px" }}
 										onClick={() => {
 											setKey(1);
+											setDibujos(elementos);
 										}}
 									/>{" "}
 									<DivPlatos>
@@ -279,7 +283,7 @@ function App() {
 						<Container fluid id="cara">
 							<H2Select> SELECCIONAR DIBUJO </H2Select>
 							<hr />
-							<DivOptions id="context2" style={elementos}>
+							<DivOptions id="context2" style={dibujos}>
 								<GridRoot>
 									<GridList cellHeight={"300"} cols={3} className={classes.gridList}>
 										{tileData.map((tile) => (
