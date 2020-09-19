@@ -349,9 +349,9 @@ function App() {
 											</Col>
 										</Form.Row>
 									</Form>
-									<Container hidden={mostrarImagenes}>
+									<Container hidden={mostrarImagenes} className="second">
 										<Row>
-											<Col xs={6} md={4} className="second">
+											<Col xs={6} md={4}>
 												<OverlayTrigger
 													trigger="hover"
 													placement="bottom"
