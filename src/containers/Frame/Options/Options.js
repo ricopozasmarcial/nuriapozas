@@ -112,22 +112,19 @@ function App() {
 		{
 			target: ".my-1",
 			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
-			disableBeacon: true,
-			placement: "auto"
+			disableBeacon: true
 		},
 
 		{
 			target: ".second",
 			disableBeacon: true,
 			content:
-				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s.",
-			placement: "auto"
+				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s."
 		},
 		{
 			target: ".second2",
 			disableBeacon: true,
-			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla.",
-			placement: "auto"
+			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla."
 		},
 		{
 			target: "body",
@@ -142,15 +139,13 @@ function App() {
 		{
 			target: ".four",
 			disableBeacon: true,
-			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto.",
-			placement: "auto"
+			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto."
 		},
 		{
 			target: "#zoom",
 			disableBeacon: true,
 			content:
-				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño",
-			placement: "auto"
+				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
 		}
 	];
 
@@ -273,7 +268,6 @@ function App() {
 				steps={steps}
 				run={runJoy}
 				continuous
-				disableScrollParentFix={true}
 				showProgress
 				showSkipButton
 				key={key2}
