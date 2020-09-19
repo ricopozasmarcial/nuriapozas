@@ -11,7 +11,7 @@ function App() {
 	const [ show, setShow ] = useState(true);
 	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
 	const [ key, setKey ] = useState(1);
-
+	const [noption, setNoption] = useState(0);
 	const useStyles = makeStyles((theme) => ({
 		gridList: {
 			position: "relative",
@@ -42,6 +42,9 @@ function App() {
 	const showTab = (e) => {
 		setShow(false);
 		setKey(2);
+		document.getElementById("context2").style.opacity = "1";
+		document.getElementById("context2").style.pointerEvents = "all";                               
+		
 	};
 	var elementos = {
 		pointerEvents: "none",
@@ -49,7 +52,10 @@ function App() {
 	};
 
 	const showImagenes = (e) => {
-		if (e.target.value !== "0") setMostrarImagenes(false);
+		if (e.target.value !== "0") {
+			setNoption(e.target.value);
+			setMostrarImagenes(false);
+		}
 		else {
 			setMostrarImagenes(true);
 		}
@@ -219,7 +225,7 @@ function App() {
 														<Card.Body style={{ whiteSpace: "pre-wrap" }}>
 															{"1.Primero selecciona el tipo y la cantidad de platos que compondrán tu vajilla.\n2.Elige un dibujo de la" +
 																"parte derecha. Puedes moverlo por el plato, hacerlo más grande o más pequeño" +
-																"\n3. alsdhasdñikajsdñaskdjasñdklajsdaksdhadñiasdaskd"}
+																"\n3. Cuamndo hayas personalizado toda tu vajilla, podrás acceder a la pasarela de pago"}
 														</Card.Body>
 													</Accordion.Collapse>
 												</Card>
@@ -239,10 +245,10 @@ function App() {
 													custom
 													onChange={showImagenes}
 												>
-													<option value="0">Choose...</option>
-													<option value="1">x1 </option>
-													<option value="2">Two</option>
-													<option value="3">Three</option>
+													<option value="0">Escoge una cantidad</option>
+													<option value="1">1 </option>
+													<option value="2">2</option>
+													<option value="3">3</option>
 												</Form.Control>
 											</Col>
 										</Form.Row>
@@ -266,6 +272,8 @@ function App() {
 										style={{ cursor: "pointer", marginRight: "90%", marginTop: "10px" }}
 										onClick={() => {
 											setKey(1);
+											document.getElementById("context2").style.opacity = "0.4";
+											document.getElementById("context2").style.pointerEvents = "none";
 										}}
 									/>{" "}
 									<DivPlatos>
