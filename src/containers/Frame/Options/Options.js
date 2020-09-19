@@ -9,6 +9,7 @@ import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./
 function App() {
 	const ref = useRef(null);
 	const [ show, setShow ] = useState(true);
+	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
 	const [ key, setKey ] = useState(1);
 
 	const useStyles = makeStyles((theme) => ({
@@ -45,6 +46,13 @@ function App() {
 	var elementos = {
 		pointerEvents: "none",
 		opacity: "0.4"
+	};
+
+	const showImagenes = (e) => {
+		if (e.target.value !== "0") setMostrarImagenes(false);
+		else {
+			setMostrarImagenes(true);
+		}
 	};
 	const handleSelect = (eventKey) => {
 		if (eventKey === "2") {
@@ -229,6 +237,7 @@ function App() {
 													className="mr-sm-2"
 													id="inlineFormCustomSelect"
 													custom
+													onChange={showImagenes}
 												>
 													<option value="0">Choose...</option>
 													<option value="1">x1 </option>
@@ -238,7 +247,7 @@ function App() {
 											</Col>
 										</Form.Row>
 									</Form>
-									<Container>
+									<Container hidden={mostrarImagenes}>
 										<Row>
 											<Col xs={6} md={4}>
 												<Image src="img/fondoPlatoPeq.png" onClick={showTab} />
