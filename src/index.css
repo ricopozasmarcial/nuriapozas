@@ -27,9 +27,7 @@ body {
 }
 
 @media (max-width: 300px) {
-	body {
-		overflow: auto;
-	}
+	
 	#tramitar{
 		font-size: 10px;
 		width: 100%;
