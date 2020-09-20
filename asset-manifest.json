@@ -1,16 +1,16 @@
 {
-  "main.css": "/nuriapozas/static/css/main.e7599026.chunk.css",
-  "main.js": "/nuriapozas/static/js/main.49e3991b.chunk.js",
-  "main.js.map": "/nuriapozas/static/js/main.49e3991b.chunk.js.map",
+  "main.css": "/nuriapozas/static/css/main.c64ee667.chunk.css",
+  "main.js": "/nuriapozas/static/js/main.6fec5dcc.chunk.js",
+  "main.js.map": "/nuriapozas/static/js/main.6fec5dcc.chunk.js.map",
   "static/css/1.ce294528.chunk.css": "/nuriapozas/static/css/1.ce294528.chunk.css",
-  "static/js/1.21807e47.chunk.js": "/nuriapozas/static/js/1.21807e47.chunk.js",
-  "static/js/1.21807e47.chunk.js.map": "/nuriapozas/static/js/1.21807e47.chunk.js.map",
+  "static/js/1.099984c8.chunk.js": "/nuriapozas/static/js/1.099984c8.chunk.js",
+  "static/js/1.099984c8.chunk.js.map": "/nuriapozas/static/js/1.099984c8.chunk.js.map",
   "runtime~main.js": "/nuriapozas/static/js/runtime~main.0585fe4a.js",
   "runtime~main.js.map": "/nuriapozas/static/js/runtime~main.0585fe4a.js.map",
   "static/media/font-awesome.min.css": "/nuriapozas/static/media/fontawesome-webfont.912ec66d.svg",
+  "static/css/main.c64ee667.chunk.css.map": "/nuriapozas/static/css/main.c64ee667.chunk.css.map",
   "static/css/1.ce294528.chunk.css.map": "/nuriapozas/static/css/1.ce294528.chunk.css.map",
-  "static/css/main.e7599026.chunk.css.map": "/nuriapozas/static/css/main.e7599026.chunk.css.map",
   "index.html": "/nuriapozas/index.html",
-  "precache-manifest.638a8126e94cf078dfe3fbc6279d0709.js": "/nuriapozas/precache-manifest.638a8126e94cf078dfe3fbc6279d0709.js",
+  "precache-manifest.02bcd9f6031933f240ad475ac65e4d53.js": "/nuriapozas/precache-manifest.02bcd9f6031933f240ad475ac65e4d53.js",
   "service-worker.js": "/nuriapozas/service-worker.js"
 }
