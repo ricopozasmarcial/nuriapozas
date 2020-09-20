@@ -10,9 +10,7 @@ body {
 }
 
 @media (max-width: 800px) {
-	body {
-		overflow: auto;
-	}
+	
 	#tramitar{
 		font-size: 12px;
 		width: 100%;
