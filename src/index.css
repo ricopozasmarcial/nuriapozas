@@ -5,8 +5,36 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-appearance: none;
-	
+	overflow-x: hidden;
+
 	height: 100%;
+}
+
+html{
+	overflow-x: hidden;
+
+}
+
+#fff a{
+	color: black;
+	text-decoration: none;
+}
+li a{
+	color: black;
+	text-decoration: none;
+}
+
+li i{
+	color: black;
+	text-decoration: none;
+	font-family: 'Montserrat';
+
+
+}
+li a:hover{
+	color: darkgrey;
+	
+	text-decoration: none;
 }
 
 @media (max-width: 800px) {
@@ -84,6 +112,12 @@ body::-webkit-scrollbar {
 	height: 90vh;
 	margin-left: 10px;
 	-webkit-appearance: none;
+	overflow-x: hidden;
+
+}
+
+.colnoscroll {
+	overflow-x: hidden;
 }
 
 

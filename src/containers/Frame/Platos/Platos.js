@@ -39,12 +39,12 @@ const Platos = forwardRef((props, ref) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
 		data = links.filter((item) => item.id === name);
-		if (name !== "") {
-			enlace = data[0].link;
-		}
-		if (name === "") {
-			enlace = null;
-		}
+		//if (name !== "") {
+		//	enlace = data[0].link;
+		//}
+		//if (name === "") {
+		enlace = null;
+		//}
 	};
 
 	const setFondoA = (fondo) => {

@@ -24,9 +24,10 @@ import { DivFrame, DivPlatos, DivOptions, H2Plato, H2Select, GridRoot } from "./
 function App() {
 	var elementos = {
 		opacity: "0.4",
-		pointerEvents: "none"
+		pointerEvents: "none",
+		overflowX: "hidden"
 	};
-
+	var arrayFotos = [];
 	const ref = useRef(null);
 	const [ show, setShow ] = useState(true);
 	const [ runJoy, setRunJoy ] = useState(false);
@@ -34,10 +35,10 @@ function App() {
 	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
 	const [ dibujos, setDibujos ] = useState(elementos);
 	const [ key, setKey ] = useState(1);
-	const [ noption, setNoption ] = useState(0);
+	const [ actual, setActual ] = useState(0);
 	const [ key2, setKey2 ] = useState(1);
-
-	const [ coption, setCoption ] = useState(1);
+	const [ limite, setLimite ] = useState();
+	const [ fotos, setFotos ] = useState([]);
 	const useStyles = makeStyles((theme) => ({
 		gridList: {
 			position: "relative",
@@ -62,6 +63,8 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
+		var i = e.target.id;
+		setFotos((result) => [ ...result, i ]);
 		ref.current.showToast(e.target.id);
 	};
 
@@ -77,7 +80,7 @@ function App() {
 
 	const showImagenes = (e) => {
 		if (e.target.value !== "0") {
-			setNoption(e.target.value);
+			setLimite(e.target.value);
 			setMostrarImagenes(false);
 		} else {
 			setMostrarImagenes(true);
@@ -111,24 +114,33 @@ function App() {
 	};
 
 	const previousImage = () => {
-		if (coption == 1) {
+		if (fotos[actual - 1] === null) ref.current.showToast("");
+		else {
+			ref.current.showToast(fotos[actual - 1]);
+		}
+		if (actual === 0) {
 			document.getElementById("anterior").disabled = true;
 		} else {
-			setCoption(coption - 1);
+			setActual(actual - 1);
 			document.getElementById("siguiente").disabled = false;
 			document.getElementById("tramitar").disabled = true;
 		}
 	};
 
 	const nextImage = () => {
-		if (coption < noption) {
+		if (fotos[actual + 1] === null) ref.current.showToast("");
+		else {
+			ref.current.showToast(fotos[actual + 1]);
+		}
+		if (actual < limite - 1) {
 			document.getElementById("anterior").disabled = false;
-			setCoption(coption + 1);
-			if (noption == coption + 1) {
+			setActual(actual + 1);
+			if (actual === limite - 1) {
 				document.getElementById("siguiente").disabled = true;
 				document.getElementById("tramitar").disabled = false;
 			}
 		}
+		console.log(fotos);
 	};
 
 	const classes = useStyles();
@@ -365,9 +377,12 @@ function App() {
 													onChange={showImagenes}
 												>
 													<option value="0">Escoge una cantidad</option>
-													<option value="1">1 </option>
-													<option value="2">2</option>
-													<option value="3">3</option>
+													<option value="1">x1 PIEZA </option>
+													<option value="2">x2 PIEZAS</option>
+													<option value="3">x3 PIEZAS</option>
+													<option value="4">x4 PIEZAS</option>
+													<option value="5">x5 PIEZAS</option>
+													<option value="6">x6 PIEZAS</option>
 												</Form.Control>
 											</Col>
 										</Form.Row>
@@ -424,7 +439,11 @@ function App() {
 									<i
 										className="fa fa-chevron-left fa-lg"
 										hidden={show}
-										style={{ cursor: "pointer", marginRight: "90%", marginTop: "10px" }}
+										style={{
+											cursor: "pointer",
+											marginRight: "90%",
+											marginTop: "10px"
+										}}
 										onClick={() => {
 											setKey(1);
 											setDibujos(elementos);
@@ -433,12 +452,22 @@ function App() {
 									<DivPlatos className="four">
 										<Platos ref={ref} />
 										<div>
-											{coption}/{noption}
+											{actual + 1}/{limite}
 										</div>
-										<Button id="anterior" variant="outline-dark" onClick={previousImage}>
+										<Button
+											id="anterior"
+											variant="outline-dark"
+											onClick={previousImage}
+											disabled={actual === 0 ? "true" : ""}
+										>
 											Anterior plato
 										</Button>
-										<Button id="siguiente" variant="outline-dark" onClick={nextImage}>
+										<Button
+											id="siguiente"
+											variant="outline-dark"
+											onClick={nextImage}
+											disabled={actual === limite - 1 ? "true" : ""}
+										>
 											Siguiente plato
 										</Button>
 									</DivPlatos>
@@ -446,7 +475,7 @@ function App() {
 							</Tabs>
 						</Container>
 					</Col>
-					<Col>
+					<Col id="colnoscroll">
 						<Container fluid id="cara">
 							<H2Select> SELECCIONAR DIBUJO </H2Select>
 							<hr />
