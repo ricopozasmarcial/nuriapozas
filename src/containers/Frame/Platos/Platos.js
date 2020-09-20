@@ -73,11 +73,6 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = anchoNew + "px";
 	};
 
-	const deleteImage = () => {
-		document.getElementById("img").setAttribute("src", "");
-		document.getElementById("img").style.transform = "initial";
-	};
-
 	const redirect = () => {
 		if (document.getElementById("img").getAttribute("src") === "" || enlace === null) {
 			setShow(true);
@@ -130,12 +125,6 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
-
-			<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
-				<Button id="trash" className="pepe" variant="outline-dark" onClick={deleteImage}>
-					<i id="iconZoom" className="fa fa-trash fa-lg" />
-				</Button>
-			</OverlayTrigger>
 
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
 				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>

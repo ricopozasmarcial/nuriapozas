@@ -143,6 +143,13 @@ function App() {
 		console.log(fotos);
 	};
 
+	const deleteImage = () => {
+		const newList = fotos;
+		newList[actual] = null;
+		setFotos(newList);
+		document.getElementById("img").setAttribute("src", "");
+	};
+
 	const classes = useStyles();
 	const steps = [
 		{
@@ -450,6 +457,16 @@ function App() {
 										}}
 									/>{" "}
 									<DivPlatos className="four">
+										<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
+											<Button
+												id="trash"
+												className="pepe"
+												variant="outline-dark"
+												onClick={deleteImage}
+											>
+												<i id="iconZoom" className="fa fa-trash fa-lg" />
+											</Button>
+										</OverlayTrigger>
 										<Platos ref={ref} />
 										<div>
 											{actual + 1}/{limite}
