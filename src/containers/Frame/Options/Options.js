@@ -63,7 +63,7 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: "0px", left: "0px" };
+		var i = { name: e.target.id, top: 0, left: 0 };
 		setFotos((result) => [ ...result, i ]);
 		ref.current.showToast(e.target.id, i.top, i.left);
 	};
@@ -114,15 +114,19 @@ function App() {
 	};
 
 	const previousImage = () => {
-		if (fotos[actual - 1] === undefined) ref.current.showToast("");
+		if (fotos[actual] !== undefined) {
+			var childPos = document.getElementById("move").getBoundingClientRect();
+			var parentPos = document.getElementById("fondo").getBoundingClientRect();
+			var lista2 = fotos;
+			lista2[actual] = {
+				name: fotos[actual].name,
+				top: childPos.top - parentPos.top,
+				left: childPos.left - parentPos.left
+			};
+			setFotos(lista2);
+		}
+		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0);
 		else {
-			if (fotos[actual] !== undefined) {
-				var coor2 = ref.current.getCoordinates();
-				var lista2 = fotos;
-				lista2[actual] = { name: fotos[actual].name, top: coor2.lastY + "px", left: coor2.lastX + "px" };
-				setFotos(lista2);
-			}
-
 			ref.current.showToast(fotos[actual - 1].name, fotos[actual - 1].top, fotos[actual - 1].left);
 		}
 		if (actual === 0) {
@@ -135,15 +139,20 @@ function App() {
 	};
 
 	const nextImage = () => {
-		if (fotos[actual + 1] === undefined) ref.current.showToast("", "0px", "0px");
-		else {
-			if (fotos[actual] !== undefined) {
-				var coor = ref.current.getCoordinates();
-				var lista = fotos;
-				lista[actual] = { name: fotos[actual].name, top: coor.lastY + "px", left: coor.lastX + "px" };
-				setFotos(lista);
-			}
-
+		var childPos2 = document.getElementById("move").getBoundingClientRect();
+		var parentPos2 = document.getElementById("fondo").getBoundingClientRect();
+		if (fotos[actual] !== undefined) {
+			var lista = fotos;
+			lista[actual] = {
+				name: fotos[actual].name,
+				top: childPos2.top - parentPos2.top,
+				left: childPos2.left - parentPos2.left
+			};
+			setFotos(lista);
+		}
+		if (fotos[actual + 1] === undefined) {
+			ref.current.showToast("", 0, 0);
+		} else {
 			ref.current.showToast(fotos[actual + 1].name, fotos[actual + 1].top, fotos[actual + 1].left);
 		}
 		if (actual < limite - 1) {
@@ -161,8 +170,7 @@ function App() {
 		newList[actual] = undefined;
 		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
-		document.getElementById("move").style.top = "0px";
-		document.getElementById("move").style.left = "0px";
+		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
 	};
 
 	const classes = useStyles();

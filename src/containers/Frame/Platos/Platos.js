@@ -46,10 +46,7 @@ const Platos = forwardRef((props, ref) => {
 	const showToast = (name, xX, xY) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		setTop(xX);
-		setLeft(xY);
-		console.log(top);
-
+		document.getElementById("move").style.transform = "translate(" + xX + "px," + xY + "px)";
 		data = links.filter((item) => item.id === name);
 		//if (name !== "") {
 		//	enlace = data[0].link;
@@ -136,9 +133,6 @@ const Platos = forwardRef((props, ref) => {
 	const getCoordinates = () => {
 		return coor;
 	};
-	const handleDrag = (e, ui) => {
-		console.log(ui);
-	};
 
 	return (
 		<div>
@@ -166,14 +160,13 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Draggable onStop={setCoordinates} onDrag={handleDrag}>
+				<Draggable onStop={setCoordinates}>
 					<DivFrame
 						id="move"
 						style={{
 							height: "300px",
 							width: "300px",
 							backgroundColor: "black",
-							position: "absolute",
 							left: left,
 							top: top
 						}}
