@@ -64,7 +64,9 @@ function App() {
 	);
 	const handleClick = (e) => {
 		var i = { name: e.target.id, top: 0, left: 0, width: "300px", height: "300px" };
-		setFotos((result) => [ ...result, i ]);
+		var listina = fotos;
+		listina[actual] = i;
+		setFotos(listina);
 		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height);
 	};
 
