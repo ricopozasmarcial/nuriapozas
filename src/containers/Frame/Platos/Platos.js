@@ -1,9 +1,11 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Button, Form, Col, Tabs, Tab, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Draggable from "react-draggable";
+
 import Ball from "./Editor/Editor";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
-import { DivStyle } from "./Platos.style";
+import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 var enlace = "";
@@ -11,6 +13,7 @@ var pru = 'url("img/fondoPlato.png")';
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
+	const [ coor, setCoor ] = useState("");
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
@@ -35,9 +38,15 @@ const Platos = forwardRef((props, ref) => {
 			link: "36196470456484"
 		}
 	];
-	const showToast = (name) => {
+
+	const showToast = (name, xX, xY) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
+		document.getElementById("move").style.setProperty("top", xX);
+		document.getElementById("move").style.setProperty("left", xY);
+		console.log(coor);
+		console.log(xX);
+
 		data = links.filter((item) => item.id === name);
 		//if (name !== "") {
 		//	enlace = data[0].link;
@@ -112,9 +121,18 @@ const Platos = forwardRef((props, ref) => {
 	useImperativeHandle(ref, () => {
 		return {
 			showToast: showToast,
-			setFondoA: setFondoA
+			setFondoA: setFondoA,
+			getCoordinates: getCoordinates
 		};
 	});
+
+	const setCoordinates = (e, data) => {
+		setCoor(data);
+	};
+
+	const getCoordinates = () => {
+		return coor;
+	};
 
 	return (
 		<div>
@@ -142,7 +160,19 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Ball />
+				<Draggable onStop={setCoordinates}>
+					<DivFrame
+						id="move"
+						style={{
+							height: "300px",
+							width: "300px",
+							backgroundColor: "black",
+							position: "absolute"
+						}}
+					>
+						<ImgStyle id="img" draggable={false} src="" alt="" />
+					</DivFrame>
+				</Draggable>
 			</DivStyle>
 		</div>
 	);

@@ -63,9 +63,9 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = e.target.id;
+		var i = { name: e.target.id, top: "0px", left: "0px" };
 		setFotos((result) => [ ...result, i ]);
-		ref.current.showToast(e.target.id);
+		ref.current.showToast(e.target.id, i.top, i.left);
 	};
 
 	const showTab = (e) => {
@@ -114,9 +114,15 @@ function App() {
 	};
 
 	const previousImage = () => {
-		if (fotos[actual - 1] === null) ref.current.showToast("");
+		if (fotos[actual - 1] === undefined) ref.current.showToast("");
 		else {
-			ref.current.showToast(fotos[actual - 1]);
+			if (fotos[actual] !== undefined) {
+				var coor2 = ref.current.getCoordinates();
+				var lista2 = fotos;
+				lista2[actual] = { name: fotos[actual].name, top: coor2.lastX + "px", left: coor2.lastY + "px" };
+				setFotos(lista2);
+			}
+			ref.current.showToast(fotos[actual - 1].name, fotos[actual - 1].top, fotos[actual - 1].left);
 		}
 		if (actual === 0) {
 			document.getElementById("anterior").disabled = true;
@@ -128,9 +134,15 @@ function App() {
 	};
 
 	const nextImage = () => {
-		if (fotos[actual + 1] === null) ref.current.showToast("");
+		if (fotos[actual + 1] === undefined) ref.current.showToast("", "0px", "0px");
 		else {
-			ref.current.showToast(fotos[actual + 1]);
+			if (fotos[actual] !== undefined) {
+				var coor = ref.current.getCoordinates();
+				var lista = fotos;
+				lista[actual] = { name: fotos[actual].name, top: coor.node.x + "px", left: coor.node.y + "px" };
+				setFotos(lista);
+			}
+			ref.current.showToast(fotos[actual + 1].name, fotos[actual + 1].top, fotos[actual + 1].left);
 		}
 		if (actual < limite - 1) {
 			document.getElementById("anterior").disabled = false;
@@ -140,14 +152,15 @@ function App() {
 				document.getElementById("tramitar").disabled = false;
 			}
 		}
-		console.log(fotos);
 	};
 
 	const deleteImage = () => {
 		const newList = fotos;
-		newList[actual] = null;
+		newList[actual] = undefined;
 		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
+		document.getElementById("move").style.top = "0px";
+		document.getElementById("move").style.left = "0px";
 	};
 
 	const classes = useStyles();
