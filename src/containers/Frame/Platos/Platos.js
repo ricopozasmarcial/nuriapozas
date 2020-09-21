@@ -43,10 +43,12 @@ const Platos = forwardRef((props, ref) => {
 		}
 	];
 
-	const showToast = (name, xX, xY) => {
+	const showToast = (name, xX, xY, w, h) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		document.getElementById("move").style.transform = "translate(" + xX + "px," + xY + "px)";
+		document.getElementById("move").style.transform = "translate(" + xY + "px," + xX + "px)";
+		document.getElementById("move").style.width = w;
+		document.getElementById("move").style.height = h;
 		data = links.filter((item) => item.id === name);
 		//if (name !== "") {
 		//	enlace = data[0].link;
@@ -166,7 +168,6 @@ const Platos = forwardRef((props, ref) => {
 						style={{
 							height: "300px",
 							width: "300px",
-							backgroundColor: "black",
 							left: left,
 							top: top
 						}}

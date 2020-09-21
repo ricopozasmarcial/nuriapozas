@@ -63,9 +63,9 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: 0, left: 0 };
+		var i = { name: e.target.id, top: 0, left: 0, width: "300px", height: "300px" };
 		setFotos((result) => [ ...result, i ]);
-		ref.current.showToast(e.target.id, i.top, i.left);
+		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height);
 	};
 
 	const showTab = (e) => {
@@ -121,13 +121,21 @@ function App() {
 			lista2[actual] = {
 				name: fotos[actual].name,
 				top: childPos.top - parentPos.top,
-				left: childPos.left - parentPos.left
+				left: childPos.left - parentPos.left,
+				width: document.getElementById("move").style.width,
+				height: document.getElementById("move").style.height
 			};
 			setFotos(lista2);
 		}
-		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0);
+		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "300px", "300px");
 		else {
-			ref.current.showToast(fotos[actual - 1].name, fotos[actual - 1].top, fotos[actual - 1].left);
+			ref.current.showToast(
+				fotos[actual - 1].name,
+				fotos[actual - 1].top,
+				fotos[actual - 1].left,
+				fotos[actual - 1].width,
+				fotos[actual - 1].height
+			);
 		}
 		if (actual === 0) {
 			document.getElementById("anterior").disabled = true;
@@ -146,14 +154,22 @@ function App() {
 			lista[actual] = {
 				name: fotos[actual].name,
 				top: childPos2.top - parentPos2.top,
-				left: childPos2.left - parentPos2.left
+				left: childPos2.left - parentPos2.left,
+				width: document.getElementById("move").style.width,
+				height: document.getElementById("move").style.height
 			};
 			setFotos(lista);
 		}
 		if (fotos[actual + 1] === undefined) {
-			ref.current.showToast("", 0, 0);
+			ref.current.showToast("", 0, 0, "300px", "300px");
 		} else {
-			ref.current.showToast(fotos[actual + 1].name, fotos[actual + 1].top, fotos[actual + 1].left);
+			ref.current.showToast(
+				fotos[actual + 1].name,
+				fotos[actual + 1].top,
+				fotos[actual + 1].left,
+				fotos[actual + 1].width,
+				fotos[actual + 1].height
+			);
 		}
 		if (actual < limite - 1) {
 			document.getElementById("anterior").disabled = false;
