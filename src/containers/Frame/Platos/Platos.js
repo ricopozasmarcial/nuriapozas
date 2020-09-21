@@ -9,17 +9,21 @@ import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 var enlace = "";
+
 var pru = 'url("img/fondoPlato.png")';
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
 	const [ coor, setCoor ] = useState("");
+	const [ top, setTop ] = useState("0px");
+	const [ left, setLeft ] = useState("0px");
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
 		storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
 	});
 	var data = null;
+
 	const links = [
 		{
 			id: "prueba",
@@ -42,10 +46,9 @@ const Platos = forwardRef((props, ref) => {
 	const showToast = (name, xX, xY) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		document.getElementById("move").style.setProperty("top", xX);
-		document.getElementById("move").style.setProperty("left", xY);
-		console.log(coor);
-		console.log(xX);
+		setTop(xX);
+		setLeft(xY);
+		console.log(top);
 
 		data = links.filter((item) => item.id === name);
 		//if (name !== "") {
@@ -133,6 +136,9 @@ const Platos = forwardRef((props, ref) => {
 	const getCoordinates = () => {
 		return coor;
 	};
+	const handleDrag = (e, ui) => {
+		console.log(ui);
+	};
 
 	return (
 		<div>
@@ -160,14 +166,16 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Draggable onStop={setCoordinates}>
+				<Draggable onStop={setCoordinates} onDrag={handleDrag}>
 					<DivFrame
 						id="move"
 						style={{
 							height: "300px",
 							width: "300px",
 							backgroundColor: "black",
-							position: "absolute"
+							position: "absolute",
+							left: left,
+							top: top
 						}}
 					>
 						<ImgStyle id="img" draggable={false} src="" alt="" />
