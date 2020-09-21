@@ -20,4 +20,8 @@ export const ImgStyle = styled.img`
 	cursor: move;
 `;
 
-export const DivFrame = styled.div``;
+export const DivFrame = styled.div`
+	position: absolute;
+	top: 0px;
+	left: 0px;
+`;

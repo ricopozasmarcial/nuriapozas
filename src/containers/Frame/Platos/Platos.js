@@ -2,14 +2,15 @@ import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Button, Form, Col, Tabs, Tab, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Draggable from "react-draggable";
 
-import Ball from "./Editor/Editor";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
 import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 var enlace = "";
-
+var imagenes = "";
+var productos = [];
+var input = [];
 var pru = 'url("img/fondoPlato.png")';
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
@@ -31,15 +32,15 @@ const Platos = forwardRef((props, ref) => {
 		},
 		{
 			id: "prueba2",
-			link: "36196470456484"
+			link: "36127397609636"
 		},
 		{
 			id: "prueba3",
-			link: "36196470456484"
+			link: "36127397609636"
 		},
 		{
 			id: "prueba4",
-			link: "36196470456484"
+			link: "36127397609636"
 		}
 	];
 
@@ -50,12 +51,12 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
 		data = links.filter((item) => item.id === name);
-		//if (name !== "") {
-		//	enlace = data[0].link;
-		//}
-		//if (name === "") {
-		enlace = null;
-		//}
+		if (name !== "") {
+			enlace = data[0].link;
+		}
+		if (name === "") {
+			enlace = null;
+		}
 	};
 
 	const setFondoA = (fondo) => {
@@ -84,38 +85,38 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = anchoNew + "px";
 	};
 
+	const crearProducto = () => {
+		const page = document.getElementById("fondo");
+		html2canvas(page, {
+			backgroundColor: null,
+			useCORS: true,
+			allowTaint: false,
+			scrollY: -window.scrollY
+		}).then((canvas) => {
+			var imgData = canvas.toDataURL("image/png", 1.0);
+			imagenes = imagenes + imgData;
+
+			var a = {
+				variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
+				quantity: 1
+			};
+
+			productos.push(a);
+		});
+	};
+
 	const redirect = () => {
 		if (document.getElementById("img").getAttribute("src") === "" || enlace === null) {
 			setShow(true);
 		} else {
-			const input = {
-				lineItems: [
-					{
-						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
-						quantity: 1
-					}
-				],
-				note:
-					"https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg,https://www.alambique.com/1546-large_default/bandeja-plato-redonda-para-tarta-bagatelle.jpg"
+			var input = {
+				lineItems: productos,
+				note: imagenes
 			};
-			client.checkout.create(input).then((checkout) => {
-				const page = document.getElementById("fondo");
-				var pdf = null;
+			console.log(input);
 
-				html2canvas(page, {
-					backgroundColor: null,
-					useCORS: true,
-					allowTaint: false,
-					scrollY: -window.scrollY
-				})
-					.then((canvas) => {
-						var imgData = canvas.toDataURL("image/png", 1.0);
-						pdf = new jsPDF();
-						pdf.addImage(imgData, "PNG", 20, 20);
-					})
-					.then((e) => {
-						window.parent.location.href = checkout.webUrl;
-					});
+			client.checkout.create(input).then((checkout) => {
+				window.parent.location.href = checkout.webUrl;
 			});
 		}
 	};
@@ -124,7 +125,7 @@ const Platos = forwardRef((props, ref) => {
 		return {
 			showToast: showToast,
 			setFondoA: setFondoA,
-			getCoordinates: getCoordinates
+			crearProducto: crearProducto
 		};
 	});
 
@@ -167,9 +168,7 @@ const Platos = forwardRef((props, ref) => {
 						id="move"
 						style={{
 							height: "300px",
-							width: "300px",
-							left: left,
-							top: top
+							width: "300px"
 						}}
 					>
 						<ImgStyle id="img" draggable={false} src="" alt="" />

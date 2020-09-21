@@ -146,6 +146,7 @@ function App() {
 			document.getElementById("siguiente").disabled = false;
 			document.getElementById("tramitar").disabled = true;
 		}
+		ref.current.crearProducto();
 	};
 
 	const nextImage = () => {
@@ -176,11 +177,12 @@ function App() {
 		if (actual < limite - 1) {
 			document.getElementById("anterior").disabled = false;
 			setActual(actual + 1);
-			if (actual === limite - 1) {
+			if (actual === limite - 2) {
 				document.getElementById("siguiente").disabled = true;
 				document.getElementById("tramitar").disabled = false;
 			}
 		}
+		ref.current.crearProducto();
 	};
 
 	const deleteImage = () => {
