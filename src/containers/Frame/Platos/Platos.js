@@ -17,7 +17,7 @@ const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
 	const [ coor, setCoor ] = useState("");
-	const [ top, setTop ] = useState("0px");
+	const [ limite, setLimite ] = useState();
 	const [ left, setLeft ] = useState("0px");
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
@@ -63,12 +63,13 @@ const Platos = forwardRef((props, ref) => {
 		}
 	];
 
-	const showToast = (name, xX, xY, w, h) => {
+	const showToast = (name, xX, xY, w, h, limite) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
 		document.getElementById("move").style.transform = "translate(" + xY + "px," + xX + "px)";
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
+		setLimite(limite);
 		data = links.filter((item) => item.id === name);
 		if (name !== "") {
 			enlace = data[0].link;
@@ -135,7 +136,6 @@ const Platos = forwardRef((props, ref) => {
 			setShow(true);
 			document.getElementById("tramitar").disabled = true;
 		} else {
-			var ventana = "";
 			const page = document.getElementById("fondo");
 			html2canvas(page, {
 				backgroundColor: null,
@@ -145,7 +145,7 @@ const Platos = forwardRef((props, ref) => {
 			}).then((canvas) => {
 				var imgData = canvas.toDataURL("image/png", 1.0);
 
-				if (enlace !== null) {
+				if (productos.length < limite) {
 					productos[productos.length] = {
 						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
 						quantity: 1,
@@ -240,7 +240,7 @@ const Platos = forwardRef((props, ref) => {
 				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
 				pequeño.
 			</Alert>
-			<Button id="tramitar" variant="outline-dark" onClick={redirect} disabled={enlace === null ? "true" : ""}>
+			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
 

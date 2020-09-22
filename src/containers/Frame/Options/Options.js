@@ -67,7 +67,8 @@ function App() {
 		var listina = fotos;
 		listina[actual] = i;
 		setFotos(listina);
-		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height);
+		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height, limite);
+
 		if (limite === 1) {
 			document.getElementById("tramitar").disabled = false;
 		}
@@ -148,6 +149,7 @@ function App() {
 		} else {
 			setActual(actual - 1);
 			document.getElementById("siguiente").disabled = false;
+			document.getElementById("tramitar").disabled = false;
 		}
 	};
 
