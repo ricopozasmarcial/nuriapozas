@@ -68,6 +68,9 @@ function App() {
 		listina[actual] = i;
 		setFotos(listina);
 		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height);
+		if (limite === 1) {
+			document.getElementById("tramitar").disabled = false;
+		}
 	};
 
 	const showTab = (e) => {
@@ -116,8 +119,8 @@ function App() {
 	};
 
 	const previousImage = () => {
-		ref.current.crearProducto(actual);
 		if (fotos[actual] !== undefined) {
+			ref.current.crearProducto(fotos[actual].name, actual);
 			var childPos = document.getElementById("move").getBoundingClientRect();
 			var parentPos = document.getElementById("fondo").getBoundingClientRect();
 			var lista2 = fotos;
@@ -145,15 +148,14 @@ function App() {
 		} else {
 			setActual(actual - 1);
 			document.getElementById("siguiente").disabled = false;
-			document.getElementById("tramitar").disabled = true;
 		}
 	};
 
 	const nextImage = () => {
-		ref.current.crearProducto(actual);
 		var childPos2 = document.getElementById("move").getBoundingClientRect();
 		var parentPos2 = document.getElementById("fondo").getBoundingClientRect();
 		if (fotos[actual] !== undefined) {
+			ref.current.crearProducto(fotos[actual].name, actual);
 			var lista = fotos;
 			lista[actual] = {
 				name: fotos[actual].name,
@@ -191,6 +193,8 @@ function App() {
 		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+		document.getElementById("tramitar").disabled = true;
+		ref.current.crearProducto(null, actual);
 	};
 
 	const classes = useStyles();

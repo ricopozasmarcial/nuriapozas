@@ -104,7 +104,7 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = anchoNew + "px";
 	};
 
-	const crearProducto = (index) => {
+	const crearProducto = (name, index) => {
 		const page = document.getElementById("fondo");
 		html2canvas(page, {
 			backgroundColor: null,
@@ -113,44 +113,70 @@ const Platos = forwardRef((props, ref) => {
 			scrollY: -window.scrollY
 		}).then((canvas) => {
 			var imgData = canvas.toDataURL("image/png", 1.0);
+			if (name === null) {
+				productos[index] = null;
+			} else {
+				var a = links.filter((item) => item.id === name);
+				productos[index] = {
+					variantId: Buffer.from("gid://shopify/ProductVariant/" + a[0].link).toString("base64"),
+					quantity: 1,
+					imagen: imgData
+				};
+			}
 
-			productos.push({
-				variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
-				quantity: 1,
-				imagen: imgData
-			});
+			console.log(productos);
 		});
 	};
 
 	const redirect = () => {
-		crearProducto(imagenes.length);
-		if (document.getElementById("img").getAttribute("src") === "" || enlace === null) {
+		var x = productos.filter((item) => item === null);
+		console.log(x);
+		if (document.getElementById("img").getAttribute("src") === "" || enlace === null || x[0] === null) {
 			setShow(true);
+			document.getElementById("tramitar").disabled = true;
 		} else {
+			var ventana = "";
+			const page = document.getElementById("fondo");
+			html2canvas(page, {
+				backgroundColor: null,
+				useCORS: true,
+				allowTaint: false,
+				scrollY: -window.scrollY
+			}).then((canvas) => {
+				var imgData = canvas.toDataURL("image/png", 1.0);
+
+				if (enlace !== null) {
+					productos[productos.length] = {
+						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
+						quantity: 1,
+						imagen: imgData
+					};
+					console.log(productos);
+				}
+			});
 			client.checkout.create().then((checkout) => {
+				var lineItemsToAdd = [];
 				for (var i = 0; i < productos.length; i++) {
 					var id = makeid();
-					uploadImagenes(productos[i].imagen, id);
-					var lineItemsToAdd = [
-						{
-							variantId: productos[i].variantId,
-							quantity: productos[i].quantity,
-							customAttributes: [
-								{
-									key: "Link",
-									value:
-										"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" +
-										id +
-										"?alt=media"
-								}
-							]
-						}
-					];
-
-					client.checkout.addLineItems(checkout.id, lineItemsToAdd).then((checkout) => {
-						window.parent.location.href = checkout.webUrl;
+					//uploadImagenes(productos[i].imagen, id);
+					lineItemsToAdd.push({
+						variantId: productos[i].variantId,
+						quantity: productos[i].quantity,
+						customAttributes: [
+							{
+								key: "Link",
+								value:
+									"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" +
+									id +
+									"?alt=media"
+							}
+						]
 					});
 				}
+				client.checkout.addLineItems(checkout.id, lineItemsToAdd).then((e) => {
+					console.log(productos);
+					window.parent.location.href = e.webUrl;
+				});
 			});
 		}
 	};
@@ -214,7 +240,7 @@ const Platos = forwardRef((props, ref) => {
 				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
 				pequeño.
 			</Alert>
-			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
+			<Button id="tramitar" variant="outline-dark" onClick={redirect} disabled={enlace === null ? "true" : ""}>
 				TRAMITAR VAJILLA
 			</Button>
 
