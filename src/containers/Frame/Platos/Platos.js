@@ -1,14 +1,15 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Button, Form, Col, Tabs, Tab, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Draggable from "react-draggable";
-
+import * as firebase from "firebase";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
 import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 var enlace = "";
-var imagenes = "";
+var imagenes = [];
+var link;
 var productos = [];
 var input = [];
 var pru = 'url("img/fondoPlato.png")';
@@ -25,6 +26,24 @@ const Platos = forwardRef((props, ref) => {
 	});
 	var data = null;
 
+	var config = {
+		apiKey: "AIzaSyDEjGJmen7XuwDCFqveAH8kJ4Fhk65Ewpo",
+		authDomain: "nuriapozas.firebaseapp.com",
+		databaseURL: "https://nuriapozas.firebaseio.com",
+		projectId: "nuriapozas",
+		storageBucket: "nuriapozas.appspot.com",
+		messagingSenderId: "1017937514584",
+		appId: "1:1017937514584:web:9a88c4c9d003441c61ba2d",
+		measurementId: "G-HVEQ3WDZS1"
+	};
+	if (!firebase.apps.length) {
+		firebase.initializeApp(config);
+	}
+	const db = firebase.firestore();
+
+	var storage = firebase.storage();
+	// Create a root reference
+
 	const links = [
 		{
 			id: "prueba",
@@ -32,15 +51,15 @@ const Platos = forwardRef((props, ref) => {
 		},
 		{
 			id: "prueba2",
-			link: "36127397609636"
+			link: "36196470456484"
 		},
 		{
 			id: "prueba3",
-			link: "36127397609636"
+			link: "36196478288036"
 		},
 		{
 			id: "prueba4",
-			link: "36127397609636"
+			link: "36196485759140"
 		}
 	];
 
@@ -85,7 +104,7 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.width = anchoNew + "px";
 	};
 
-	const crearProducto = () => {
+	const crearProducto = (index) => {
 		const page = document.getElementById("fondo");
 		html2canvas(page, {
 			backgroundColor: null,
@@ -94,31 +113,83 @@ const Platos = forwardRef((props, ref) => {
 			scrollY: -window.scrollY
 		}).then((canvas) => {
 			var imgData = canvas.toDataURL("image/png", 1.0);
-			imagenes = imagenes + imgData;
 
-			var a = {
+			productos.push({
 				variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
-				quantity: 1
-			};
-
-			productos.push(a);
+				quantity: 1,
+				imagen: imgData
+			});
 		});
 	};
 
 	const redirect = () => {
+		crearProducto(imagenes.length);
 		if (document.getElementById("img").getAttribute("src") === "" || enlace === null) {
 			setShow(true);
 		} else {
-			var input = {
-				lineItems: productos,
-				note: imagenes
-			};
-			console.log(input);
+			client.checkout.create().then((checkout) => {
+				for (var i = 0; i < productos.length; i++) {
+					var id = makeid();
+					uploadImagenes(productos[i].imagen, id);
+					var lineItemsToAdd = [
+						{
+							variantId: productos[i].variantId,
+							quantity: productos[i].quantity,
+							customAttributes: [
+								{
+									key: "Link",
+									value:
+										"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" +
+										id +
+										"?alt=media"
+								}
+							]
+						}
+					];
 
-			client.checkout.create(input).then((checkout) => {
-				window.parent.location.href = checkout.webUrl;
+					client.checkout.addLineItems(checkout.id, lineItemsToAdd).then((checkout) => {
+						window.parent.location.href = checkout.webUrl;
+					});
+				}
 			});
 		}
+	};
+	const makeid = () => {
+		var result = "";
+		var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		var charactersLength = 12;
+		for (var i = 0; i < charactersLength; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+		return result;
+	};
+
+	const uploadImagenes = (imagen, id) => {
+		var storageRef = firebase.storage().ref().child(id);
+		var uploadTask = storageRef.putString(imagen, "data_url");
+		var e;
+		uploadTask.on(
+			"state_changed",
+			function(snapshot) {
+				var progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+				console.log("Upload is " + progress + "% done");
+				switch (snapshot.state) {
+					case firebase.storage.TaskState.PAUSED: // or 'paused'
+						console.log("Upload is paused");
+						break;
+					case firebase.storage.TaskState.RUNNING: // or 'running'
+						console.log("Upload is running");
+						break;
+				}
+			},
+			function(error) {},
+			function() {
+				uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+					e = downloadURL;
+				});
+			}
+		);
+		return Promise.resolve(e);
 	};
 
 	useImperativeHandle(ref, () => {
@@ -138,7 +209,7 @@ const Platos = forwardRef((props, ref) => {
 	};
 
 	return (
-		<div>
+		<div id="fer">
 			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
 				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
 				pequeño.

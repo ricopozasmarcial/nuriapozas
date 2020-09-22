@@ -116,6 +116,7 @@ function App() {
 	};
 
 	const previousImage = () => {
+		ref.current.crearProducto(actual);
 		if (fotos[actual] !== undefined) {
 			var childPos = document.getElementById("move").getBoundingClientRect();
 			var parentPos = document.getElementById("fondo").getBoundingClientRect();
@@ -146,10 +147,10 @@ function App() {
 			document.getElementById("siguiente").disabled = false;
 			document.getElementById("tramitar").disabled = true;
 		}
-		ref.current.crearProducto();
 	};
 
 	const nextImage = () => {
+		ref.current.crearProducto(actual);
 		var childPos2 = document.getElementById("move").getBoundingClientRect();
 		var parentPos2 = document.getElementById("fondo").getBoundingClientRect();
 		if (fotos[actual] !== undefined) {
@@ -182,7 +183,6 @@ function App() {
 				document.getElementById("tramitar").disabled = false;
 			}
 		}
-		ref.current.crearProducto();
 	};
 
 	const deleteImage = () => {
@@ -243,113 +243,23 @@ function App() {
 	const tileData = [
 		{
 			img: "img/prueba.png",
-			title: "Piña",
+			title: "Huesos",
 			id: "prueba"
 		},
 		{
 			img: "img/prueba2.png",
-			title: "Coral",
+			title: "Flores",
 			id: "prueba2"
 		},
 		{
 			img: "img/prueba3.png",
-			title: "Pájaros",
+			title: "Flor",
 			id: "prueba3"
 		},
 		{
 			img: "img/prueba4.png",
-			title: "Nube",
+			title: "Mujer",
 			id: "prueba4"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Coral",
-			id: "prueba2"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Pájaros",
-			id: "prueba3"
 		}
 	];
 
