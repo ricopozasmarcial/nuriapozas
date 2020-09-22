@@ -158,7 +158,7 @@ const Platos = forwardRef((props, ref) => {
 				var lineItemsToAdd = [];
 				for (var i = 0; i < productos.length; i++) {
 					var id = makeid();
-					//uploadImagenes(productos[i].imagen, id);
+					uploadImagenes(productos[i].imagen, id);
 					lineItemsToAdd.push({
 						variantId: productos[i].variantId,
 						quantity: productos[i].quantity,
