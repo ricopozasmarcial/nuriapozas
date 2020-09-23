@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const DivStyle = styled.div`
 	position: relative;
 	display: block;
-	background-position: 50% 50%;
-	background-size: 120%;
+	background-position: center;
+	background-color: white;
+	background-size: 106%;
 	border-radius: 50%;
 	width: 60%;
 	height: 60%;
