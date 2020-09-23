@@ -16,9 +16,6 @@ html{
 
 }
 
-.mr-sm-2 div:hover, .same-as-selected {
-	background-color: rgba(0, 0, 0, 0.1);
-  }
 
 .pepito{
 	height: calc(100vh - 50px);

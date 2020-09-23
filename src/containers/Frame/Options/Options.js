@@ -439,7 +439,7 @@ function App() {
 
 										<div style={{ marginTop: "20px" }}>
 											<Form>
-												<Form.Row id="select" className="align-items-center">
+												<Form.Row className="align-items-center">
 													<Col xs="auto" className="my-1">
 														<h6>Tamaño vajilla</h6>
 														<Form.Control
@@ -449,8 +449,7 @@ function App() {
 															onChange={showImagenes}
 															style={{
 																marginLeft: "20px",
-																border: "none",
-																borderBottom: "2px solid darkGrey",
+																border: "2px solid darkGrey",
 																backgroundColor: "#e9ecef"
 															}}
 														>

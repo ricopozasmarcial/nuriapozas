@@ -48,9 +48,7 @@ const RightNav = ({ open }) => {
 			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/pages/creatuvajilla" style={elementos}>
 				VAJILLA A MEDIDA
 			</Nav.Link>
-			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={elementos}>
-				CURSOS
-			</Nav.Link>
+
 			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/cart" style={elementos}>
 				<div>
 					<i className="fa fa-shopping-cart" />
