@@ -32,7 +32,7 @@ function App() {
 	const [ show, setShow ] = useState(true);
 	const [ runJoy, setRunJoy ] = useState(false);
 	const [ joyrideStepIndex, setJoyrideStepIndex ] = useState(0);
-	const [ mostrarImagenes, setMostrarImagenes ] = useState(true);
+	const [ mostrarImagenes, setMostrarImagenes ] = useState(elementos);
 	const [ dibujos, setDibujos ] = useState(elementos);
 	const [ key, setKey ] = useState(1);
 	const [ actual, setActual ] = useState(0);
@@ -87,9 +87,9 @@ function App() {
 	const showImagenes = (e) => {
 		if (e.target.value !== "0") {
 			setLimite(e.target.value);
-			setMostrarImagenes(false);
+			setMostrarImagenes(null);
 		} else {
-			setMostrarImagenes(true);
+			setMostrarImagenes(elementos);
 		}
 	};
 
@@ -250,112 +250,134 @@ function App() {
 		{
 			img: "img/prueba.png",
 			title: "Huesos",
-			id: "prueba"
+			id: "prueba",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba2.png",
 			title: "Flores",
-			id: "prueba2"
+			id: "prueba2",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba3.png",
 			title: "Flor",
-			id: "prueba3"
+			id: "prueba3",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba4.png",
 			title: "Mujer",
-			id: "prueba4"
+			id: "prueba4",
+			colection: "alores"
 		},
 		{
 			img: "img/prueba5.png",
 			title: "Mujer",
-			id: "prueba5"
+			id: "prueba5",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba6.png",
 			title: "Mujer",
-			id: "prueba6"
+			id: "prueba6",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba7.png",
 			title: "Mujer",
-			id: "prueba7"
+			id: "prueba7",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba8.png",
 			title: "Mujer",
-			id: "prueba8"
+			id: "prueba8",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba9.png",
 			title: "Mujer",
-			id: "prueba9"
+			id: "prueba9",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba10.png",
 			title: "Mujer",
-			id: "prueba10"
+			id: "prueba10",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba11.png",
 			title: "Mujer",
-			id: "prueba11"
+			id: "prueba11",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba12.png",
 			title: "Mujer",
-			id: "prueba12"
+			id: "prueba12",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba13.png",
 			title: "Mujer",
-			id: "prueba13"
+			id: "prueba13",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba14.png",
 			title: "Mujer",
-			id: "prueba14"
+			id: "prueba14",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba15.png",
 			title: "Mujer",
-			id: "prueba15"
+			id: "prueba15",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba16.png",
 			title: "Mujer",
-			id: "prueba16"
+			id: "prueba16",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba17.png",
 			title: "Mujer",
-			id: "prueba17"
+			id: "prueba17",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba18.png",
 			title: "Mujer",
-			id: "prueba18"
+			id: "prueba18",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba19.png",
 			title: "Mujer",
-			id: "prueba19"
+			id: "prueba19",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba20.png",
 			title: "Mujer",
-			id: "prueba20"
+			id: "prueba20",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba21.png",
 			title: "Mujer",
-			id: "prueba21"
+			id: "prueba21",
+			colection: "Flores"
 		},
 		{
 			img: "img/prueba22.png",
 			title: "Mujer",
-			id: "prueba22"
+			id: "prueba22",
+			colection: "Flores"
 		}
 	];
 
@@ -418,77 +440,157 @@ function App() {
 												</Button>
 											</OverlayTrigger>
 										</Container>
+
+										<div style={{ marginTop: "20px" }}>
+											<Form>
+												<Form.Row className="align-items-center">
+													<Col xs="auto" className="my-1">
+														<Form.Control
+															as="select"
+															className="mr-sm-2"
+															id="inlineFormCustomSelect"
+															custom
+															onChange={showImagenes}
+														>
+															<option value="0">Escoge una cantidad</option>
+															<option value="1">x1 PIEZA </option>
+															<option value="2">x2 PIEZAS</option>
+															<option value="3">x3 PIEZAS</option>
+															<option value="4">x4 PIEZAS</option>
+															<option value="5">x5 PIEZAS</option>
+															<option value="6">x6 PIEZAS</option>
+														</Form.Control>
+													</Col>
+												</Form.Row>
+											</Form>
+
+											<Container style={mostrarImagenes} className="second">
+												<Row>
+													<Col xs={12} md={6}>
+														<OverlayTrigger
+															trigger="hover"
+															placement="bottom"
+															overlay={
+																<Popover>
+																	<Popover.Title as="h3">
+																		Plato llano grande
+																	</Popover.Title>
+																	<Popover.Content>
+																		Medida aproximada de 27cm{" "}
+																	</Popover.Content>
+																</Popover>
+															}
+														>
+															<div>
+																<h6>
+																	<Badge
+																		variant="dark"
+																		style={{
+																			top: "45%",
+																			left: "42%",
+																			position: "absolute",
+																			cursor: "pointer"
+																		}}
+																		onClick={showTab}
+																		id="url('img/fondoPlato.png')"
+																	>
+																		Plato 27cm
+																	</Badge>
+																</h6>
+																<Image
+																	src="img/fondoPlato27Peq.png"
+																	onClick={showTab}
+																	id="url('img/fondoPlato.png')"
+																	style={{ cursor: "pointer" }}
+																	rounded
+																/>
+															</div>
+														</OverlayTrigger>
+													</Col>
+													<Col xs={12} md={6}>
+														<OverlayTrigger
+															trigger="hover"
+															placement="bottom"
+															overlay={
+																<Popover>
+																	<Popover.Title as="h3">
+																		Plato llano mediano
+																	</Popover.Title>
+																	<Popover.Content>
+																		Medida aproximada de 22cm{" "}
+																	</Popover.Content>
+																</Popover>
+															}
+														>
+															<div>
+																<h6>
+																	<Badge
+																		variant="dark"
+																		style={{
+																			top: "45%",
+																			left: "42%",
+																			position: "absolute",
+																			cursor: "pointer"
+																		}}
+																		onClick={showTab}
+																		id="url('img/fondoPlato.png')"
+																	>
+																		Plato 22cm
+																	</Badge>
+																</h6>
+																<Image
+																	src="img/fondoPlato22Peq.png"
+																	onClick={showTab}
+																	id="url('img/fondoPlato.png')"
+																	style={{ cursor: "pointer", marginTop: "10px" }}
+																	rounded
+																/>
+															</div>
+														</OverlayTrigger>
+													</Col>
+													<Col xs={12} md={6}>
+														<OverlayTrigger
+															trigger="hover"
+															placement="bottom"
+															overlay={
+																<Popover>
+																	<Popover.Title as="h3">Cuenco</Popover.Title>
+																	<Popover.Content>
+																		Medida aproximada de 8cm{" "}
+																	</Popover.Content>
+																</Popover>
+															}
+														>
+															<div>
+																<h6>
+																	<Badge
+																		variant="dark"
+																		style={{
+																			top: "47%",
+																			left: "40%",
+																			position: "absolute",
+																			cursor: "pointer"
+																		}}
+																		onClick={showTab}
+																		id="url('img/cuenco.png')"
+																	>
+																		Cuenco 8cm
+																	</Badge>
+																</h6>
+																<Image
+																	src="img/cuencoPeq.png"
+																	onClick={showTab}
+																	id="url('img/cuenco.png')"
+																	style={{ cursor: "pointer", marginTop: "15px" }}
+																	rounded
+																/>
+															</div>
+														</OverlayTrigger>
+													</Col>
+												</Row>
+											</Container>
+										</div>
 									</Jumbotron>
-									<Form>
-										<Form.Row className="align-items-center">
-											<Col xs="auto" className="my-1">
-												<Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
-													Preference
-												</Form.Label>
-												<Form.Control
-													as="select"
-													className="mr-sm-2"
-													id="inlineFormCustomSelect"
-													custom
-													onChange={showImagenes}
-												>
-													<option value="0">Escoge una cantidad</option>
-													<option value="1">x1 PIEZA </option>
-													<option value="2">x2 PIEZAS</option>
-													<option value="3">x3 PIEZAS</option>
-													<option value="4">x4 PIEZAS</option>
-													<option value="5">x5 PIEZAS</option>
-													<option value="6">x6 PIEZAS</option>
-												</Form.Control>
-											</Col>
-										</Form.Row>
-									</Form>
-									<Container hidden={mostrarImagenes} className="second">
-										<Row>
-											<Col xs={6} md={4}>
-												<OverlayTrigger
-													trigger="hover"
-													placement="bottom"
-													overlay={
-														<Popover>
-															<Popover.Title as="h3">Plato llano grande</Popover.Title>
-															<Popover.Content>
-																Medida aproximada de 27cm{" "}
-															</Popover.Content>
-														</Popover>
-													}
-												>
-													<Image
-														src="img/fondoPlato27Peq.png"
-														onClick={showTab}
-														id="url('img/fondoPlato.png')"
-														style={{ cursor: "pointer" }}
-													/>
-												</OverlayTrigger>
-											</Col>
-											<Col xs={6} md={4}>
-												<OverlayTrigger
-													trigger="hover"
-													placement="bottom"
-													overlay={
-														<Popover>
-															<Popover.Title as="h3">Plato llano mediano</Popover.Title>
-															<Popover.Content>
-																Medida aproximada de 22cm{" "}
-															</Popover.Content>
-														</Popover>
-													}
-												>
-													<Image
-														src="img/fondoPlato22Peq.png"
-														onClick={showTab}
-														id="url('img/fondoPlato.png')"
-														style={{ cursor: "pointer" }}
-													/>
-												</OverlayTrigger>
-											</Col>
-										</Row>
-									</Container>
 								</Tab>
 
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
@@ -549,11 +651,11 @@ function App() {
 								<GridRoot>
 									<GridList
 										cellHeight={"300"}
-										cols={5}
+										cols={4}
 										className={classes.gridList}
 										className="third"
 									>
-										{tileData.map((tile) => (
+										{tileData.sort((a, b) => a.colection.localeCompare(b.colection)).map((tile) => (
 											<GridListTile key={tile.img}>
 												<img
 													src={tile.img}
@@ -565,6 +667,7 @@ function App() {
 												/>
 												<GridListTileBar
 													title={tile.title}
+													subtitle={tile.colection}
 													style={{
 														height: "auto",
 														backgroundColor: "none",
