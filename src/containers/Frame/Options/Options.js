@@ -63,7 +63,7 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: 0, left: 0, width: "300px", height: "300px" };
+		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px" };
 		var listina = fotos;
 		listina[actual] = i;
 		setFotos(listina);
@@ -95,20 +95,21 @@ function App() {
 
 	const handleJoyrideCallback = (event) => {
 		if (event.lifecycle === "tooltip" && event.index === 0) {
-			setMostrarImagenes(false);
+			setMostrarImagenes(null);
 		}
 		if (event.type === "step:after" && event.index === 4) {
-			ref.current.showToast("prueba2");
+			ref.current.showToast("prueba4", 0, 0, "500px", "500px");
 		}
 		if (event.action === "next" && event.index === 3) {
 			setShow(false);
 			setKey(2);
 			elementos = null;
 			setDibujos(elementos);
+			ref.current.setFondoA("url('img/fondoPlato.png')");
 		}
 		if (event.status === "finished") {
 			setShow(true);
-			setMostrarImagenes(true);
+			setMostrarImagenes(elementos);
 			setKey(1);
 			elementos = {
 				opacity: "0.4",
@@ -204,22 +205,19 @@ function App() {
 		{
 			target: ".my-1",
 			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
-			disableBeacon: true,
-			placement: "auto"
+			disableBeacon: true
 		},
 
 		{
 			target: ".second",
 			disableBeacon: true,
 			content:
-				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s.",
-			placement: "auto"
+				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s."
 		},
 		{
 			target: ".second2",
 			disableBeacon: true,
-			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla.",
-			placement: "auto"
+			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla."
 		},
 		{
 			target: "body",
@@ -234,15 +232,13 @@ function App() {
 		{
 			target: ".four",
 			disableBeacon: true,
-			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto.",
-			placement: "auto"
+			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto."
 		},
 		{
 			target: "#zoom",
 			disableBeacon: true,
 			content:
-				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño",
-			placement: "auto"
+				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
 		}
 	];
 
@@ -443,16 +439,22 @@ function App() {
 
 										<div style={{ marginTop: "20px" }}>
 											<Form>
-												<Form.Row className="align-items-center">
+												<Form.Row id="select" className="align-items-center">
 													<Col xs="auto" className="my-1">
+														<h6>Tamaño vajilla</h6>
 														<Form.Control
 															as="select"
 															className="mr-sm-2"
 															id="inlineFormCustomSelect"
-															custom
 															onChange={showImagenes}
+															style={{
+																marginLeft: "20px",
+																border: "none",
+																borderBottom: "2px solid darkGrey",
+																backgroundColor: "#e9ecef"
+															}}
 														>
-															<option value="0">Escoge una cantidad</option>
+															<option value="0">___</option>
 															<option value="1">x1 PIEZA </option>
 															<option value="2">x2 PIEZAS</option>
 															<option value="3">x3 PIEZAS</option>
@@ -466,7 +468,7 @@ function App() {
 
 											<Container style={mostrarImagenes} className="second">
 												<Row>
-													<Col xs={12} md={6}>
+													<Col xs={12} md={4}>
 														<OverlayTrigger
 															trigger="hover"
 															placement="bottom"
@@ -487,7 +489,7 @@ function App() {
 																		variant="dark"
 																		style={{
 																			top: "45%",
-																			left: "42%",
+																			left: "38%",
 																			position: "absolute",
 																			cursor: "pointer"
 																		}}
@@ -507,7 +509,7 @@ function App() {
 															</div>
 														</OverlayTrigger>
 													</Col>
-													<Col xs={12} md={6}>
+													<Col xs={12} md={4}>
 														<OverlayTrigger
 															trigger="hover"
 															placement="bottom"
@@ -528,7 +530,7 @@ function App() {
 																		variant="dark"
 																		style={{
 																			top: "45%",
-																			left: "42%",
+																			left: "38%",
 																			position: "absolute",
 																			cursor: "pointer"
 																		}}
@@ -548,7 +550,7 @@ function App() {
 															</div>
 														</OverlayTrigger>
 													</Col>
-													<Col xs={12} md={6}>
+													<Col xs={12} md={4}>
 														<OverlayTrigger
 															trigger="hover"
 															placement="bottom"
@@ -566,8 +568,8 @@ function App() {
 																	<Badge
 																		variant="dark"
 																		style={{
-																			top: "47%",
-																			left: "40%",
+																			top: "45%",
+																			left: "38%",
 																			position: "absolute",
 																			cursor: "pointer"
 																		}}
@@ -581,7 +583,7 @@ function App() {
 																	src="img/cuencoPeq.png"
 																	onClick={showTab}
 																	id="url('img/cuenco.png')"
-																	style={{ cursor: "pointer", marginTop: "15px" }}
+																	style={{ cursor: "pointer", marginTop: "20px" }}
 																	rounded
 																/>
 															</div>
