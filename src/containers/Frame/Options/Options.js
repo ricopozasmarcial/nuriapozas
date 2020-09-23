@@ -266,6 +266,96 @@ function App() {
 			img: "img/prueba4.png",
 			title: "Mujer",
 			id: "prueba4"
+		},
+		{
+			img: "img/prueba5.png",
+			title: "Mujer",
+			id: "prueba5"
+		},
+		{
+			img: "img/prueba6.png",
+			title: "Mujer",
+			id: "prueba6"
+		},
+		{
+			img: "img/prueba7.png",
+			title: "Mujer",
+			id: "prueba7"
+		},
+		{
+			img: "img/prueba8.png",
+			title: "Mujer",
+			id: "prueba8"
+		},
+		{
+			img: "img/prueba9.png",
+			title: "Mujer",
+			id: "prueba9"
+		},
+		{
+			img: "img/prueba10.png",
+			title: "Mujer",
+			id: "prueba10"
+		},
+		{
+			img: "img/prueba11.png",
+			title: "Mujer",
+			id: "prueba11"
+		},
+		{
+			img: "img/prueba12.png",
+			title: "Mujer",
+			id: "prueba12"
+		},
+		{
+			img: "img/prueba13.png",
+			title: "Mujer",
+			id: "prueba13"
+		},
+		{
+			img: "img/prueba14.png",
+			title: "Mujer",
+			id: "prueba14"
+		},
+		{
+			img: "img/prueba15.png",
+			title: "Mujer",
+			id: "prueba15"
+		},
+		{
+			img: "img/prueba16.png",
+			title: "Mujer",
+			id: "prueba16"
+		},
+		{
+			img: "img/prueba17.png",
+			title: "Mujer",
+			id: "prueba17"
+		},
+		{
+			img: "img/prueba18.png",
+			title: "Mujer",
+			id: "prueba18"
+		},
+		{
+			img: "img/prueba19.png",
+			title: "Mujer",
+			id: "prueba19"
+		},
+		{
+			img: "img/prueba20.png",
+			title: "Mujer",
+			id: "prueba20"
+		},
+		{
+			img: "img/prueba21.png",
+			title: "Mujer",
+			id: "prueba21"
+		},
+		{
+			img: "img/prueba22.png",
+			title: "Mujer",
+			id: "prueba22"
 		}
 	];
 
@@ -361,7 +451,7 @@ function App() {
 													placement="bottom"
 													overlay={
 														<Popover>
-															<Popover.Title as="h3">Plato llano</Popover.Title>
+															<Popover.Title as="h3">Plato llano grande</Popover.Title>
 															<Popover.Content>
 																Medida aproximada de 27cm{" "}
 															</Popover.Content>
@@ -369,7 +459,7 @@ function App() {
 													}
 												>
 													<Image
-														src="img/fondoPlatoPeq.png"
+														src="img/fondoPlato27Peq.png"
 														onClick={showTab}
 														id="url('img/fondoPlato.png')"
 														style={{ cursor: "pointer" }}
@@ -382,17 +472,17 @@ function App() {
 													placement="bottom"
 													overlay={
 														<Popover>
-															<Popover.Title as="h3">Plato hondo</Popover.Title>
+															<Popover.Title as="h3">Plato llano mediano</Popover.Title>
 															<Popover.Content>
-																Medida aproximada de 24cm{" "}
+																Medida aproximada de 22cm{" "}
 															</Popover.Content>
 														</Popover>
 													}
 												>
 													<Image
-														src="img/fondoPlatoHondoPeq.png"
+														src="img/fondoPlato22Peq.png"
 														onClick={showTab}
-														id="url('img/fondoPlatoHondo.png')"
+														id="url('img/fondoPlato.png')"
 														style={{ cursor: "pointer" }}
 													/>
 												</OverlayTrigger>
@@ -459,7 +549,7 @@ function App() {
 								<GridRoot>
 									<GridList
 										cellHeight={"300"}
-										cols={3}
+										cols={5}
 										className={classes.gridList}
 										className="third"
 									>

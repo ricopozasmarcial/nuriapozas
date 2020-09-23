@@ -60,6 +60,78 @@ const Platos = forwardRef((props, ref) => {
 		{
 			id: "prueba4",
 			link: "36196485759140"
+		},
+		{
+			id: "prueba5",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba6",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba7",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba8",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba9",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba10",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba11",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba12",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba13",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba14",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba15",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba16",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba17",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba18",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba19",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba20",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba21",
+			link: "36196485759140"
+		},
+		{
+			id: "prueba22",
+			link: "36196485759140"
 		}
 	];
 
@@ -71,7 +143,7 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.height = h;
 		setLimite(limite);
 		data = links.filter((item) => item.id === name);
-		if (name !== "") {
+		if (name !== "" && data !== undefined) {
 			enlace = data[0].link;
 		}
 		if (name === "") {
