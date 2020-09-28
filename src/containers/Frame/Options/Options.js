@@ -63,11 +63,11 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px" };
+		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px", angle: "rotate(0 deg)" };
 		var listina = fotos;
 		listina[actual] = i;
 		setFotos(listina);
-		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height, limite);
+		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height, i.angle, limite);
 
 		if (limite === 1) {
 			document.getElementById("tramitar").disabled = false;
@@ -130,6 +130,7 @@ function App() {
 				name: fotos[actual].name,
 				top: childPos.top - parentPos.top,
 				left: childPos.left - parentPos.left,
+				angle: document.getElementById("move").style.transform,
 				width: document.getElementById("move").style.width,
 				height: document.getElementById("move").style.height
 			};
@@ -142,7 +143,8 @@ function App() {
 				fotos[actual - 1].top,
 				fotos[actual - 1].left,
 				fotos[actual - 1].width,
-				fotos[actual - 1].height
+				fotos[actual - 1].height,
+				fotos[actual - 1].angle
 			);
 		}
 		if (actual === 0) {
@@ -164,6 +166,7 @@ function App() {
 				name: fotos[actual].name,
 				top: childPos2.top - parentPos2.top,
 				left: childPos2.left - parentPos2.left,
+				angle: document.getElementById("move").style.transform,
 				width: document.getElementById("move").style.width,
 				height: document.getElementById("move").style.height
 			};
@@ -177,7 +180,8 @@ function App() {
 				fotos[actual + 1].top,
 				fotos[actual + 1].left,
 				fotos[actual + 1].width,
-				fotos[actual + 1].height
+				fotos[actual + 1].height,
+				fotos[actual + 1].angle
 			);
 		}
 		if (actual < limite - 1) {

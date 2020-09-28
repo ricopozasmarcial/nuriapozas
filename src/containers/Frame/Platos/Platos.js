@@ -10,6 +10,7 @@ import jsPDF from "jspdf";
 var enlace = "";
 var imagenes = [];
 var link;
+var angle = 0;
 var productos = [];
 var input = [];
 var pru = 'url("img/fondoPlato.png")';
@@ -135,10 +136,11 @@ const Platos = forwardRef((props, ref) => {
 		}
 	];
 
-	const showToast = (name, xX, xY, w, h, limite) => {
+	const showToast = (name, xX, xY, w, h, angle2, limite) => {
 		setValue(true);
+		angle = 0;
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		document.getElementById("move").style.transform = "translate(" + xY + "px," + xX + "px)";
+		document.getElementById("move").style.transform = ("translate(" + xY + "px," + xX + "px)", angle2);
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
 		setLimite(limite);
@@ -175,6 +177,16 @@ const Platos = forwardRef((props, ref) => {
 		var anchoAux = str2.replace("px", "");
 		var anchoNew = parseInt(anchoAux) + 20;
 		document.getElementById("move").style.width = anchoNew + "px";
+	};
+	const rotarD = () => {
+		angle += 20;
+
+		document.getElementById("move").style.transform = "rotate(" + angle + "deg)";
+	};
+	const rotarI = () => {
+		angle -= 20;
+
+		document.getElementById("move").style.transform = "rotate(" + angle + "deg)";
 	};
 
 	const crearProducto = (name, index) => {
@@ -299,7 +311,7 @@ const Platos = forwardRef((props, ref) => {
 	});
 
 	const setCoordinates = (e, data) => {
-		setCoor(data);
+		document.getElementById("move").style.transform += "rotate(" + angle + "deg)";
 	};
 
 	const getCoordinates = () => {
@@ -326,13 +338,23 @@ const Platos = forwardRef((props, ref) => {
 					<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 				</Button>
 			</OverlayTrigger>
+			<OverlayTrigger placement="top" overlay={<Tooltip>Rota izquierda</Tooltip>}>
+				<Button id="zoom" className="pepe" variant="outline-dark" onClick={rotarI}>
+					<i id="iconZoom" className="fa fa-undo fa-lg" />
+				</Button>
+			</OverlayTrigger>
+			<OverlayTrigger placement="top" overlay={<Tooltip>Rota derecha</Tooltip>}>
+				<Button id="zoom" className="pepe" variant="outline-dark" onClick={rotarD}>
+					<i id="iconZoom" className="fa fa-repeat fa-lg" />
+				</Button>
+			</OverlayTrigger>
 			<DivStyle
 				style={{
 					backgroundImage: { pru }
 				}}
 				id="fondo"
 			>
-				<Draggable onStop={setCoordinates}>
+				<Draggable onStop={setCoordinates} onDrag={setCoordinates}>
 					<DivFrame
 						id="move"
 						style={{
