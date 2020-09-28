@@ -47,10 +47,6 @@ const Platos = forwardRef((props, ref) => {
 
 	const links = [
 		{
-			id: "prueba",
-			link: "36127397609636"
-		},
-		{
 			id: "prueba2",
 			link: "36196470456484"
 		},
@@ -114,10 +110,7 @@ const Platos = forwardRef((props, ref) => {
 			id: "prueba17",
 			link: "36196485759140"
 		},
-		{
-			id: "prueba18",
-			link: "36196485759140"
-		},
+
 		{
 			id: "prueba19",
 			link: "36196485759140"

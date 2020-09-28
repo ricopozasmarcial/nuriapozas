@@ -300,18 +300,6 @@ function App() {
 			colection: "Salitre"
 		},
 		{
-			img: "img/prueba18.png",
-			title: "Huesos",
-			id: "prueba18",
-			colection: "Cérvidos"
-		},
-		{
-			img: "img/prueba.png",
-			title: "Huesos",
-			id: "prueba",
-			colection: "Cérvidos"
-		},
-		{
 			img: "img/prueba7.png",
 			title: "Ciervo",
 			id: "prueba7",
