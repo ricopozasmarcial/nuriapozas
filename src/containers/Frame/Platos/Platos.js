@@ -140,7 +140,6 @@ const Platos = forwardRef((props, ref) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		console.log(angle2);
 		angle = angle2.slice(7, -4);
 		angle = parseInt(angle);
 		if (isNaN(angle)) {
@@ -319,10 +318,6 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.transform += "rotate(" + angle + "deg)";
 	};
 
-	const getCoordinates = () => {
-		return coor;
-	};
-
 	return (
 		<div id="fer">
 			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
@@ -359,16 +354,24 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Draggable onStop={setCoordinates}>
-					<DivFrame
-						id="move"
+				<Draggable>
+					<div
 						style={{
-							height: "300px",
-							width: "300px"
+							top: "0px",
+							left: "0px",
+							position: "absolute"
 						}}
 					>
-						<ImgStyle id="img" draggable={false} src="" alt="" />
-					</DivFrame>
+						<DivFrame
+							id="move"
+							style={{
+								height: "300px",
+								width: "300px"
+							}}
+						>
+							<ImgStyle id="img" draggable={false} src="" alt="" />
+						</DivFrame>
+					</div>
 				</Draggable>
 			</DivStyle>
 		</div>
