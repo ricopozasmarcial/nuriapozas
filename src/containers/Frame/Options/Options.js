@@ -72,7 +72,8 @@ function App() {
 		setFotos(listina);
 		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height, i.angle, limite);
 
-		if (limite === 1) {
+		console.log(limite);
+		if (limite === "1" || actual === limite) {
 			document.getElementById("tramitar").disabled = false;
 		}
 	};
@@ -611,7 +612,7 @@ function App() {
 												fontFamily: "Montserrat"
 											}}
 										>
-											{actual + 1}/{limite}
+											{actual + 1} / {limite}
 										</div>
 										<Button
 											id="anterior"
