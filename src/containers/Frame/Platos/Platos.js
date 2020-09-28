@@ -142,8 +142,10 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
 		console.log(angle2);
 		angle = angle2.slice(7, -4);
-		console.log(angle);
 		angle = parseInt(angle);
+		if (isNaN(angle)) {
+			angle = 0;
+		}
 		document.getElementById("move").style.transform = ("translate(" + xY + "px," + xX + "px)", angle2);
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
