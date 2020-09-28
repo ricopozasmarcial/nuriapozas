@@ -357,7 +357,7 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Draggable onStop={setCoordinates} onDrag={setCoordinates}>
+				<Draggable onStop={setCoordinates}>
 					<DivFrame
 						id="move"
 						style={{
