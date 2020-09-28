@@ -138,8 +138,12 @@ const Platos = forwardRef((props, ref) => {
 
 	const showToast = (name, xX, xY, w, h, angle2, limite) => {
 		setValue(true);
-		angle = 0;
+		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
+		console.log(angle2);
+		angle = angle2.slice(7, -4);
+		console.log(angle);
+		angle = parseInt(angle);
 		document.getElementById("move").style.transform = ("translate(" + xY + "px," + xX + "px)", angle2);
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
@@ -180,7 +184,6 @@ const Platos = forwardRef((props, ref) => {
 	};
 	const rotarD = () => {
 		angle += 20;
-
 		document.getElementById("move").style.transform = "rotate(" + angle + "deg)";
 	};
 	const rotarI = () => {

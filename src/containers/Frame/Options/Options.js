@@ -63,7 +63,7 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px", angle: "rotate(0 deg)" };
+		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px", angle: "rotate(000 deg)" };
 		var listina = fotos;
 		listina[actual] = i;
 		setFotos(listina);
@@ -136,7 +136,7 @@ function App() {
 			};
 			setFotos(lista2);
 		}
-		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "300px", "300px");
+		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "500px", "500px", "rotate(000 deg)");
 		else {
 			ref.current.showToast(
 				fotos[actual - 1].name,
@@ -173,7 +173,7 @@ function App() {
 			setFotos(lista);
 		}
 		if (fotos[actual + 1] === undefined) {
-			ref.current.showToast("", 0, 0, "300px", "300px");
+			ref.current.showToast("", 0, 0, "500px", "500px", "rotate(000 deg)");
 		} else {
 			ref.current.showToast(
 				fotos[actual + 1].name,
