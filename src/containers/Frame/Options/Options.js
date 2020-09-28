@@ -402,8 +402,8 @@ function App() {
 												<Badge variant="secondary">¡Nuevos diseños!</Badge>
 											</h2>
 											<p>
-												Todos los diseños están pintados a mano por lo que el dibujo
-												seleccionado será una aproximación.
+												*El producto está hecho a mano, por tanto recibirás una aproximación al
+												diseño mostrado.
 											</p>
 
 											<OverlayTrigger
@@ -542,7 +542,7 @@ function App() {
 																<Popover>
 																	<Popover.Title as="h3">Cuenco</Popover.Title>
 																	<Popover.Content>
-																		Medida aproximada de 8cm{" "}
+																		Medida aproximada de 15cm{" "}
 																	</Popover.Content>
 																</Popover>
 															}
@@ -560,7 +560,7 @@ function App() {
 																		onClick={showTab}
 																		id="url('img/cuenco.png')"
 																	>
-																		Cuenco 8cm
+																		Cuenco 15cm
 																	</Badge>
 																</h6>
 																<Image
