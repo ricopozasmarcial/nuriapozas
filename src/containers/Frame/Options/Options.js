@@ -45,10 +45,11 @@ function App() {
 			justifyContent: "space-around",
 			overflow: "auto",
 			backgroundColor: "transparent",
-			width: "auto",
+			width: "50%",
 			height: "auto",
 			paddingBottom: "30%",
-			paddingTop: "5px"
+			paddingTop: "5px",
+			overflowX: "hidden"
 		},
 		icon: {
 			color: "rgba(255, 255, 255, 0.54)"
@@ -603,36 +604,44 @@ function App() {
 											setDibujos(elementos);
 										}}
 									/>{" "}
+									<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
+										<Button
+											id="trash"
+											className="pepe"
+											variant="outline-dark"
+											onClick={deleteImage}
+										>
+											<i id="iconZoom" className="fa fa-trash fa-lg" />
+										</Button>
+									</OverlayTrigger>
 									<DivPlatos className="four">
-										<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
-											<Button
-												id="trash"
-												className="pepe"
-												variant="outline-dark"
-												onClick={deleteImage}
-											>
-												<i id="iconZoom" className="fa fa-trash fa-lg" />
-											</Button>
-										</OverlayTrigger>
 										<Platos ref={ref} />
-										<div>
+										<div
+											style={{
+												margin: "10px",
+												color: "black",
+												fontFamily: "Montserrat"
+											}}
+										>
 											{actual + 1}/{limite}
 										</div>
 										<Button
 											id="anterior"
-											variant="outline-dark"
+											variant="dark"
+											style={{ margin: "10px" }}
 											onClick={previousImage}
 											disabled={actual === 0 ? "true" : ""}
 										>
-											Anterior plato
+											<i className="fa fa-chevron-left fa-lg" />{" "}
 										</Button>
 										<Button
 											id="siguiente"
-											variant="outline-dark"
+											variant="dark"
+											style={{ margin: "10px" }}
 											onClick={nextImage}
 											disabled={actual === limite - 1 ? "true" : ""}
 										>
-											Siguiente plato
+											<i className="fa fa-chevron-right fa-lg" />{" "}
 										</Button>
 									</DivPlatos>
 								</Tab>
@@ -647,7 +656,7 @@ function App() {
 								<GridRoot>
 									<GridList
 										cellHeight={"300"}
-										cols={4}
+										cols={3}
 										className={classes.gridList}
 										className="third"
 									>

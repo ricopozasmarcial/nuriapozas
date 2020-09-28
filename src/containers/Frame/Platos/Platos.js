@@ -322,7 +322,6 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect}>
 				TRAMITAR VAJILLA
 			</Button>
-
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
 				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>
 					<i id="iconZoom" className="fa fa-search-plus fa-lg" />
@@ -334,12 +333,12 @@ const Platos = forwardRef((props, ref) => {
 				</Button>
 			</OverlayTrigger>
 			<OverlayTrigger placement="top" overlay={<Tooltip>Rota izquierda</Tooltip>}>
-				<Button id="zoom" className="pepe" variant="outline-dark" onClick={rotarI}>
+				<Button id="zoomMinus" className="pepe" variant="outline-dark" onClick={rotarI}>
 					<i id="iconZoom" className="fa fa-undo fa-lg" />
 				</Button>
 			</OverlayTrigger>
 			<OverlayTrigger placement="top" overlay={<Tooltip>Rota derecha</Tooltip>}>
-				<Button id="zoom" className="pepe" variant="outline-dark" onClick={rotarD}>
+				<Button id="zoomMinus" className="pepe" variant="outline-dark" onClick={rotarD}>
 					<i id="iconZoom" className="fa fa-repeat fa-lg" />
 				</Button>
 			</OverlayTrigger>

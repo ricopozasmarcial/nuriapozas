@@ -151,15 +151,16 @@ hr {
 }
 
 #tramitar {
-	margin-right:50%;
+	margin-right:30%;
 	margin-top: 20px;
 
 	padding: none;
 }
 
 #trash {
+	margin-left:90%;
 
-	margin-top: 20px;
+	margin-top: 5px;
 
 }
 
