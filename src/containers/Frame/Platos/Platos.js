@@ -337,7 +337,8 @@ const Platos = forwardRef((props, ref) => {
 			</OverlayTrigger>
 			<DivStyle
 				style={{
-					backgroundImage: { pru }
+					backgroundImage: { pru },
+					backgroundColor: "white"
 				}}
 				id="fondo"
 			>
