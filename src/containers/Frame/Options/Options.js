@@ -63,7 +63,9 @@ function App() {
 		false
 	);
 	const handleClick = (e) => {
-		var i = { name: e.target.id, top: 0, left: 0, width: "500px", height: "500px", angle: "rotate(000 deg)" };
+		document.getElementById("move2").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+		var i = { name: e.target.id, top: 0, left: 0, width: "300px", height: "300px", angle: "rotate(000 deg)" };
 		var listina = fotos;
 		listina[actual] = i;
 		setFotos(listina);
@@ -136,7 +138,7 @@ function App() {
 			};
 			setFotos(lista2);
 		}
-		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "500px", "500px", "rotate(000 deg)");
+		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "300px", "300px", "rotate(000 deg)");
 		else {
 			ref.current.showToast(
 				fotos[actual - 1].name,
@@ -173,7 +175,7 @@ function App() {
 			setFotos(lista);
 		}
 		if (fotos[actual + 1] === undefined) {
-			ref.current.showToast("", 0, 0, "500px", "500px", "rotate(000 deg)");
+			ref.current.showToast("", 0, 0, "300px", "300px", "rotate(000 deg)");
 		} else {
 			ref.current.showToast(
 				fotos[actual + 1].name,
@@ -201,7 +203,6 @@ function App() {
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("move2").style.transform = "translate(" + 0 + "px," + 0 + "px)";
 		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
-
 		document.getElementById("tramitar").disabled = true;
 		ref.current.crearProducto(null, actual);
 	};
@@ -244,142 +245,130 @@ function App() {
 			target: "#zoom",
 			disableBeacon: true,
 			content:
-				"Puedes aumentar o disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
+				"Puedes girar, aumentar y disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
 		}
 	];
 
 	const tileData = [
 		{
-			img: "img/prueba.png",
-			title: "Huesos",
-			id: "prueba",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba2.png",
-			title: "Flores",
-			id: "prueba2",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba3.png",
-			title: "Flor",
-			id: "prueba3",
-			colection: "Flores"
-		},
-		{
 			img: "img/prueba4.png",
-			title: "Mujer",
+			title: "Medusa azul",
 			id: "prueba4",
-			colection: "alores"
-		},
-		{
-			img: "img/prueba5.png",
-			title: "Mujer",
-			id: "prueba5",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba6.png",
-			title: "Mujer",
-			id: "prueba6",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba7.png",
-			title: "Mujer",
-			id: "prueba7",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba8.png",
-			title: "Mujer",
-			id: "prueba8",
-			colection: "Flores"
+			colection: "Minimalista"
 		},
 		{
 			img: "img/prueba9.png",
-			title: "Mujer",
+			title: "Medusa negra",
 			id: "prueba9",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba10.png",
-			title: "Mujer",
-			id: "prueba10",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba11.png",
-			title: "Mujer",
-			id: "prueba11",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba12.png",
-			title: "Mujer",
-			id: "prueba12",
-			colection: "Flores"
+			colection: "Minimalista"
 		},
 		{
 			img: "img/prueba13.png",
-			title: "Mujer",
+			title: "Medusa amarilla",
 			id: "prueba13",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba14.png",
-			title: "Mujer",
-			id: "prueba14",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba15.png",
-			title: "Mujer",
-			id: "prueba15",
-			colection: "Flores"
-		},
-		{
-			img: "img/prueba16.png",
-			title: "Mujer",
-			id: "prueba16",
-			colection: "Flores"
+			colection: "Minimalista"
 		},
 		{
 			img: "img/prueba17.png",
-			title: "Mujer",
+			title: "Medusa rosada",
 			id: "prueba17",
-			colection: "Flores"
+			colection: "Minimalista"
 		},
 		{
-			img: "img/prueba18.png",
-			title: "Mujer",
-			id: "prueba18",
-			colection: "Flores"
+			img: "img/prueba3.png",
+			title: "Faro",
+			id: "prueba3",
+			colection: "Salitre"
+		},
+		{
+			img: "img/prueba16.png",
+			title: "Orca",
+			id: "prueba16",
+			colection: "Salitre"
 		},
 		{
 			img: "img/prueba19.png",
-			title: "Mujer",
+			title: "Pingüino",
 			id: "prueba19",
-			colection: "Flores"
+			colection: "Salitre"
 		},
 		{
 			img: "img/prueba20.png",
-			title: "Mujer",
+			title: "Cangrejo",
 			id: "prueba20",
-			colection: "Flores"
+			colection: "Salitre"
 		},
 		{
-			img: "img/prueba21.png",
-			title: "Mujer",
-			id: "prueba21",
-			colection: "Flores"
+			img: "img/prueba18.png",
+			title: "Huesos",
+			id: "prueba18",
+			colection: "Cérvidos"
 		},
 		{
-			img: "img/prueba22.png",
-			title: "Mujer",
-			id: "prueba22",
-			colection: "Flores"
+			img: "img/prueba.png",
+			title: "Huesos",
+			id: "prueba",
+			colection: "Cérvidos"
+		},
+		{
+			img: "img/prueba7.png",
+			title: "Ciervo",
+			id: "prueba7",
+			colection: "Cérvidos"
+		},
+		{
+			img: "img/prueba8.png",
+			title: "Cebolla",
+			id: "prueba8",
+			colection: "Bocados"
+		},
+		{
+			img: "img/prueba12.png",
+			title: "Guindilla",
+			id: "prueba12",
+			colection: "Bocados"
+		},
+		{
+			img: "img/prueba14.png",
+			title: "Setas",
+			id: "prueba14",
+			colection: "Bocados"
+		},
+		{
+			img: "img/prueba5.png",
+			title: "Llena",
+			id: "prueba5",
+			colection: "Noche"
+		},
+		{
+			img: "img/prueba10.png",
+			title: "Creciente",
+			id: "prueba10",
+			colection: "Noche"
+		},
+		{
+			img: "img/prueba2.png",
+			title: "Flor",
+			id: "prueba2",
+			colection: "Botánica"
+		},
+		{
+			img: "img/prueba6.png",
+			title: "Flor",
+			id: "prueba6",
+			colection: "Botánica"
+		},
+		{
+			img: "img/prueba11.png",
+			title: "Flor",
+			id: "prueba11",
+			colection: "Botánica"
+		},
+		{
+			img: "img/prueba15.png",
+			title: "Flor",
+			id: "prueba15",
+			colection: "Botánica"
 		}
 	];
 
@@ -420,7 +409,7 @@ function App() {
 										<Container>
 											<h2>
 												Crea tu propia vajilla personalizada{" "}
-												<Badge variant="secondary">New</Badge>
+												<Badge variant="secondary">¡Nuevos diseños!</Badge>
 											</h2>
 											<p>
 												Todos los diseños están pintados a mano por lo que el dibujo

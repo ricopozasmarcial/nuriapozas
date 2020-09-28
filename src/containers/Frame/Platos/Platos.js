@@ -125,14 +125,6 @@ const Platos = forwardRef((props, ref) => {
 		{
 			id: "prueba20",
 			link: "36196485759140"
-		},
-		{
-			id: "prueba21",
-			link: "36196485759140"
-		},
-		{
-			id: "prueba22",
-			link: "36196485759140"
 		}
 	];
 
@@ -140,12 +132,16 @@ const Platos = forwardRef((props, ref) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		angle = angle2.slice(7, -4);
-		angle = parseInt(angle);
-		if (isNaN(angle)) {
+		if (angle2 === undefined) {
 			angle = 0;
+		} else {
+			angle = angle2.slice(7, -4);
+			angle = parseInt(angle);
+			if (isNaN(angle)) {
+				angle = 0;
+			}
+			document.getElementById("move").style.transform = angle2;
 		}
-		document.getElementById("move").style.transform = angle2;
 		document.getElementById("move").style.width = w;
 		document.getElementById("move").style.height = h;
 		document.getElementById("move2").style.transform = "translate(" + xY + "px," + xX + "px)";
@@ -353,7 +349,7 @@ const Platos = forwardRef((props, ref) => {
 				}}
 				id="fondo"
 			>
-				<Draggable>
+				<Draggable handle="#img">
 					<div
 						id="move2"
 						style={{
