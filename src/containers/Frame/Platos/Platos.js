@@ -145,9 +145,13 @@ const Platos = forwardRef((props, ref) => {
 		if (isNaN(angle)) {
 			angle = 0;
 		}
-		document.getElementById("move").style.transform = ("translate(" + xY + "px," + xX + "px)", angle2);
-		document.getElementById("move").style.width = w;
-		document.getElementById("move").style.height = h;
+		console.log(angle2);
+		document.getElementById("move").style.transform = angle2;
+		//	document.getElementById("move").style.width = w;
+		//	document.getElementById("move").style.height = h;
+		document.getElementById("move2").style.transform = "translate(" + xY + "px," + xX + "px)";
+		document.getElementById("move2").style.width = w;
+		document.getElementById("move2").style.height = h;
 		setLimite(limite);
 		data = links.filter((item) => item.id === name);
 		if (name !== "" && data !== undefined) {
@@ -314,10 +318,6 @@ const Platos = forwardRef((props, ref) => {
 		};
 	});
 
-	const setCoordinates = (e, data) => {
-		document.getElementById("move").style.transform += "rotate(" + angle + "deg)";
-	};
-
 	return (
 		<div id="fer">
 			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
@@ -356,9 +356,12 @@ const Platos = forwardRef((props, ref) => {
 			>
 				<Draggable>
 					<div
+						id="move2"
 						style={{
 							top: "0px",
 							left: "0px",
+							height: "300px",
+							width: "300px",
 							position: "absolute"
 						}}
 					>

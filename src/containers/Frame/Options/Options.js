@@ -123,7 +123,7 @@ function App() {
 	const previousImage = () => {
 		if (fotos[actual] !== undefined) {
 			ref.current.crearProducto(fotos[actual].name, actual);
-			var childPos = document.getElementById("move").getBoundingClientRect();
+			var childPos = document.getElementById("move2").getBoundingClientRect();
 			var parentPos = document.getElementById("fondo").getBoundingClientRect();
 			var lista2 = fotos;
 			lista2[actual] = {
@@ -157,7 +157,7 @@ function App() {
 	};
 
 	const nextImage = () => {
-		var childPos2 = document.getElementById("move").getBoundingClientRect();
+		var childPos2 = document.getElementById("move2").getBoundingClientRect();
 		var parentPos2 = document.getElementById("fondo").getBoundingClientRect();
 		if (fotos[actual] !== undefined) {
 			ref.current.crearProducto(fotos[actual].name, actual);
@@ -199,7 +199,7 @@ function App() {
 		newList[actual] = undefined;
 		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
-		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+		document.getElementById("move2").style.transform = "translate(" + 0 + "px," + 0 + "px)";
 		document.getElementById("tramitar").disabled = true;
 		ref.current.crearProducto(null, actual);
 	};
