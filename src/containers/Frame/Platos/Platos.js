@@ -145,10 +145,9 @@ const Platos = forwardRef((props, ref) => {
 		if (isNaN(angle)) {
 			angle = 0;
 		}
-		console.log(angle2);
 		document.getElementById("move").style.transform = angle2;
-		//	document.getElementById("move").style.width = w;
-		//	document.getElementById("move").style.height = h;
+		document.getElementById("move").style.width = w;
+		document.getElementById("move").style.height = h;
 		document.getElementById("move2").style.transform = "translate(" + xY + "px," + xX + "px)";
 		document.getElementById("move2").style.width = w;
 		document.getElementById("move2").style.height = h;

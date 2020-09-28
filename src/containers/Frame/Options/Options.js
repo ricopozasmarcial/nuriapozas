@@ -200,6 +200,8 @@ function App() {
 		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("move2").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
+
 		document.getElementById("tramitar").disabled = true;
 		ref.current.crearProducto(null, actual);
 	};
