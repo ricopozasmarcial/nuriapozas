@@ -4,7 +4,7 @@ import Draggable from "react-draggable";
 import * as firebase from "firebase";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
-import axios from "axios";
+import ShopifyBuy from "@shopify/buy-button-js";
 
 import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
@@ -28,6 +28,274 @@ const Platos = forwardRef((props, ref) => {
 		storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
 	});
 	var data = null;
+
+	var ui = ShopifyBuy.UI.init(client);
+
+	const aniadir = () => {
+		document.getElementById("carrito").innerHTML = "";
+		ui.createComponent("product", {
+			id: "5740566708388",
+			node: document.getElementById("carrito"),
+			moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
+			options: {
+				product: {
+					contents: {
+						img: false,
+						title: false,
+						price: false
+					},
+
+					styles: {
+						product: {
+							"@media (min-width: 601px)": {
+								"max-width": "calc(25% - 20px)",
+								"margin-left": "20px",
+								"margin-bottom": "50px"
+							}
+						},
+						button: {
+							"font-family": "Montserrat, sans-serif",
+							"font-size": "16px",
+							"padding-top": "16px",
+							"padding-bottom": "16px",
+							color: "#000000",
+							":hover": {
+								color: "#000000",
+								"background-color": "#e6e6e6"
+							},
+							"background-color": "#ffffff",
+							":focus": {
+								"background-color": "#e6e6e6"
+							}
+						},
+						quantityInput: {
+							"font-size": "16px",
+							"padding-top": "16px",
+							"padding-bottom": "16px"
+						}
+					},
+					order: [ "img", "title", "price", "quantity", "options", "button" ],
+
+					text: {
+						button: "Add to cart"
+					},
+					googleFonts: [ "Montserrat" ]
+				},
+				productSet: {
+					styles: {
+						products: {
+							"@media (min-width: 601px)": {
+								"margin-left": "-20px"
+							}
+						}
+					}
+				},
+				modalProduct: {
+					contents: {
+						img: false,
+						imgWithCarousel: true,
+						button: false,
+						buttonWithQuantity: true
+					},
+					styles: {
+						product: {
+							"@media (min-width: 601px)": {
+								"max-width": "100%",
+								"margin-left": "0px",
+								"margin-bottom": "0px"
+							}
+						},
+						button: {
+							"font-family": "Montserrat, sans-serif",
+							"font-size": "16px",
+							"padding-top": "16px",
+							"padding-bottom": "16px",
+							color: "#e9ecef",
+							":hover": {
+								color: "#000000",
+								"background-color": "#e6e6e6"
+							},
+							"background-color": "#e9ecef",
+							":focus": {
+								"background-color": "#e6e6e6"
+							}
+						},
+						quantityInput: {
+							"font-size": "16px",
+							"padding-top": "16px",
+							"padding-bottom": "16px"
+						}
+					},
+					googleFonts: [ "Montserrat" ],
+					text: {
+						button: "Añadir al carrito"
+					}
+				},
+				cart: {
+					startOpen: true,
+					events: {
+						openCheckout: function(cart) {
+							cart.checkout = null;
+							var input = [
+								{
+									variantId: Buffer.from("gid://shopify/ProductVariant/36415912509604").toString(
+										"base64"
+									),
+									quantity: 1,
+									customAttributes: [
+										{
+											key: "Link",
+											value:
+												"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/"
+										}
+									]
+								}
+							];
+							client.checkout.create().then((checkout) => {
+								client.checkout.addLineItems(checkout.id, input).then((e) => {
+									window.parent.location.href = e.webUrl;
+								});
+							});
+							//console.log(cart.props.client);
+						}
+					},
+					styles: {
+						button: {
+							"font-family": "Montserrat, sans-serif",
+							"font-size": "16px",
+							"padding-top": "16px",
+							"padding-bottom": "16px",
+							top: "0px",
+							color: "#000000",
+							":hover": {
+								color: "#000000",
+								"background-color": "#e6e6e6"
+							},
+							"background-color": "#ffffff",
+							":focus": {
+								"background-color": "#e6e6e6"
+							}
+						},
+						title: {
+							color: "#252424"
+						},
+						header: {
+							color: "#252424"
+						},
+						lineItems: {
+							color: "#252424"
+						},
+						subtotalText: {
+							color: "#252424"
+						},
+						subtotal: {
+							color: "#252424"
+						},
+						notice: {
+							color: "#252424"
+						},
+						currency: {
+							color: "#252424"
+						},
+						close: {
+							color: "#252424",
+							":hover": {
+								color: "#252424"
+							}
+						},
+						empty: {
+							color: "#252424"
+						},
+						noteDescription: {
+							color: "#252424"
+						},
+						discountText: {
+							color: "#252424"
+						},
+						discountIcon: {
+							fill: "#252424"
+						},
+						discountAmount: {
+							color: "#252424"
+						}
+					},
+					text: {
+						title: "Carrito",
+						total: "Subtotal",
+						empty: "Tu carrito está vacío",
+						button: "TRAMITAR",
+						notice: "Los costes de envío o descuentos serán calculados en el momento del pago."
+					},
+
+					popup: true,
+					googleFonts: [ "Montserrat" ]
+				},
+				toggle: {
+					styles: {
+						toggle: {
+							"font-family": "Montserrat, sans-serif",
+							"background-color": "#ffffff",
+							":hover": {
+								"background-color": "#e6e6e6"
+							},
+							":focus": {
+								"background-color": "#e6e6e6"
+							}
+						},
+						count: {
+							"font-size": "16px",
+							color: "#000000",
+							":hover": {
+								color: "#000000"
+							}
+						},
+						iconPath: {
+							fill: "#000000"
+						}
+					},
+					googleFonts: [ "Montserrat" ]
+				},
+				lineItem: {
+					order: [ "image", "title", "variantTitle", "price", "priceWithDiscounts", "quantity" ],
+					styles: {
+						variantTitle: {
+							color: "#252424"
+						},
+						title: {
+							color: "#252424"
+						},
+						price: {
+							color: "#252424"
+						},
+						fullPrice: {
+							color: "#252424"
+						},
+						discount: {
+							color: "#252424"
+						},
+						discountIcon: {
+							fill: "#252424"
+						},
+						quantity: {
+							color: "#252424"
+						},
+						quantityIncrement: {
+							color: "#252424",
+							"border-color": "#252424"
+						},
+						quantityDecrement: {
+							color: "#252424",
+							"border-color": "#252424"
+						},
+						quantityInput: {
+							color: "#252424",
+							"border-color": "#252424"
+						}
+					}
+				}
+			}
+		});
+	};
 
 	var config = {
 		apiKey: "AIzaSyDEjGJmen7XuwDCFqveAH8kJ4Fhk65Ewpo",
@@ -296,10 +564,12 @@ const Platos = forwardRef((props, ref) => {
 			enlace = null;
 		} else {
 			data = links.filter((item) => item.id === name);
+
 			if (name !== "" && data !== undefined) {
 				enlace = data[0].link;
 			}
 		}
+		aniadir();
 	};
 
 	const setFondoA = (id) => {
@@ -474,13 +744,8 @@ const Platos = forwardRef((props, ref) => {
 			<Button id="tramitar" variant="outline-dark" onClick={redirect} disabled={limite === 1 ? "true" : ""}>
 				TRAMITAR VAJILLA
 			</Button>
-			<Button
-				onClick={(e) => {
-					axios.post(`http://nuriapozasceramic.com/cart/add/?id=36415912509604`).then((res) => {});
-				}}
-			>
-				CARRITO
-			</Button>
+
+			<div id="carrito" />
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
 				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>
 					<i id="iconZoom" className="fa fa-search-plus fa-lg" />
