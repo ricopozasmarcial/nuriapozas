@@ -21,7 +21,7 @@ export const DivFrame = styled.div`
 	overflow: auto;
 	height: 100%;
 	width: 100%;
-	margin-top: 10%;
+	margin-top: 5%;
 `;
 
 export const H2Plato = styled.h2`
