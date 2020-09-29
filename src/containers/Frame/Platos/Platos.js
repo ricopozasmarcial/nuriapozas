@@ -4,6 +4,8 @@ import Draggable from "react-draggable";
 import * as firebase from "firebase";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
+import axios from "axios";
+
 import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -471,6 +473,13 @@ const Platos = forwardRef((props, ref) => {
 			</Alert>
 			<Button id="tramitar" variant="outline-dark" onClick={redirect} disabled={limite === 1 ? "true" : ""}>
 				TRAMITAR VAJILLA
+			</Button>
+			<Button
+				onClick={(e) => {
+					axios.post(`http://nuriapozasceramic.com/cart/add/?id=36415912509604`).then((res) => {});
+				}}
+			>
+				CARRITO
 			</Button>
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
 				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>
