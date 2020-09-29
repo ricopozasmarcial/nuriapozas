@@ -86,6 +86,8 @@ function App() {
 		document.getElementById("anterior").disabled = true;
 		document.getElementById("tramitar").disabled = true;
 		ref.current.setFondoA(e.target.id);
+		
+
 	};
 
 	const showImagenes = (e) => {
@@ -477,8 +479,9 @@ function App() {
 																			position: "absolute",
 																			cursor: "pointer"
 																		}}
+
 																		onClick={showTab}
-																		id="url('img/fondoPlato.png')"
+																		id="1"
 																	>
 																		Plato 27cm
 																	</Badge>
@@ -486,7 +489,7 @@ function App() {
 																<Image
 																	src="img/fondoPlato27Peq.png"
 																	onClick={showTab}
-																	id="url('img/fondoPlato.png')"
+																	id="1"
 																	style={{ cursor: "pointer" }}
 																	rounded
 																/>
@@ -519,7 +522,7 @@ function App() {
 																			cursor: "pointer"
 																		}}
 																		onClick={showTab}
-																		id="url('img/fondoPlato.png')"
+																	id="2"
 																	>
 																		Plato 22cm
 																	</Badge>
@@ -527,7 +530,9 @@ function App() {
 																<Image
 																	src="img/fondoPlato22Peq.png"
 																	onClick={showTab}
-																	id="url('img/fondoPlato.png')"
+																																			
+																id="2"
+
 																	style={{ cursor: "pointer", marginTop: "10px" }}
 																	rounded
 																/>
@@ -558,7 +563,8 @@ function App() {
 																			cursor: "pointer"
 																		}}
 																		onClick={showTab}
-																		id="url('img/cuenco.png')"
+																		id="3"
+																		
 																	>
 																		Cuenco 15cm
 																	</Badge>
@@ -566,7 +572,7 @@ function App() {
 																<Image
 																	src="img/cuencoPeq.png"
 																	onClick={showTab}
-																	id="url('img/cuenco.png')"
+																	id="3"
 																	style={{ cursor: "pointer", marginTop: "20px" }}
 																	rounded
 																/>

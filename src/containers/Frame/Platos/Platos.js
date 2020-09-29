@@ -17,7 +17,7 @@ var pru = 'url("img/fondoPlato.png")';
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
-	const [ coor, setCoor ] = useState("");
+	const [ links, setLinks ] = useState([]);
 	const [ limite, setLimite ] = useState();
 	const [ left, setLeft ] = useState("0px");
 	const [ show, setShow ] = useState(false);
@@ -44,80 +44,229 @@ const Platos = forwardRef((props, ref) => {
 
 	var storage = firebase.storage();
 	// Create a root reference
-
-	const links = [
+	const linksPlatoG = [
 		{
 			id: "prueba2",
-			link: "36196470456484"
+			link: "36415879479460"
 		},
 		{
 			id: "prueba3",
-			link: "36196478288036"
+			link: "36417483604132"
 		},
 		{
 			id: "prueba4",
-			link: "36196485759140"
+			link: "36417322025124"
 		},
 		{
 			id: "prueba5",
-			link: "36196485759140"
+			link: "36417454833828"
 		},
 		{
 			id: "prueba6",
-			link: "36196485759140"
+			link: "36415967592612"
 		},
 		{
 			id: "prueba7",
-			link: "36196485759140"
+			link: "36417290141860"
 		},
 		{
 			id: "prueba8",
-			link: "36196485759140"
+			link: "36415854313636"
 		},
 		{
 			id: "prueba9",
-			link: "36196485759140"
+			link: "36417336377508"
 		},
 		{
 			id: "prueba10",
-			link: "36196485759140"
+			link: "36417457225892"
 		},
 		{
 			id: "prueba11",
-			link: "36196485759140"
+			link: "36417254228132"
 		},
 		{
 			id: "prueba12",
-			link: "36196485759140"
+			link: "36415864504484"
 		},
 		{
 			id: "prueba13",
-			link: "36196485759140"
+			link: "36417393918116"
 		},
 		{
 			id: "prueba14",
-			link: "36196485759140"
+			link: "36417250492580"
 		},
 		{
 			id: "prueba15",
-			link: "36196485759140"
+			link: "36417285292196"
 		},
 		{
 			id: "prueba16",
-			link: "36196485759140"
+			link: "36417486225572"
 		},
 		{
 			id: "prueba17",
-			link: "36196485759140"
+			link: "36417399390372"
 		},
 
 		{
 			id: "prueba19",
-			link: "36196485759140"
+			link: "36417512308900"
 		},
 		{
 			id: "prueba20",
-			link: "36196485759140"
+			link: "36417514930340"
+		}
+	];
+	const linksPlatoP = [
+		{
+			id: "prueba2",
+			link: "36415879479460"
+		},
+		{
+			id: "prueba3",
+			link: "36417483604132"
+		},
+		{
+			id: "prueba4",
+			link: "36417322025124"
+		},
+		{
+			id: "prueba5",
+			link: "36417454833828"
+		},
+		{
+			id: "prueba6",
+			link: "36415967592612"
+		},
+		{
+			id: "prueba7",
+			link: "36417290141860"
+		},
+		{
+			id: "prueba8",
+			link: "36415854313636"
+		},
+		{
+			id: "prueba9",
+			link: "36417336377508"
+		},
+		{
+			id: "prueba10",
+			link: "36417457225892"
+		},
+		{
+			id: "prueba11",
+			link: "36417254228132"
+		},
+		{
+			id: "prueba12",
+			link: "36415864504484"
+		},
+		{
+			id: "prueba13",
+			link: "36417393918116"
+		},
+		{
+			id: "prueba14",
+			link: "36417250492580"
+		},
+		{
+			id: "prueba15",
+			link: "36417285292196"
+		},
+		{
+			id: "prueba16",
+			link: "36417486225572"
+		},
+		{
+			id: "prueba17",
+			link: "36417399390372"
+		},
+
+		{
+			id: "prueba19",
+			link: "36417512308900"
+		},
+		{
+			id: "prueba20",
+			link: "36417514930340"
+		}
+	];
+	const linksCuencos = [
+		{
+			id: "prueba2",
+			link: "36415879479460"
+		},
+		{
+			id: "prueba3",
+			link: "36417483604132"
+		},
+		{
+			id: "prueba4",
+			link: "36417322025124"
+		},
+		{
+			id: "prueba5",
+			link: "36417454833828"
+		},
+		{
+			id: "prueba6",
+			link: "36415967592612"
+		},
+		{
+			id: "prueba7",
+			link: "36417290141860"
+		},
+		{
+			id: "prueba8",
+			link: "36415854313636"
+		},
+		{
+			id: "prueba9",
+			link: "36417336377508"
+		},
+		{
+			id: "prueba10",
+			link: "36417457225892"
+		},
+		{
+			id: "prueba11",
+			link: "36417254228132"
+		},
+		{
+			id: "prueba12",
+			link: "36415864504484"
+		},
+		{
+			id: "prueba13",
+			link: "36417393918116"
+		},
+		{
+			id: "prueba14",
+			link: "36417250492580"
+		},
+		{
+			id: "prueba15",
+			link: "36417285292196"
+		},
+		{
+			id: "prueba16",
+			link: "36417486225572"
+		},
+		{
+			id: "prueba17",
+			link: "36417399390372"
+		},
+
+		{
+			id: "prueba19",
+			link: "36417512308900"
+		},
+		{
+			id: "prueba20",
+			link: "36417514930340"
 		}
 	];
 
@@ -141,19 +290,35 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move2").style.width = w;
 		document.getElementById("move2").style.height = h;
 		setLimite(limite);
-		data = links.filter((item) => item.id === name);
-		if (name !== "" && data !== undefined) {
-			enlace = data[0].link;
-		}
 		if (name === "") {
 			enlace = null;
 		}
+		else{			
+		data = links.filter((item) => item.id === name);
+		if (name !== "" && data !== undefined) {
+			enlace = data[0].link;
+		}}
+		
 	};
 
-	const setFondoA = (fondo) => {
-		document.getElementById("fondo").style.backgroundImage = fondo;
+	const setFondoA = (id) => {
+		
+		if(id==="1"){
+			setLinks(linksPlatoG);
+			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
+		}
+		else if(id==="2"){
+			setLinks(linksPlatoP);
+			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
+		}
+		else if(id==="3"){
+			setLinks(linksCuencos);
+			document.getElementById("fondo").style.backgroundImage = "url('img/cuenco.png')";
+		}
+
 	};
 
+	
 	const zoomOut = () => {
 		let str = document.getElementById("move").style.height.toString();
 		var alturaAux = str.replace("px", "");
