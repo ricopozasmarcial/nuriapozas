@@ -655,7 +655,7 @@ function App() {
 										className={classes.gridList}
 										className="third"
 									>
-										{tileData.sort((a, b) => a.colection.localeCompare(b.colection)).map((tile) => (
+										{tileData.map((tile) => (
 											<GridListTile key={tile.img}>
 												<img
 													src={tile.img}

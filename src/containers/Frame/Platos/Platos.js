@@ -47,151 +47,151 @@ const Platos = forwardRef((props, ref) => {
 	const linksPlatoG = [
 		{
 			id: "prueba2",
-			link: "36415879479460"
+			link: "36415912509604"
 		},
 		{
 			id: "prueba3",
-			link: "36417483604132"
+			link: "36417471479972"
 		},
 		{
 			id: "prueba4",
-			link: "36417322025124"
+			link: "36417316847780"
 		},
 		{
 			id: "prueba5",
-			link: "36417454833828"
+			link: "36417447592100"
 		},
 		{
 			id: "prueba6",
-			link: "36415967592612"
+			link: "36415973163172"
 		},
 		{
 			id: "prueba7",
-			link: "36417290141860"
+			link: "36417295089828"
 		},
 		{
 			id: "prueba8",
-			link: "36415854313636"
+			link: "36196485759140"
 		},
 		{
 			id: "prueba9",
-			link: "36417336377508"
+			link: "36417368096932"
 		},
 		{
 			id: "prueba10",
-			link: "36417457225892"
+			link: "36417461420196"
 		},
 		{
 			id: "prueba11",
-			link: "36417254228132"
+			link: "36417258913956"
 		},
 		{
 			id: "prueba12",
-			link: "36415864504484"
+			link: "36415931318436"
 		},
 		{
 			id: "prueba13",
-			link: "36417393918116"
+			link: "36417386381476"
 		},
 		{
 			id: "prueba14",
-			link: "36417250492580"
+			link: "36417247969444"
 		},
 		{
 			id: "prueba15",
-			link: "36417285292196"
+			link: "36417283588260"
 		},
 		{
 			id: "prueba16",
-			link: "36417486225572"
+			link: "36417490649252"
 		},
 		{
 			id: "prueba17",
-			link: "36417399390372"
+			link: "36417405780132"
 		},
 
 		{
 			id: "prueba19",
-			link: "36417512308900"
+			link: "36417507852452"
 		},
 		{
 			id: "prueba20",
-			link: "36417514930340"
+			link: "36417516568740"
 		}
 	];
 	const linksPlatoP = [
 		{
 			id: "prueba2",
-			link: "36415879479460"
+			link: "36415916867748"
 		},
 		{
 			id: "prueba3",
-			link: "36417483604132"
+			link: "36417467580580"
 		},
 		{
 			id: "prueba4",
-			link: "36417322025124"
+			link: "36417300136100"
 		},
 		{
 			id: "prueba5",
-			link: "36417454833828"
+			link: "36417430749348"
 		},
 		{
 			id: "prueba6",
-			link: "36415967592612"
+			link: "36415978930340"
 		},
 		{
 			id: "prueba7",
-			link: "36417290141860"
+			link: "36417299185828"
 		},
 		{
 			id: "prueba8",
-			link: "36415854313636"
+			link: "36415845335204"
 		},
 		{
 			id: "prueba9",
-			link: "36417336377508"
+			link: "36417370620068"
 		},
 		{
 			id: "prueba10",
-			link: "36417457225892"
+			link: "36417464139940"
 		},
 		{
 			id: "prueba11",
-			link: "36417254228132"
+			link: "36417263435940"
 		},
 		{
 			id: "prueba12",
-			link: "36415864504484"
+			link: "36415940821156"
 		},
 		{
 			id: "prueba13",
-			link: "36417393918116"
+			link: "36417382056100"
 		},
 		{
 			id: "prueba14",
-			link: "36417250492580"
+			link: "36417231356068"
 		},
 		{
 			id: "prueba15",
-			link: "36417285292196"
+			link: "36417272283300"
 		},
 		{
 			id: "prueba16",
-			link: "36417486225572"
+			link: "36417493467300"
 		},
 		{
 			id: "prueba17",
-			link: "36417399390372"
+			link: "36417409613988"
 		},
 
 		{
 			id: "prueba19",
-			link: "36417512308900"
+			link: "36417505427620"
 		},
 		{
 			id: "prueba20",
-			link: "36417514930340"
+			link: "36417521025188"
 		}
 	];
 	const linksCuencos = [
@@ -292,33 +292,27 @@ const Platos = forwardRef((props, ref) => {
 		setLimite(limite);
 		if (name === "") {
 			enlace = null;
+		} else {
+			data = links.filter((item) => item.id === name);
+			if (name !== "" && data !== undefined) {
+				enlace = data[0].link;
+			}
 		}
-		else{			
-		data = links.filter((item) => item.id === name);
-		if (name !== "" && data !== undefined) {
-			enlace = data[0].link;
-		}}
-		
 	};
 
 	const setFondoA = (id) => {
-		
-		if(id==="1"){
+		if (id === "1") {
 			setLinks(linksPlatoG);
 			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
-		}
-		else if(id==="2"){
+		} else if (id === "2") {
 			setLinks(linksPlatoP);
 			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
-		}
-		else if(id==="3"){
+		} else if (id === "3") {
 			setLinks(linksCuencos);
 			document.getElementById("fondo").style.backgroundImage = "url('img/cuenco.png')";
 		}
-
 	};
 
-	
 	const zoomOut = () => {
 		let str = document.getElementById("move").style.height.toString();
 		var alturaAux = str.replace("px", "");
@@ -369,8 +363,6 @@ const Platos = forwardRef((props, ref) => {
 					imagen: imgData
 				};
 			}
-
-			console.log(productos);
 		});
 	};
 

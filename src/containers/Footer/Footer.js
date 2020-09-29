@@ -58,7 +58,7 @@ const Footer = () => {
 							&copy; {new Date().getFullYear()}
 							<a href="https://www.nuriapozasceramic.com">, Nuria Pozas </a>
 						</MDBContainer>
-						<img src="img/pago.png" draggable="false" />
+						<img src="img/pago.PNG" draggable="false" />
 					</MDBCol>
 				</MDBRow>
 			</MDBContainer>
