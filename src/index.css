@@ -71,13 +71,8 @@ li a:hover{
 		margin-top: 20px;
 		margin-left:0px !important;
 	}
-	#trash{
-		font-size: 12px;
-		display: inline;
-		margin-right: 30%;
-		
-		
-	}
+	
+	
 }
 
 @media (max-width: 300px) {
@@ -89,13 +84,8 @@ li a:hover{
 		margin-top: 20px;
 		margin-left:0px !important;
 	}
-	#trash{
-		font-size: 10px;
-		display: inline;
-		margin-right: 30%;
+
 		
-		
-	}
 	
 }
 
@@ -170,11 +160,7 @@ hr {
 		margin-left:35%;
 }
 
-#trash {
-	margin-left:90%;
-	margin-top: 5px;
 
-}
 
 #zoomMinus {
 	border: none;

@@ -474,8 +474,9 @@ function App() {
 											style={{
 												border: "black",
 												cursor: "pointer",
-												marginRight: "90%",
-												marginTop: "10px"
+												marginRight: "70%",
+												marginTop: "5px",
+												display: "inline-block"
 											}}
 											onClick={() => {
 												setKey(1);
@@ -486,6 +487,7 @@ function App() {
 									<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
 										<Button
 											id="trash"
+											style={{ display: "inline-block", border: "none" }}
 											className="pepe"
 											variant="outline-dark"
 											onClick={deleteImage}
@@ -493,6 +495,7 @@ function App() {
 											<i id="iconZoom" className="fa fa-trash fa-lg" />
 										</Button>
 									</OverlayTrigger>
+
 									<DivPlatos className="four">
 										<Platos ref={ref} />
 									</DivPlatos>
