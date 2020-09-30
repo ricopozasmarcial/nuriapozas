@@ -106,7 +106,6 @@ body::-webkit-scrollbar {
 	background: darkgray;
 	border-radius: 20px;
   }
-  /* width */
   #context2::-webkit-scrollbar {
 	width: 15px;
   }
