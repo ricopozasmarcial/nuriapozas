@@ -37,10 +37,9 @@ export const H2Select = styled.h2`
 	º: relative;
 	font-weight: 600;
 	color: black;
-	margin-top: 40px;
 	font-size: 15px;
 	letter-spacing: 2px;
-
+	text-align: right;
 	background-color: none;
 `;
 

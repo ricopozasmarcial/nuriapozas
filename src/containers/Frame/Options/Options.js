@@ -305,7 +305,7 @@ function App() {
 								defaultActiveKey="1"
 								activeKey={key}
 								id="uncontrolled-tab-example"
-								style={{ marginTop: "75px" }}
+								style={{ marginTop: "35px" }}
 							>
 								<Tab eventKey="1" tabClassName="d-none" title="Elige" className="second2">
 									<Jumbotron fluid style={{ marginTop: "10px" }}>
