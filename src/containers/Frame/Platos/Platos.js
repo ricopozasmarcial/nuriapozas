@@ -143,7 +143,6 @@ const Platos = forwardRef((props, ref) => {
 				cart: {
 					events: {
 						openCheckout: function(cart) {
-							console.log(productos);
 							upload();
 						}
 					},
