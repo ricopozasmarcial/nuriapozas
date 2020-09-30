@@ -19,19 +19,23 @@ const Footer = () => {
 					<MDBCol md="2" style={{ marginLeft: "20%", marginRight: "0px", padding: "none" }}>
 						<ul>
 							<li className="list-unstyled">
-								<a href="https://nuriapozasceramic.com/policies/terms-of-service">
+								<a target="_parent" href="https://nuriapozasceramic.com/policies/terms-of-service">
 									Términos del servicio
 								</a>
 							</li>
 
 							<li className="list-unstyled">
-								<a href="https://nuriapozasceramic.com/policies/refund-policy">Política de reembolso</a>
+								<a target="_parent" href="https://nuriapozasceramic.com/policies/refund-policy">
+									Política de reembolso
+								</a>
 							</li>
 							<li className="list-unstyled">
-								<a href="https://nuriapozasceramic.com/policies/legal-notice">Aviso legal</a>
+								<a target="_parent" href="https://nuriapozasceramic.com/policies/legal-notice">
+									Aviso legal
+								</a>
 							</li>
 							<li className="list-unstyled">
-								<a href="https://nuriapozasceramic.com/policies/privacy-policy">
+								<a target="_parent" href="https://nuriapozasceramic.com/policies/privacy-policy">
 									Política de privacidad
 								</a>
 							</li>
@@ -40,13 +44,13 @@ const Footer = () => {
 					<MDBCol md="2" style={{ padding: "none" }}>
 						<ul>
 							<li className="list-unstyled">
-								<a href="https://www.facebook.com/nuriapozasceramica">
+								<a target="_parent" href="https://www.facebook.com/nuriapozasceramica">
 									{" "}
 									<i class="fa fa-facebook-f"> </i> Facebook
 								</a>
 							</li>
 							<li className="list-unstyled">
-								<a href="https://www.instagram.com/nuria_pozas/?hl=es">
+								<a target="_parent" href="https://www.instagram.com/nuria_pozas/?hl=es">
 									{" "}
 									<i class="fa fa-instagram"> </i> Instagram
 								</a>
@@ -56,7 +60,9 @@ const Footer = () => {
 					<MDBCol md="2" style={{ padding: "none", justifyItems: "right" }}>
 						<MDBContainer fluid id="fff">
 							&copy; {new Date().getFullYear()}
-							<a href="https://www.nuriapozasceramic.com">, Nuria Pozas </a>
+							<a target="_parent" href="https://www.nuriapozasceramic.com">
+								, Nuria Pozas{" "}
+							</a>
 						</MDBContainer>
 						<img src="img/pago.PNG" draggable="false" />
 					</MDBCol>
