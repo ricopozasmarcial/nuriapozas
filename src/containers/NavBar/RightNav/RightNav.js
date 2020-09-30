@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { Nav } from "react-bootstrap";
-
+import { Nav, Button, Overlay } from "react-bootstrap";
+import Client from "shopify-buy";
+import ShopifyBuy from "@shopify/buy-button-js";
 const Ul = styled.ul`
 	list-style: none;
 	display: flex;
@@ -35,8 +36,37 @@ const elementos = {
 	marginTop: "20px",
 	marginRight: "10px"
 };
+const client = Client.buildClient({
+	domain: "nuria-pozas.myshopify.com",
+	storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
+});
+var abierto = false;
+var ui = ShopifyBuy.UI.init(client);
 
 const RightNav = ({ open }) => {
+	const abrir = () => {
+		if (ui.components.cart[0] === undefined || ui.components.cart[0] === null) {
+			setShow(true);
+			setTimeout(function() {
+				setShow(false);
+			}, 1000);
+		} else {
+			setShow(false);
+			if (!abierto) {
+				setTimeout(function() {
+					ui.openCart();
+				}, 5);
+				abierto = true;
+			} else {
+				ui.components.cart[0].isVisible = false;
+				abierto = false;
+			}
+		}
+	};
+	const [ show, setShow ] = useState(false);
+
+	const target = useRef(null);
+
 	return (
 		<Ul open={open}>
 			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/" style={elementos}>
@@ -48,12 +78,38 @@ const RightNav = ({ open }) => {
 			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/pages/creatuvajilla" style={elementos}>
 				VAJILLA A MEDIDA
 			</Nav.Link>
-
-			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/cart" style={elementos}>
+			<Nav.Link
+				ref={target}
+				target="_parent"
+				href=""
+				style={{
+					color: "black",
+					fontSize: "14px",
+					marginTop: "20px",
+					marginRight: "10px",
+					padding: "5px"
+				}}
+			>
 				<div>
-					<i className="fa fa-shopping-cart" />
+					<i className="fa fa-shopping-cart  fa-lg" onClick={abrir} />
 				</div>
 			</Nav.Link>
+			<Overlay target={target.current} show={show} placement="right">
+				{({ placement, arrowProps, show: _show, popper, ...props }) => (
+					<div
+						{...props}
+						style={{
+							backgroundColor: "white",
+							padding: "2px 10px",
+							color: "black",
+							borderRadius: 3,
+							...props.style
+						}}
+					>
+						Tu carrito está vacío
+					</div>
+				)}
+			</Overlay>
 		</Ul>
 	);
 };

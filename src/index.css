@@ -44,14 +44,32 @@ li a:hover{
 	
 	text-decoration: none;
 }
+@media (max-width: 1500px) {
+	
+#carrito{
+	font-size: 12px;
+		width: 100%;
+		margin-left:30% !important;
+}
+}
+
+@media (max-width: 1300px) {
+	
+	#carrito{
+		font-size: 12px;
+			width: 100%;
+			margin-left:25% !important;
+	}
+	}
 
 @media (max-width: 800px) {
 	
-	#tramitar{
+	#carrito{
 		font-size: 12px;
 		width: 100%;
 		margin-bottom: 20px;
 		margin-top: 20px;
+		margin-left:0px !important;
 	}
 	#trash{
 		font-size: 12px;
@@ -64,11 +82,12 @@ li a:hover{
 
 @media (max-width: 300px) {
 	
-	#tramitar{
+	#carrito{
 		font-size: 10px;
 		width: 100%;
 		margin-bottom: 20px;
 		margin-top: 20px;
+		margin-left:0px !important;
 	}
 	#trash{
 		font-size: 10px;
@@ -77,6 +96,7 @@ li a:hover{
 		
 		
 	}
+	
 }
 
 /* width */
@@ -98,19 +118,19 @@ body::-webkit-scrollbar {
   }
   /* width */
   #context2::-webkit-scrollbar {
-	width: 10px;
+	width: 0px;
   }
   
   /* Track */
   #context2::-webkit-scrollbar-track {
 	box-shadow: inset 0 0 5px white;
-	border-radius: 10px;
+	border-radius: 0px;
   }
   
   /* Handle */
   #context2::-webkit-scrollbar-thumb {
 	background: darkgray ;
-	border-radius: 10px;
+	border-radius: 0px;
   }
 
 
@@ -130,13 +150,7 @@ body::-webkit-scrollbar {
 
 
 
-#zoom {
-	border: none;
-	border-radius: 50%;
-	margin-top: 20px;
 
-	padding: none;
-}
 
 hr {
 	color: black;
@@ -150,16 +164,14 @@ hr {
 	z-index: 155555;
 }
 
-#tramitar {
-	margin-right:30%;
-	margin-top: 20px;
-
-	padding: none;
+#carrito{
+	font-size: 12px;
+		width: 100%;
+		margin-left:35%;
 }
 
 #trash {
 	margin-left:90%;
-
 	margin-top: 5px;
 
 }
@@ -167,8 +179,20 @@ hr {
 #zoomMinus {
 	border: none;
 	border-radius: 50%;
-	margin-top: 20px;
-
+	margin-bottom: 25px;
+	padding: none;
+}
+#zoom {
+	border: none;	
+	border-radius: 50%;
+	margin-bottom: 25px;
+	padding: none;
+}
+#zoom1{
+	border: none;	
+	border-radius: 50%;
+	margin-bottom: 25px;
+	margin-right: 10%;
 	padding: none;
 }
 #zoom:hover {

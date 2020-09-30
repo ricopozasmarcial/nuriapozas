@@ -71,11 +71,6 @@ function App() {
 		listina[actual] = i;
 		setFotos(listina);
 		ref.current.showToast(e.target.id, i.top, i.left, i.width, i.height, i.angle, limite);
-
-		console.log(limite);
-		if (limite === "1" || actual === limite) {
-			document.getElementById("tramitar").disabled = false;
-		}
 	};
 
 	const showTab = (e) => {
@@ -83,11 +78,8 @@ function App() {
 		setKey(2);
 		elementos = null;
 		setDibujos(elementos);
-		document.getElementById("anterior").disabled = true;
-		document.getElementById("tramitar").disabled = true;
-		ref.current.setFondoA(e.target.id);
-		
 
+		ref.current.setFondoA(e.target.id);
 	};
 
 	const showImagenes = (e) => {
@@ -100,18 +92,15 @@ function App() {
 	};
 
 	const handleJoyrideCallback = (event) => {
-		if (event.lifecycle === "tooltip" && event.index === 0) {
-			setMostrarImagenes(null);
+		if (event.type === "step:after" && event.index === 1) {
+			ref.current.showToast("prueba4", 0, 0, "500px", "500px", 1, 1);
 		}
-		if (event.type === "step:after" && event.index === 4) {
-			ref.current.showToast("prueba4", 0, 0, "500px", "500px");
-		}
-		if (event.action === "next" && event.index === 3) {
+		if (event.index === 1) {
 			setShow(false);
 			setKey(2);
 			elementos = null;
 			setDibujos(elementos);
-			ref.current.setFondoA("url('img/fondoPlato.png')");
+			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
 		}
 		if (event.status === "finished") {
 			setShow(true);
@@ -126,114 +115,26 @@ function App() {
 		}
 	};
 
-	const previousImage = () => {
-		if (fotos[actual] !== undefined) {
-			ref.current.crearProducto(fotos[actual].name, actual);
-			var childPos = document.getElementById("move2").getBoundingClientRect();
-			var parentPos = document.getElementById("fondo").getBoundingClientRect();
-			var lista2 = fotos;
-			lista2[actual] = {
-				name: fotos[actual].name,
-				top: childPos.top - parentPos.top,
-				left: childPos.left - parentPos.left,
-				angle: document.getElementById("move").style.transform,
-				width: document.getElementById("move").style.width,
-				height: document.getElementById("move").style.height
-			};
-			setFotos(lista2);
-		}
-		if (fotos[actual - 1] === undefined) ref.current.showToast("", 0, 0, "300px", "300px", "rotate(000 deg)");
-		else {
-			ref.current.showToast(
-				fotos[actual - 1].name,
-				fotos[actual - 1].top,
-				fotos[actual - 1].left,
-				fotos[actual - 1].width,
-				fotos[actual - 1].height,
-				fotos[actual - 1].angle
-			);
-		}
-		if (actual === 0) {
-			document.getElementById("anterior").disabled = true;
-		} else {
-			setActual(actual - 1);
-			document.getElementById("siguiente").disabled = false;
-			document.getElementById("tramitar").disabled = false;
-		}
-	};
-
-	const nextImage = () => {
-		var childPos2 = document.getElementById("move2").getBoundingClientRect();
-		var parentPos2 = document.getElementById("fondo").getBoundingClientRect();
-		if (fotos[actual] !== undefined) {
-			ref.current.crearProducto(fotos[actual].name, actual);
-			var lista = fotos;
-			lista[actual] = {
-				name: fotos[actual].name,
-				top: childPos2.top - parentPos2.top,
-				left: childPos2.left - parentPos2.left,
-				angle: document.getElementById("move").style.transform,
-				width: document.getElementById("move").style.width,
-				height: document.getElementById("move").style.height
-			};
-			setFotos(lista);
-		}
-		if (fotos[actual + 1] === undefined) {
-			ref.current.showToast("", 0, 0, "300px", "300px", "rotate(000 deg)");
-		} else {
-			ref.current.showToast(
-				fotos[actual + 1].name,
-				fotos[actual + 1].top,
-				fotos[actual + 1].left,
-				fotos[actual + 1].width,
-				fotos[actual + 1].height,
-				fotos[actual + 1].angle
-			);
-		}
-		if (actual < limite - 1) {
-			document.getElementById("anterior").disabled = false;
-			setActual(actual + 1);
-			if (actual === limite - 2) {
-				document.getElementById("siguiente").disabled = true;
-				document.getElementById("tramitar").disabled = false;
-			}
-		}
-	};
-
 	const deleteImage = () => {
-		const newList = fotos;
-		newList[actual] = undefined;
-		setFotos(newList);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("move2").style.transform = "translate(" + 0 + "px," + 0 + "px)";
 		document.getElementById("move").style.transform = "translate(" + 0 + "px," + 0 + "px)";
-		document.getElementById("tramitar").disabled = true;
-		ref.current.crearProducto(null, actual);
+		document.getElementById("carrito").innerHTML = "";
 	};
 
 	const classes = useStyles();
 	const steps = [
 		{
-			target: ".my-1",
-			content: "Primero selecciona la cantidad piezas que compondrán tu vajilla.",
-			disableBeacon: true
-		},
-
-		{
 			target: ".second",
 			disableBeacon: true,
 			content:
-				"Selecciona el tipo de vajilla haciendo click en la imagen correspondiente.\n\nUna vez selecciones ambos te llevará a la página de personalización de la/s pieza/s."
+				"Selecciona el tipo pieza haciendo click en la imagen correspondiente.\n\nUna vez seleccionada te llevará a la página de personalización."
 		},
-		{
-			target: ".second2",
-			disableBeacon: true,
-			content: "Sin los dos pasos previos no podrás editar las piezas de la vajilla."
-		},
+
 		{
 			target: "body",
 			disableBeacon: true,
-			content: "Aqui es donde podrás personalizar la pieza o piezas escogidas."
+			content: "Aqui es donde podrás personalizar la pieza."
 		},
 		{
 			target: ".third",
@@ -248,8 +149,12 @@ function App() {
 		{
 			target: "#zoom",
 			disableBeacon: true,
-			content:
-				"Puedes girar, aumentar y disminuir el tamaño del dibujo con estos controles. También puedes eliminar el diseño"
+			content: "Puedes girar, aumentar y disminuir el tamaño del dibujo con estos controles."
+		},
+		{
+			target: "#trash",
+			disableBeacon: true,
+			content: "También puedes eliminar el diseño aquí o haciendo click en otra imagen."
 		}
 	];
 
@@ -328,37 +233,37 @@ function App() {
 		},
 		{
 			img: "img/prueba5.png",
-			title: "Llena",
+			title: "Luna llena",
 			id: "prueba5",
 			colection: "Noche"
 		},
 		{
 			img: "img/prueba10.png",
-			title: "Creciente",
+			title: "Luna creciente",
 			id: "prueba10",
 			colection: "Noche"
 		},
 		{
 			img: "img/prueba2.png",
-			title: "Flor",
+			title: "Nenúfar",
 			id: "prueba2",
 			colection: "Botánica"
 		},
 		{
 			img: "img/prueba6.png",
-			title: "Flor",
+			title: "Olivo",
 			id: "prueba6",
 			colection: "Botánica"
 		},
 		{
 			img: "img/prueba11.png",
-			title: "Flor",
+			title: "Calas",
 			id: "prueba11",
 			colection: "Botánica"
 		},
 		{
 			img: "img/prueba15.png",
-			title: "Flor",
+			title: "Blue",
 			id: "prueba15",
 			colection: "Botánica"
 		}
@@ -425,34 +330,7 @@ function App() {
 										</Container>
 
 										<div style={{ marginTop: "20px" }}>
-											<Form>
-												<Form.Row className="align-items-center">
-													<Col xs="auto" className="my-1">
-														<h6>Tamaño vajilla</h6>
-														<Form.Control
-															as="select"
-															className="mr-sm-2"
-															id="inlineFormCustomSelect"
-															onChange={showImagenes}
-															style={{
-																marginLeft: "20px",
-																border: "2px solid darkGrey",
-																backgroundColor: "#e9ecef"
-															}}
-														>
-															<option value="0">___</option>
-															<option value="1">x1 PIEZA </option>
-															<option value="2">x2 PIEZAS</option>
-															<option value="3">x3 PIEZAS</option>
-															<option value="4">x4 PIEZAS</option>
-															<option value="5">x5 PIEZAS</option>
-															<option value="6">x6 PIEZAS</option>
-														</Form.Control>
-													</Col>
-												</Form.Row>
-											</Form>
-
-											<Container style={mostrarImagenes} className="second">
+											<Container className="second">
 												<Row>
 													<Col xs={12} md={4}>
 														<OverlayTrigger
@@ -479,7 +357,6 @@ function App() {
 																			position: "absolute",
 																			cursor: "pointer"
 																		}}
-
 																		onClick={showTab}
 																		id="1"
 																	>
@@ -522,7 +399,7 @@ function App() {
 																			cursor: "pointer"
 																		}}
 																		onClick={showTab}
-																	id="2"
+																		id="2"
 																	>
 																		Plato 22cm
 																	</Badge>
@@ -530,9 +407,7 @@ function App() {
 																<Image
 																	src="img/fondoPlato22Peq.png"
 																	onClick={showTab}
-																																			
-																id="2"
-
+																	id="2"
 																	style={{ cursor: "pointer", marginTop: "10px" }}
 																	rounded
 																/>
@@ -564,7 +439,6 @@ function App() {
 																		}}
 																		onClick={showTab}
 																		id="3"
-																		
 																	>
 																		Cuenco 15cm
 																	</Badge>
@@ -586,19 +460,22 @@ function App() {
 								</Tab>
 
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
-									<i
-										className="fa fa-chevron-left fa-lg"
-										hidden={show}
-										style={{
-											cursor: "pointer",
-											marginRight: "90%",
-											marginTop: "10px"
-										}}
-										onClick={() => {
-											setKey(1);
-											setDibujos(elementos);
-										}}
-									/>{" "}
+									<OverlayTrigger placement="top" overlay={<Tooltip>Atrás</Tooltip>}>
+										<i
+											className="fa fa-chevron-left fa-lg"
+											hidden={show}
+											style={{
+												border: "black",
+												cursor: "pointer",
+												marginRight: "90%",
+												marginTop: "10px"
+											}}
+											onClick={() => {
+												setKey(1);
+												setDibujos(elementos);
+											}}
+										/>
+									</OverlayTrigger>
 									<OverlayTrigger placement="top" overlay={<Tooltip>Elimina el diseño</Tooltip>}>
 										<Button
 											id="trash"
@@ -611,33 +488,6 @@ function App() {
 									</OverlayTrigger>
 									<DivPlatos className="four">
 										<Platos ref={ref} />
-										<div
-											style={{
-												margin: "10px",
-												color: "black",
-												fontFamily: "Montserrat"
-											}}
-										>
-											{actual + 1} / {limite}
-										</div>
-										<Button
-											id="anterior"
-											variant="dark"
-											style={{ margin: "10px" }}
-											onClick={previousImage}
-											disabled={actual === 0 ? "true" : ""}
-										>
-											<i className="fa fa-chevron-left fa-lg" />{" "}
-										</Button>
-										<Button
-											id="siguiente"
-											variant="dark"
-											style={{ margin: "10px" }}
-											onClick={nextImage}
-											disabled={actual === limite - 1 ? "true" : ""}
-										>
-											<i className="fa fa-chevron-right fa-lg" />{" "}
-										</Button>
 									</DivPlatos>
 								</Tab>
 							</Tabs>

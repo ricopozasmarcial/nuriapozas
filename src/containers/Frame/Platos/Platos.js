@@ -5,7 +5,6 @@ import * as firebase from "firebase";
 import Alert from "react-bootstrap/Alert";
 import Client from "shopify-buy";
 import ShopifyBuy from "@shopify/buy-button-js";
-
 import { DivStyle, DivFrame, ImgStyle } from "./Platos.style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -30,15 +29,25 @@ const Platos = forwardRef((props, ref) => {
 	var data = null;
 
 	var ui = ShopifyBuy.UI.init(client);
-
-	const aniadir = () => {
+	const aniadir = (codigo, id) => {
 		document.getElementById("carrito").innerHTML = "";
 		ui.createComponent("product", {
-			id: "5740566708388",
+			id: id,
+			customAttributes: {
+				key: "Link de imagen",
+				value: "https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" + codigo + "?alt=media"
+			},
 			node: document.getElementById("carrito"),
 			moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
 			options: {
 				product: {
+					events: {
+						addVariantToCart: function(product) {
+							crearProducto(codigo);
+							document.getElementById("img").setAttribute("src", "");
+							document.getElementById("carrito").innerHTML = "";
+						}
+					},
 					contents: {
 						img: false,
 						title: false,
@@ -58,12 +67,12 @@ const Platos = forwardRef((props, ref) => {
 							"font-size": "16px",
 							"padding-top": "16px",
 							"padding-bottom": "16px",
-							color: "#000000",
+							color: "white",
 							":hover": {
 								color: "#000000",
 								"background-color": "#e6e6e6"
 							},
-							"background-color": "#ffffff",
+							"background-color": "black",
 							":focus": {
 								"background-color": "#e6e6e6"
 							}
@@ -74,10 +83,10 @@ const Platos = forwardRef((props, ref) => {
 							"padding-bottom": "16px"
 						}
 					},
-					order: [ "img", "title", "price", "quantity", "options", "button" ],
+					order: [ "img", "title", "price", "options", "quantity", "button" ],
 
 					text: {
-						button: "Add to cart"
+						button: "Añadir al carrito"
 					},
 					googleFonts: [ "Montserrat" ]
 				},
@@ -132,33 +141,12 @@ const Platos = forwardRef((props, ref) => {
 					}
 				},
 				cart: {
-					startOpen: true,
 					events: {
 						openCheckout: function(cart) {
-							cart.checkout = null;
-							var input = [
-								{
-									variantId: Buffer.from("gid://shopify/ProductVariant/36415912509604").toString(
-										"base64"
-									),
-									quantity: 1,
-									customAttributes: [
-										{
-											key: "Link",
-											value:
-												"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/"
-										}
-									]
-								}
-							];
-							client.checkout.create().then((checkout) => {
-								client.checkout.addLineItems(checkout.id, input).then((e) => {
-									window.parent.location.href = e.webUrl;
-								});
-							});
-							//console.log(cart.props.client);
+							upload();
 						}
 					},
+
 					styles: {
 						button: {
 							"font-family": "Montserrat, sans-serif",
@@ -227,14 +215,15 @@ const Platos = forwardRef((props, ref) => {
 						notice: "Los costes de envío o descuentos serán calculados en el momento del pago."
 					},
 
-					popup: true,
+					popup: false,
 					googleFonts: [ "Montserrat" ]
 				},
 				toggle: {
 					styles: {
 						toggle: {
+							visibility: "hidden",
 							"font-family": "Montserrat, sans-serif",
-							"background-color": "#ffffff",
+							"background-color": "#e9ecef",
 							":hover": {
 								"background-color": "#e6e6e6"
 							},
@@ -243,6 +232,7 @@ const Platos = forwardRef((props, ref) => {
 							}
 						},
 						count: {
+							visibility: "hidden",
 							"font-size": "16px",
 							color: "#000000",
 							":hover": {
@@ -250,13 +240,14 @@ const Platos = forwardRef((props, ref) => {
 							}
 						},
 						iconPath: {
+							visibility: "hidden",
 							fill: "#000000"
 						}
 					},
 					googleFonts: [ "Montserrat" ]
 				},
 				lineItem: {
-					order: [ "image", "title", "variantTitle", "price", "priceWithDiscounts", "quantity" ],
+					order: [ "image", "title", "variantTitle", "quantity", "price", "priceWithDiscounts" ],
 					styles: {
 						variantTitle: {
 							color: "#252424"
@@ -467,76 +458,76 @@ const Platos = forwardRef((props, ref) => {
 	const linksCuencos = [
 		{
 			id: "prueba2",
-			link: "36415879479460"
+			link: "5740159172772"
 		},
 		{
 			id: "prueba3",
-			link: "36417483604132"
+			link: "5740581355684"
 		},
 		{
 			id: "prueba4",
-			link: "36417322025124"
+			link: "5740556648612"
 		},
 		{
 			id: "prueba5",
-			link: "36417454833828"
+			link: "5740575129764"
 		},
 		{
 			id: "prueba6",
-			link: "36415967592612"
+			link: "5740182634660"
 		},
 		{
 			id: "prueba7",
-			link: "36417290141860"
+			link: "5740551176356"
 		},
 		{
 			id: "prueba8",
-			link: "36415854313636"
+			link: "5740151898276"
 		},
 		{
 			id: "prueba9",
-			link: "36417336377508"
+			link: "5740558450852"
 		},
 		{
 			id: "prueba10",
-			link: "36417457225892"
+			link: "5740575948964"
 		},
 		{
 			id: "prueba11",
-			link: "36417254228132"
+			link: "5740543574180"
 		},
 		{
 			id: "prueba12",
-			link: "36415864504484"
+			link: "5740154257572"
 		},
 		{
 			id: "prueba13",
-			link: "36417393918116"
+			link: "5740566708388"
 		},
 		{
 			id: "prueba14",
-			link: "36417250492580"
+			link: "5740542296228"
 		},
 		{
 			id: "prueba15",
-			link: "36417285292196"
+			link: "5740550193316"
 		},
 		{
 			id: "prueba16",
-			link: "36417486225572"
+			link: "5740582142116"
 		},
 		{
 			id: "prueba17",
-			link: "36417399390372"
+			link: "5740567953572"
 		},
 
 		{
 			id: "prueba19",
-			link: "36417512308900"
+			link: "5740588302500"
 		},
 		{
 			id: "prueba20",
-			link: "36417514930340"
+			link: "5740589744292"
 		}
 	];
 
@@ -544,32 +535,37 @@ const Platos = forwardRef((props, ref) => {
 		setValue(true);
 		document.getElementById("img").setAttribute("src", "");
 		document.getElementById("img").setAttribute("src", process.env.PUBLIC_URL + "/img/" + name + ".png");
-		if (angle2 === undefined) {
-			angle = 0;
+		if (limite === 1) {
 		} else {
-			angle = angle2.slice(7, -4);
-			angle = parseInt(angle);
-			if (isNaN(angle)) {
+			if (angle2 === undefined) {
 				angle = 0;
+			} else {
+				angle = angle2.slice(7, -4);
+				angle = parseInt(angle);
+				if (isNaN(angle)) {
+					angle = 0;
+				}
+				document.getElementById("move").style.transform = angle2;
 			}
-			document.getElementById("move").style.transform = angle2;
-		}
-		document.getElementById("move").style.width = w;
-		document.getElementById("move").style.height = h;
-		document.getElementById("move2").style.transform = "translate(" + xY + "px," + xX + "px)";
-		document.getElementById("move2").style.width = w;
-		document.getElementById("move2").style.height = h;
-		setLimite(limite);
-		if (name === "") {
-			enlace = null;
-		} else {
-			data = links.filter((item) => item.id === name);
+			document.getElementById("move").style.width = w;
+			document.getElementById("move").style.height = h;
+			document.getElementById("move2").style.transform = "translate(" + xY + "px," + xX + "px)";
+			document.getElementById("move2").style.width = w;
+			document.getElementById("move2").style.height = h;
+			setLimite(limite);
+			if (name === "") {
+				enlace = null;
+			} else {
+				data = links.filter((item) => item.id === name);
 
-			if (name !== "" && data !== undefined) {
-				enlace = data[0].link;
+				if (name !== "" && data !== undefined) {
+					enlace = data[0].link;
+				}
 			}
+			var c = makeid();
+			productos.push({ key: c, img: null });
+			aniadir(c, enlace);
 		}
-		aniadir();
 	};
 
 	const setFondoA = (id) => {
@@ -616,7 +612,7 @@ const Platos = forwardRef((props, ref) => {
 		document.getElementById("move").style.transform = "rotate(" + angle + "deg)";
 	};
 
-	const crearProducto = (name, index) => {
+	const crearProducto = (name) => {
 		const page = document.getElementById("fondo");
 		html2canvas(page, {
 			backgroundColor: null,
@@ -625,68 +621,14 @@ const Platos = forwardRef((props, ref) => {
 			scrollY: -window.scrollY
 		}).then((canvas) => {
 			var imgData = canvas.toDataURL("image/png", 1.0);
-			if (name === null) {
-				productos[index] = null;
-			} else {
-				var a = links.filter((item) => item.id === name);
-				productos[index] = {
-					variantId: Buffer.from("gid://shopify/ProductVariant/" + a[0].link).toString("base64"),
-					quantity: 1,
-					imagen: imgData
-				};
-			}
+			var index = productos.findIndex((p) => p.key === name);
+			productos[index].img = imgData;
 		});
 	};
 
-	const redirect = () => {
-		var x = productos.filter((item) => item === null);
-		console.log(x);
-		if (document.getElementById("img").getAttribute("src") === "" || enlace === null || x[0] === null) {
-			setShow(true);
-			document.getElementById("tramitar").disabled = true;
-		} else {
-			const page = document.getElementById("fondo");
-			html2canvas(page, {
-				backgroundColor: null,
-				useCORS: true,
-				allowTaint: false,
-				scrollY: -window.scrollY
-			}).then((canvas) => {
-				var imgData = canvas.toDataURL("image/png", 1.0);
-
-				if (productos.length < limite) {
-					productos[productos.length] = {
-						variantId: Buffer.from("gid://shopify/ProductVariant/" + enlace).toString("base64"),
-						quantity: 1,
-						imagen: imgData
-					};
-					console.log(productos);
-				}
-			});
-			client.checkout.create().then((checkout) => {
-				var lineItemsToAdd = [];
-				for (var i = 0; i < productos.length; i++) {
-					var id = makeid();
-					uploadImagenes(productos[i].imagen, id);
-					lineItemsToAdd.push({
-						variantId: productos[i].variantId,
-						quantity: productos[i].quantity,
-						customAttributes: [
-							{
-								key: "Link",
-								value:
-									"https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" +
-									id +
-									"?alt=media"
-							}
-						]
-					});
-				}
-				client.checkout.addLineItems(checkout.id, lineItemsToAdd).then((e) => {
-					console.log(productos);
-					window.parent.location.href = e.webUrl;
-				});
-			});
+	const upload = () => {
+		for (var i = 0; i < productos.length; i++) {
+			uploadImagenes(productos[i].img, productos[i].key);
 		}
 	};
 	const makeid = () => {
@@ -697,6 +639,12 @@ const Platos = forwardRef((props, ref) => {
 			result += characters.charAt(Math.floor(Math.random() * charactersLength));
 		}
 		return result;
+	};
+
+	const abrir = () => {
+		setTimeout(function() {
+			ui.openCart();
+		}, 3000);
 	};
 
 	const uploadImagenes = (imagen, id) => {
@@ -731,28 +679,19 @@ const Platos = forwardRef((props, ref) => {
 		return {
 			showToast: showToast,
 			setFondoA: setFondoA,
-			crearProducto: crearProducto
+			abrir: abrir
 		};
 	});
 
 	return (
 		<div id="fer">
-			<Alert show={show} onClose={() => setShow(false)} transition variant="dark" dismissible fade="true">
-				Antes de añadir al carrito, selecciona un dibujo y muévelo por la pieza. Puedes hacerlo más grande o más
-				pequeño.
-			</Alert>
-			<Button id="tramitar" variant="outline-dark" onClick={redirect} disabled={limite === 1 ? "true" : ""}>
-				TRAMITAR VAJILLA
-			</Button>
-
-			<div id="carrito" />
 			<OverlayTrigger placement="top" overlay={<Tooltip>Aumenta el tamaño</Tooltip>}>
 				<Button id="zoom" className="pepe" variant="outline-dark" onClick={zoomIn}>
 					<i id="iconZoom" className="fa fa-search-plus fa-lg" />
 				</Button>
 			</OverlayTrigger>
 			<OverlayTrigger placement="top" overlay={<Tooltip>Disminuye el tamaño</Tooltip>}>
-				<Button id="zoomMinus" className="pepe" variant="outline-dark" onClick={zoomOut}>
+				<Button id="zoom1" className="pepe" variant="outline-dark" onClick={zoomOut}>
 					<i id="iconZoom" className="fa fa-search-minus fa-lg" />
 				</Button>
 			</OverlayTrigger>
@@ -796,6 +735,7 @@ const Platos = forwardRef((props, ref) => {
 					</div>
 				</Draggable>
 			</DivStyle>
+			<div id="carrito" />
 		</div>
 	);
 });
