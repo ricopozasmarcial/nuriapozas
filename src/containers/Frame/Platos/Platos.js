@@ -143,6 +143,7 @@ const Platos = forwardRef((props, ref) => {
 				cart: {
 					events: {
 						openCheckout: function(cart) {
+							console.log(productos);
 							upload();
 						}
 					},
@@ -308,151 +309,151 @@ const Platos = forwardRef((props, ref) => {
 	const linksPlatoG = [
 		{
 			id: "prueba2",
-			link: "36415912509604"
+			link: "5740167921828"
 		},
 		{
 			id: "prueba3",
-			link: "36417471479972"
+			link: "5740579913892"
 		},
 		{
 			id: "prueba4",
-			link: "36417316847780"
+			link: "5740555632804"
 		},
 		{
 			id: "prueba5",
-			link: "36417447592100"
+			link: "5740573851812"
 		},
 		{
 			id: "prueba6",
-			link: "36415973163172"
+			link: "5740184535204"
 		},
 		{
 			id: "prueba7",
-			link: "36417295089828"
+			link: "5740552650916"
 		},
 		{
 			id: "prueba8",
-			link: "36196485759140"
+			link: "5679030698148"
 		},
 		{
 			id: "prueba9",
-			link: "36417368096932"
+			link: "5740560646308"
 		},
 		{
 			id: "prueba10",
-			link: "36417461420196"
+			link: "5740576833700"
 		},
 		{
 			id: "prueba11",
-			link: "36417258913956"
+			link: "5740544589988"
 		},
 		{
 			id: "prueba12",
-			link: "36415931318436"
+			link: "5740172640420"
 		},
 		{
 			id: "prueba13",
-			link: "36417386381476"
+			link: "5740565037220"
 		},
 		{
 			id: "prueba14",
-			link: "36417247969444"
+			link: "5740541608100"
 		},
 		{
 			id: "prueba15",
-			link: "36417283588260"
+			link: "5740549111972"
 		},
 		{
 			id: "prueba16",
-			link: "36417490649252"
+			link: "5740583092388"
 		},
 		{
 			id: "prueba17",
-			link: "36417405780132"
+			link: "5740569067684"
 		},
 
 		{
 			id: "prueba19",
-			link: "36417507852452"
+			link: "5740587384996"
 		},
 		{
 			id: "prueba20",
-			link: "36417516568740"
+			link: "5740591186084"
 		}
 	];
 	const linksPlatoP = [
 		{
 			id: "prueba2",
-			link: "36415916867748"
+			link: "5740168708260"
 		},
 		{
 			id: "prueba3",
-			link: "36417467580580"
+			link: "5740578865316"
 		},
 		{
 			id: "prueba4",
-			link: "36417300136100"
+			link: "5740553732260"
 		},
 		{
 			id: "prueba5",
-			link: "36417430749348"
+			link: "5740572049572"
 		},
 		{
 			id: "prueba6",
-			link: "36415978930340"
+			link: "5740185551012"
 		},
 		{
 			id: "prueba7",
-			link: "36417299185828"
+			link: "5740553207972"
 		},
 		{
 			id: "prueba8",
-			link: "36415845335204"
+			link: "5740149932196"
 		},
 		{
 			id: "prueba9",
-			link: "36417370620068"
+			link: "5740561465508"
 		},
 		{
 			id: "prueba10",
-			link: "36417464139940"
+			link: "5740577718436"
 		},
 		{
 			id: "prueba11",
-			link: "36417263435940"
+			link: "5740545573028"
 		},
 		{
 			id: "prueba12",
-			link: "36415940821156"
+			link: "5740174966948"
 		},
 		{
 			id: "prueba13",
-			link: "36417382056100"
+			link: "5740563955876"
 		},
 		{
 			id: "prueba14",
-			link: "36417231356068"
+			link: "5740535677092"
 		},
 		{
 			id: "prueba15",
-			link: "36417272283300"
+			link: "5740546523300"
 		},
 		{
 			id: "prueba16",
-			link: "36417493467300"
+			link: "5740584108196"
 		},
 		{
 			id: "prueba17",
-			link: "36417409613988"
+			link: "5740570017956"
 		},
 
 		{
 			id: "prueba19",
-			link: "36417505427620"
+			link: "5740586434724"
 		},
 		{
 			id: "prueba20",
-			link: "36417521025188"
+			link: "5740592300196"
 		}
 	];
 	const linksCuencos = [
@@ -648,31 +649,33 @@ const Platos = forwardRef((props, ref) => {
 	};
 
 	const uploadImagenes = (imagen, id) => {
-		var storageRef = firebase.storage().ref().child(id);
-		var uploadTask = storageRef.putString(imagen, "data_url");
-		var e;
-		uploadTask.on(
-			"state_changed",
-			function(snapshot) {
-				var progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-				console.log("Upload is " + progress + "% done");
-				switch (snapshot.state) {
-					case firebase.storage.TaskState.PAUSED: // or 'paused'
-						console.log("Upload is paused");
-						break;
-					case firebase.storage.TaskState.RUNNING: // or 'running'
-						console.log("Upload is running");
-						break;
+		if (imagen !== null) {
+			var storageRef = firebase.storage().ref().child(id);
+			var uploadTask = storageRef.putString(imagen, "data_url");
+			var e;
+			uploadTask.on(
+				"state_changed",
+				function(snapshot) {
+					var progress = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+					console.log("Upload is " + progress + "% done");
+					switch (snapshot.state) {
+						case firebase.storage.TaskState.PAUSED: // or 'paused'
+							console.log("Upload is paused");
+							break;
+						case firebase.storage.TaskState.RUNNING: // or 'running'
+							console.log("Upload is running");
+							break;
+					}
+				},
+				function(error) {},
+				function() {
+					uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+						e = downloadURL;
+					});
 				}
-			},
-			function(error) {},
-			function() {
-				uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-					e = downloadURL;
-				});
-			}
-		);
-		return Promise.resolve(e);
+			);
+			return Promise.resolve(e);
+		}
 	};
 
 	useImperativeHandle(ref, () => {

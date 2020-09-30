@@ -144,7 +144,8 @@ function App() {
 		{
 			target: ".four",
 			disableBeacon: true,
-			content: "Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto."
+			content:
+				"Una vez seleccionado un dibujo puedes moverlo por la pieza a tu gusto. Pulsa el botón que aparecerá debajo de la pieza para añadir al carrito."
 		},
 		{
 			target: "#zoom",
@@ -155,6 +156,11 @@ function App() {
 			target: "#trash",
 			disableBeacon: true,
 			content: "También puedes eliminar el diseño aquí o haciendo click en otra imagen."
+		},
+		{
+			target: "#back",
+			disableBeacon: true,
+			content: "Para escoger otro tipo de pieza pulsa atrás. ¡Personaliza tantas como quieras!"
 		}
 	];
 
@@ -462,8 +468,9 @@ function App() {
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
 									<OverlayTrigger placement="top" overlay={<Tooltip>Atrás</Tooltip>}>
 										<i
-											className="fa fa-chevron-left fa-lg"
+											className="fa fa-arrow-left fa-2x"
 											hidden={show}
+											id="back"
 											style={{
 												border: "black",
 												cursor: "pointer",
