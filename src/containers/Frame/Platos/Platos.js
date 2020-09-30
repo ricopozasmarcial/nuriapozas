@@ -216,7 +216,7 @@ const Platos = forwardRef((props, ref) => {
 						notice: "Los costes de envío o descuentos serán calculados en el momento del pago."
 					},
 
-					popup: false,
+					popup: true,
 					googleFonts: [ "Montserrat" ]
 				},
 				toggle: {
