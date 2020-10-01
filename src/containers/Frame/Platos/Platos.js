@@ -580,7 +580,6 @@ const Platos = forwardRef((props, ref) => {
 	const setFondoA = (id) => {
 		aniadir("a", "5740167921828", "carrito1");
 
-		console.log(enlace);
 		if (id === "1") {
 			setLinks(linksPlatoG);
 			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
@@ -626,6 +625,7 @@ const Platos = forwardRef((props, ref) => {
 
 	const crearProducto = (name) => {
 		const page = document.getElementById("fondo");
+		window.scrollTo(0, 0);
 		html2canvas(page, {
 			backgroundColor: null,
 			useCORS: true,
