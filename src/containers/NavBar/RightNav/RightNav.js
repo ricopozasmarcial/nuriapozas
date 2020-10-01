@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Nav, Button, Overlay } from "react-bootstrap";
 import Client from "shopify-buy";
 import ShopifyBuy from "@shopify/buy-button-js";
+const API_KEY = process.env.REACT_APP_STORE_API_KEY;
+
 const Ul = styled.ul`
 	list-style: none;
 	display: flex;
@@ -38,7 +40,7 @@ const elementos = {
 };
 const client = Client.buildClient({
 	domain: "nuria-pozas.myshopify.com",
-	storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
+	storefrontAccessToken: API_KEY
 });
 var ui = ShopifyBuy.UI.init(client);
 
@@ -53,7 +55,7 @@ const RightNav = ({ open }) => {
 			setShow(false);
 			setTimeout(function() {
 				ui.openCart();
-			}, 5);
+			}, 15);
 		}
 	};
 	const [ show, setShow ] = useState(false);
