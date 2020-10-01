@@ -16,6 +16,9 @@ var productos = [];
 var input = [];
 var pru = 'url("img/fondoPlato.png")';
 const API_KEY = process.env.REACT_APP_STORE_API_KEY;
+const API_KEY_FIREBASE = process.env.REACT_APP_STORE_API_KEY_FIREBASE;
+const API_KEY_FIREBASE2 = process.env.REACT_APP_STORE_API_KEY_FIREBASE2;
+
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
@@ -293,13 +296,13 @@ const Platos = forwardRef((props, ref) => {
 	};
 
 	var config = {
-		apiKey: "AIzaSyDEjGJmen7XuwDCFqveAH8kJ4Fhk65Ewpo",
+		apiKey: API_KEY_FIREBASE,
 		authDomain: "nuriapozas.firebaseapp.com",
 		databaseURL: "https://nuriapozas.firebaseio.com",
 		projectId: "nuriapozas",
 		storageBucket: "nuriapozas.appspot.com",
 		messagingSenderId: "1017937514584",
-		appId: "1:1017937514584:web:9a88c4c9d003441c61ba2d",
+		appId: API_KEY_FIREBASE2,
 		measurementId: "G-HVEQ3WDZS1"
 	};
 	if (!firebase.apps.length) {
