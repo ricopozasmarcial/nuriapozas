@@ -52,7 +52,6 @@ const Platos = forwardRef((props, ref) => {
 							crearProducto(codigo);
 							document.getElementById("img").setAttribute("src", "");
 							document.getElementById("carrito").innerHTML = "";
-							aniadir("a", "5740167921828", "carrito1");
 						}
 					},
 					contents: {
@@ -578,7 +577,7 @@ const Platos = forwardRef((props, ref) => {
 	};
 
 	const setFondoA = (id) => {
-		aniadir("a", "5740167921828", "carrito1");
+		aniadir(null, "5740167921828", "carrito1");
 
 		if (id === "1") {
 			setLinks(linksPlatoG);
