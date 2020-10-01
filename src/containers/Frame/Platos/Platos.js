@@ -20,7 +20,7 @@ const Platos = forwardRef((props, ref) => {
 	const [ fondo, setFondo ] = useState("");
 	const [ links, setLinks ] = useState([]);
 	const [ limite, setLimite ] = useState();
-	const [ left, setLeft ] = useState("0px");
+	const [ mostrar, setMostrar ] = useState();
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
@@ -29,15 +29,17 @@ const Platos = forwardRef((props, ref) => {
 	var data = null;
 
 	var ui = ShopifyBuy.UI.init(client);
-	const aniadir = (codigo, id) => {
+
+	const aniadir = (codigo, id, nodo) => {
 		document.getElementById("carrito").innerHTML = "";
+		document.getElementById("carrito1").innerHTML = "";
 		ui.createComponent("product", {
 			id: id,
 			customAttributes: {
 				key: "Link de imagen",
 				value: "https://firebasestorage.googleapis.com/v0/b/nuriapozas.appspot.com/o/" + codigo + "?alt=media"
 			},
-			node: document.getElementById("carrito"),
+			node: document.getElementById(nodo),
 			moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
 			options: {
 				product: {
@@ -46,6 +48,7 @@ const Platos = forwardRef((props, ref) => {
 							crearProducto(codigo);
 							document.getElementById("img").setAttribute("src", "");
 							document.getElementById("carrito").innerHTML = "";
+							aniadir("a", "5740167921828", "carrito1");
 						}
 					},
 					contents: {
@@ -208,7 +211,7 @@ const Platos = forwardRef((props, ref) => {
 						}
 					},
 					text: {
-						title: "Carrito",
+						title: "Carrito de vajillas personalizadas",
 						total: "Subtotal",
 						empty: "Tu carrito está vacío",
 						button: "TRAMITAR",
@@ -564,11 +567,16 @@ const Platos = forwardRef((props, ref) => {
 			}
 			var c = makeid();
 			productos.push({ key: c, img: null });
-			aniadir(c, enlace);
+			document.getElementById("carrito1").visibility = "hidden";
+
+			aniadir(c, enlace, "carrito");
 		}
 	};
 
 	const setFondoA = (id) => {
+		aniadir("a", "5740167921828", "carrito1");
+
+		console.log(enlace);
 		if (id === "1") {
 			setLinks(linksPlatoG);
 			document.getElementById("fondo").style.backgroundImage = "url('img/fondoPlato.png')";
@@ -738,6 +746,13 @@ const Platos = forwardRef((props, ref) => {
 				</Draggable>
 			</DivStyle>
 			<div id="carrito" />
+			<div
+				id="carrito1"
+				style={{
+					pointerEvents: "none",
+					opacity: "0.4"
+				}}
+			/>
 		</div>
 	);
 });

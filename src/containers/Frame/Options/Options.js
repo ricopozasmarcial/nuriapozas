@@ -339,125 +339,82 @@ function App() {
 											<Container className="second">
 												<Row>
 													<Col xs={12} md={4}>
-														<OverlayTrigger
-															trigger="hover"
-															placement="bottom"
-															overlay={
-																<Popover>
-																	<Popover.Title as="h3">
-																		Plato llano grande
-																	</Popover.Title>
-																	<Popover.Content>
-																		Medida aproximada de 27cm{" "}
-																	</Popover.Content>
-																</Popover>
-															}
-														>
-															<div>
-																<h6>
-																	<Badge
-																		variant="dark"
-																		style={{
-																			top: "45%",
-																			left: "38%",
-																			position: "absolute",
-																			cursor: "pointer"
-																		}}
-																		onClick={showTab}
-																		id="1"
-																	>
-																		Plato 27cm
-																	</Badge>
-																</h6>
-																<Image
-																	src="img/fondoPlato27Peq.png"
+														<div>
+															<h6>
+																<Badge
+																	variant="dark"
+																	style={{
+																		top: "45%",
+																		left: "38%",
+																		position: "absolute",
+																		cursor: "pointer"
+																	}}
 																	onClick={showTab}
 																	id="1"
-																	style={{ cursor: "pointer" }}
-																	rounded
-																/>
-															</div>
-														</OverlayTrigger>
+																>
+																	Plato 27cm
+																</Badge>
+															</h6>
+															<Image
+																src="img/fondoPlato27Peq.png"
+																onClick={showTab}
+																id="1"
+																style={{ cursor: "pointer" }}
+																rounded
+															/>
+														</div>
 													</Col>
 													<Col xs={12} md={4}>
-														<OverlayTrigger
-															trigger="hover"
-															placement="bottom"
-															overlay={
-																<Popover>
-																	<Popover.Title as="h3">
-																		Plato llano mediano
-																	</Popover.Title>
-																	<Popover.Content>
-																		Medida aproximada de 22cm{" "}
-																	</Popover.Content>
-																</Popover>
-															}
-														>
-															<div>
-																<h6>
-																	<Badge
-																		variant="dark"
-																		style={{
-																			top: "45%",
-																			left: "38%",
-																			position: "absolute",
-																			cursor: "pointer"
-																		}}
-																		onClick={showTab}
-																		id="2"
-																	>
-																		Plato 22cm
-																	</Badge>
-																</h6>
-																<Image
-																	src="img/fondoPlato22Peq.png"
+														<div>
+															<h6>
+																<Badge
+																	variant="dark"
+																	style={{
+																		top: "45%",
+																		left: "38%",
+																		position: "absolute",
+																		cursor: "pointer"
+																	}}
 																	onClick={showTab}
 																	id="2"
-																	style={{ cursor: "pointer", marginTop: "10px" }}
-																	rounded
-																/>
-															</div>
-														</OverlayTrigger>
+																>
+																	Plato 22cm
+																</Badge>
+															</h6>
+															<Image
+																src="img/fondoPlato22Peq.png"
+																onClick={showTab}
+																id="2"
+																style={{ cursor: "pointer", marginTop: "10px" }}
+																rounded
+															/>
+														</div>
 													</Col>
 													<Col xs={12} md={4}>
-														<OverlayTrigger
-															trigger="hover"
-															placement="bottom"
-															overlay={
-																<Popover>
-																	<Popover.Title as="h3">Cuenco</Popover.Title>
-																	<Popover.Content>
-																		Medida aproximada de 15cm{" "}
-																	</Popover.Content>
-																</Popover>
-															}
-														>
-															<div>
-																<h6>
-																	<Badge
-																		variant="dark"
-																		style={{
-																			top: "45%",
-																			left: "38%",
-																			position: "absolute",
-																			cursor: "pointer"
-																		}}
-																		onClick={showTab}
-																		id="3"
-																	>
-																		Cuenco 15cm
-																	</Badge>
-																</h6>
-																<Image
-																	src="img/cuencoPeq.png"
+														<div>
+															<h6>
+																<Badge
+																	variant="dark"
+																	style={{
+																		top: "45%",
+																		left: "38%",
+																		position: "absolute",
+																		cursor: "pointer"
+																	}}
 																	onClick={showTab}
 																	id="3"
-																	style={{ cursor: "pointer", marginTop: "20px" }}
-																	rounded
-																/>
-															</div>
-														</OverlayTrigger>
+																>
+																	Cuenco 15cm
+																</Badge>
+															</h6>
+															<Image
+																src="img/cuencoPeq.png"
+																onClick={showTab}
+																id="3"
+																style={{ cursor: "pointer", marginTop: "20px" }}
+																rounded
+															/>
+														</div>
 													</Col>
 												</Row>
 											</Container>

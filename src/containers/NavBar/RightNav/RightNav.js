@@ -40,27 +40,20 @@ const client = Client.buildClient({
 	domain: "nuria-pozas.myshopify.com",
 	storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
 });
-var abierto = false;
 var ui = ShopifyBuy.UI.init(client);
 
 const RightNav = ({ open }) => {
 	const abrir = () => {
-		if (ui.components.cart[0] === undefined || ui.components.cart[0] === null) {
+		if (ui.components.cart === [] || ui.components.cart[0] === undefined || ui.components.cart[0] === null) {
 			setShow(true);
 			setTimeout(function() {
 				setShow(false);
 			}, 1000);
 		} else {
 			setShow(false);
-			if (!abierto) {
-				setTimeout(function() {
-					ui.openCart();
-				}, 5);
-				abierto = true;
-			} else {
-				ui.components.cart[0].isVisible = false;
-				abierto = false;
-			}
+			setTimeout(function() {
+				ui.openCart();
+			}, 5);
 		}
 	};
 	const [ show, setShow ] = useState(false);
