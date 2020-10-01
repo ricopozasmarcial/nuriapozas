@@ -15,6 +15,7 @@ var angle = 0;
 var productos = [];
 var input = [];
 var pru = 'url("img/fondoPlato.png")';
+const API_KEY = process.env.REACT_APP_STORE_API_KEY;
 const Platos = forwardRef((props, ref) => {
 	const [ value, setValue ] = useState(false);
 	const [ fondo, setFondo ] = useState("");
@@ -24,7 +25,7 @@ const Platos = forwardRef((props, ref) => {
 	const [ show, setShow ] = useState(false);
 	const client = Client.buildClient({
 		domain: "nuria-pozas.myshopify.com",
-		storefrontAccessToken: "c23d72381b2e48034a6cb4d8bca27ad8"
+		storefrontAccessToken: API_KEY
 	});
 	var data = null;
 
