@@ -333,6 +333,8 @@ function App() {
 													¿Como funciona?
 												</Button>
 											</OverlayTrigger>
+											<H2Select style={{ textAlign: "left" }}> SELECCIONA UNA PIEZA </H2Select>
+											<hr />
 										</Container>
 
 										<div style={{ marginTop: "20px" }}>
@@ -420,6 +422,7 @@ function App() {
 											</Container>
 										</div>
 									</Jumbotron>
+									<img src="img/iconos.PNG" style={{ marginTop: "20px" }} draggable={false} />
 								</Tab>
 
 								<Tab eventKey="2" tabClassName="d-none" hidden={show} title="Diseña">
