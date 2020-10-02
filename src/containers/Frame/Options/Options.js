@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Joyride from "react-joyride";
+import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 import Platos from "../Platos/Platos";
 import {
@@ -11,6 +12,7 @@ import {
 	Card,
 	Tooltip,
 	Badge,
+	Spinner,
 	Tabs,
 	Popover,
 	OverlayTrigger,
@@ -91,6 +93,12 @@ function App() {
 		}
 	};
 
+	const zoom = (e) => {
+		e.target.style.transform = "scale(1.2, 1.2)";
+	};
+	const dezoom = (e) => {
+		e.target.style.transform = "scale(1, 1)";
+	};
 	const handleJoyrideCallback = (event) => {
 		if (event.type === "step:after" && event.index === 1) {
 			ref.current.showToast("prueba4", 0, 0, "500px", "500px", 1, 1);
@@ -333,7 +341,16 @@ function App() {
 													¿Como funciona?
 												</Button>
 											</OverlayTrigger>
-											<H2Select style={{ textAlign: "left" }}> SELECCIONA UNA PIEZA </H2Select>
+											<H2Select style={{ textAlign: "left" }}>
+												<Spinner
+													variant="info"
+													style={{ marginRight: "5px" }}
+													animation="grow"
+													size="sm"
+												/>
+												SELECCIONA UNA PIEZA
+											</H2Select>
+
 											<hr />
 										</Container>
 
@@ -342,14 +359,22 @@ function App() {
 												<Row>
 													<Col xs={12} md={4}>
 														<div>
+															<Image
+																src="img/fondoPlato27Peq.png"
+																onClick={showTab}
+																id="1"
+																onMouseOver={zoom}
+																onMouseLeave={dezoom}
+																style={{ cursor: "pointer" }}
+																rounded
+															/>
 															<h6>
 																<Badge
 																	variant="dark"
 																	style={{
-																		top: "45%",
-																		left: "38%",
-																		position: "absolute",
-																		cursor: "pointer"
+																		position: "relative",
+																		cursor: "pointer",
+																		marginTop: "20px"
 																	}}
 																	onClick={showTab}
 																	id="1"
@@ -357,24 +382,26 @@ function App() {
 																	Plato 27cm
 																</Badge>
 															</h6>
-															<Image
-																src="img/fondoPlato27Peq.png"
-																onClick={showTab}
-																id="1"
-																style={{ cursor: "pointer" }}
-																rounded
-															/>
 														</div>
 													</Col>
+
 													<Col xs={12} md={4}>
 														<div>
+															<Image
+																src="img/fondoPlato22Peq.png"
+																onClick={showTab}
+																onMouseOver={zoom}
+																onMouseLeave={dezoom}
+																id="2"
+																style={{ cursor: "pointer", marginTop: "10px" }}
+																rounded
+															/>
 															<h6>
 																<Badge
 																	variant="dark"
 																	style={{
-																		top: "45%",
-																		left: "38%",
-																		position: "absolute",
+																		marginTop: "35px",
+																		position: "relative",
 																		cursor: "pointer"
 																	}}
 																	onClick={showTab}
@@ -383,24 +410,25 @@ function App() {
 																	Plato 22cm
 																</Badge>
 															</h6>
-															<Image
-																src="img/fondoPlato22Peq.png"
-																onClick={showTab}
-																id="2"
-																style={{ cursor: "pointer", marginTop: "10px" }}
-																rounded
-															/>
 														</div>
 													</Col>
 													<Col xs={12} md={4}>
 														<div>
+															<Image
+																src="img/cuencoPeq.png"
+																onClick={showTab}
+																onMouseOver={zoom}
+																onMouseLeave={dezoom}
+																id="3"
+																style={{ cursor: "pointer", marginTop: "20px" }}
+																rounded
+															/>
 															<h6>
 																<Badge
 																	variant="dark"
 																	style={{
-																		top: "45%",
-																		left: "38%",
-																		position: "absolute",
+																		marginTop: "50px",
+																		position: "relative",
 																		cursor: "pointer"
 																	}}
 																	onClick={showTab}
@@ -409,13 +437,6 @@ function App() {
 																	Cuenco 15cm
 																</Badge>
 															</h6>
-															<Image
-																src="img/cuencoPeq.png"
-																onClick={showTab}
-																id="3"
-																style={{ cursor: "pointer", marginTop: "20px" }}
-																rounded
-															/>
 														</div>
 													</Col>
 												</Row>
@@ -463,9 +484,10 @@ function App() {
 							</Tabs>
 						</Container>
 					</Col>
-					<Col id="colnoscroll">
+					<Col id="colnoscroll" hidden={show}>
 						<Container fluid id="cara">
-							<H2Select> SELECCIONAR DIBUJO </H2Select>
+							<H2Select>SELECCIONAR DIBUJO</H2Select>
+
 							<hr />
 							<DivOptions id="context2" style={dibujos}>
 								<GridRoot>
