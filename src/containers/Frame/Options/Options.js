@@ -344,7 +344,7 @@ function App() {
 											<H2Select style={{ textAlign: "left" }}>
 												<Spinner
 													variant="info"
-													style={{ marginRight: "5px" }}
+													style={{ margin: "2px", marginRight: "10px" }}
 													animation="grow"
 													size="sm"
 												/>
