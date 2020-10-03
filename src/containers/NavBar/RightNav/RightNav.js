@@ -73,6 +73,9 @@ const RightNav = ({ open }) => {
 			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/pages/creatuvajilla" style={elementos}>
 				VAJILLA A MEDIDA
 			</Nav.Link>
+			<Nav.Link target="_parent" href="https://nuria-pozas.myshopify.com/pages/contacto" style={elementos}>
+				CONTACTO
+			</Nav.Link>
 			<Nav.Link
 				ref={target}
 				target="_parent"
