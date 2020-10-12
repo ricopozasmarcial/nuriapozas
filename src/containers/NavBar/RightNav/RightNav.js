@@ -108,59 +108,6 @@ const RightNav = ({ open }) => {
 					</div>
 				)}
 			</Overlay>
-			<Nav.Link
-				style={{
-					marginTop: "15px"
-				}}
-			>
-				<select onchange="doGTranslate(this);" id="selector" class="fa">
-					<option value="es|es">Español</option>
-
-					<option value="es|en">English</option>
-					<option value="es|fr">Français</option>
-					<option value="es|de">Deutsch</option>
-					<option value="es|it">Italiano</option>
-					<option value="es|pt">Português</option>
-					<option value="es|ja">日本語</option>
-					<option value="es|ko">한국어</option>
-					<option value="es|zh-CN">简体中文</option>
-				</select>
-			</Nav.Link>
-
-			<script>{`
-if(typeof GTranslateGetCurrentLang != 'function')function GTranslateGetCurrentLang() {var keyValue = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}
-function gt_loadScript(url,callback){var script=document.createElement("script");script.type="text/javascript";if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}else{script.onload=function(){callback()}}script.src=url;document.getElementsByTagName("head")[0].appendChild(script)}
-var gtSwitcherJS = function($){/*{auto_detect_code}*/}
-gt_loadScript("//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js", function(){jQuery_gtranslate = jQuery.noConflict(true);gtSwitcherJS(jQuery_gtranslate);});
-
-`}</script>
-
-			<style>{`
-
-  #selector{
-  
-   font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-  }
-
-#goog-gt-tt {display:none !important;}
-.goog-te-banner-frame {display:none !important;}
-.goog-te-menu-value:hover {text-decoration:none !important;}
-body {top:0 !important;}
-#google_translate_element2 {display:none!important;}
-`}</style>
-
-			<div id="google_translate_element2" />
-			<script>{`
-function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'es',autoDisplay: false}, 'google_translate_element2');}
-`}</script>
-			<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2" />
-
-			<script>{`
-if(typeof GTranslateGetCurrentLang != 'function')function GTranslateGetCurrentLang() {var keyValue = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue ? keyValue[2].split('/')[2] : null;}
-function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent('HTMLEvents');evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
-function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];if(GTranslateGetCurrentLang() == null && lang == lang_pair.split('|')[0])return;if(typeof ga == 'function'){ga('send', 'event', 'GTranslate', lang, location.hostname+location.pathname+location.search);}else{if(typeof _gaq!='undefined')_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);}var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(/goog-te-combo/.test(sel[i].className))teCombo=sel[i];if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
-`}</script>
 		</Ul>
 	);
 };
